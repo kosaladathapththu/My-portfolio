@@ -4,7 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Kosala Daneshwara | Software Engineer</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -34,7 +37,7 @@ nav.scrolled{
 }
 .nav-container{
   max-width:1400px;margin:0 auto;padding:1.2rem 2rem;
-  display:flex;justify-content:space-between;align-items:center
+  display:flex;justify-content:space-between;align-items:center;gap:1rem
 }
 .logo{
   font-size:1.5rem;font-weight:900;letter-spacing:-1px;
@@ -57,6 +60,52 @@ nav.scrolled{
   display:none;background:0 0;border:none;color:#fff;
   font-size:1.5rem;cursor:pointer
 }
+
+/* Theme toggle button */
+.theme-toggle{
+  width:46px;height:46px;border-radius:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .25s;
+}
+.theme-toggle:hover{ transform:translateY(-2px) }
+.theme-toggle i{ color:#fff }
+
+/* ---------- Theme (Light/Dark) ---------- */
+body.light{
+  background:#f6f7fb;
+  color:#0b1220;
+}
+body.light nav{ background:rgba(255,255,255,.75); border-bottom:1px solid rgba(10,10,10,.08) }
+body.light nav.scrolled{ background:rgba(255,255,255,.92) }
+body.light .nav-links a{ color:#0b1220 }
+body.light .profile-card,
+body.light .skill-card,
+body.light .project-card,
+body.light .education-item,
+body.light .cert-item,
+body.light .highlight-card{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(10,10,10,.12);
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+body.light .contact-item{ background:rgba(0,0,0,.03); border:1px solid rgba(0,0,0,.08) }
+body.light .contact-item a,
+body.light .contact-item span{ color:#0b1220 }
+body.light .section-header p,
+body.light .hero-content p,
+body.light .education-year,
+body.light .cert-content,
+body.light .highlight-card p{ color:#52637a }
+body.light footer{ background:rgba(255,255,255,.8); border-top:1px solid rgba(10,10,10,.10) }
+body.light footer p{ color:#52637a }
+body.light .small-note{ color:#52637a }
+body.light .theme-toggle{
+  background:rgba(0,0,0,.05);
+  border:1px solid rgba(0,0,0,.12);
+}
+body.light .theme-toggle i{ color:#0b1220 }
 
 .hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 4rem}
 .hero-container{
@@ -117,6 +166,13 @@ nav.scrolled{
   background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);
   transform:translateY(-3px)
 }
+/* Download CV button style */
+.btn-warning{
+  background:linear-gradient(135deg,var(--accent),#fb923c);
+  color:#0a0a0a;
+  box-shadow:0 10px 40px rgba(245,158,11,.25);
+}
+.btn-warning:hover{ transform:translateY(-3px); box-shadow:0 15px 55px rgba(245,158,11,.35) }
 
 .profile-card{
   background:rgba(17,17,17,.8);backdrop-filter:blur(20px);
@@ -340,6 +396,97 @@ footer{
 footer p{color:var(--gray);margin-top:1rem}
 .small-note{color:rgba(255,255,255,.65);font-size:.95rem;max-width:850px;margin:0 auto}
 
+/* ---------- Project Modal (Screenshot popup) ---------- */
+.modal{
+  position:fixed;inset:0;background:rgba(0,0,0,.65);
+  display:none;align-items:center;justify-content:center;z-index:2000;
+  padding:1.5rem;
+}
+.modal.active{ display:flex }
+.modal-card{
+  width:min(980px,100%);
+  background:rgba(17,17,17,.92);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.55);
+}
+body.light .modal-card{
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(0,0,0,.12);
+}
+.modal-top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 1.25rem;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+body.light .modal-top{ border-bottom:1px solid rgba(0,0,0,.10) }
+.modal-top h3{ font-size:1.1rem }
+.modal-close{
+  border:none;background:transparent;color:#fff;
+  font-size:1.4rem;cursor:pointer;
+}
+body.light .modal-close{ color:#0b1220 }
+.modal-body{ display:grid;grid-template-columns:1.2fr .8fr }
+.modal-img{ background:#000;min-height:360px;display:flex;align-items:center;justify-content:center }
+.modal-img img{ width:100%;height:100%;object-fit:cover;max-height:520px }
+.modal-info{ padding:1.25rem }
+.modal-info p{ color:var(--gray);margin:.6rem 0 1rem;line-height:1.7 }
+body.light .modal-info p{ color:#52637a }
+.badges{ display:flex;flex-wrap:wrap;gap:.5rem }
+.badges span{
+  padding:.5rem .8rem;border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  font-size:.85rem;
+}
+body.light .badges span{
+  background:rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.10);
+}
+@media(max-width:900px){ .modal-body{ grid-template-columns:1fr } }
+
+/* ---------- Contact Form Section ---------- */
+.form-wrap{ max-width:900px;margin:0 auto }
+.form-card{
+  background:rgba(17,17,17,.8);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:25px;padding:2.5rem;
+}
+body.light .form-card{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(0,0,0,.12);
+}
+.form-grid{ display:grid;grid-template-columns:1fr 1fr;gap:1rem }
+.form-group{ display:flex;flex-direction:column;gap:.5rem }
+.form-group label{ color:var(--gray);font-weight:600 }
+body.light .form-group label{ color:#52637a }
+.form-group input,.form-group textarea{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;padding:1rem;border-radius:14px;outline:none;
+}
+body.light .form-group input, body.light .form-group textarea{
+  background:rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.12);
+  color:#0b1220;
+}
+.form-group textarea{ min-height:140px;resize:vertical }
+.form-actions{ margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap }
+.status{
+  margin-top:1rem;padding:1rem;border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:var(--gray);display:none;
+}
+body.light .status{
+  border:1px solid rgba(0,0,0,.12);
+  background:rgba(0,0,0,.03);
+  color:#52637a;
+}
+.status.ok{ display:block;border-color:rgba(34,197,94,.45);color:#22c55e }
+.status.err{ display:block;border-color:rgba(239,68,68,.45);color:#ef4444 }
+
 @media(max-width:1024px){
   .hero-container{grid-template-columns:1fr;text-align:center}
   .hero-content h1{font-size:3rem}
@@ -353,11 +500,13 @@ footer p{color:var(--gray);margin-top:1rem}
     flex-direction:column;background:rgba(10,10,10,.98);
     padding:2rem;gap:1rem;transition:left .3s
   }
+  body.light .nav-links{ background:rgba(255,255,255,.98) }
   .nav-links.active{left:0}
   .menu-toggle{display:block}
   .hero-content h1{font-size:2.5rem}
   .projects-grid,.certs-grid{grid-template-columns:1fr}
   .section-header h2{font-size:2rem}
+  .form-grid{ grid-template-columns:1fr }
 }
 </style>
 </head>
@@ -368,7 +517,13 @@ footer p{color:var(--gray);margin-top:1rem}
 <nav id="navbar">
   <div class="nav-container">
     <div class="logo">Kosala D. Athapaththu</div>
+
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+
     <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -377,7 +532,7 @@ footer p{color:var(--gray);margin-top:1rem}
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contactFormSection">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -385,7 +540,7 @@ footer p{color:var(--gray);margin-top:1rem}
 <section class="hero" id="home">
   <div class="hero-container">
     <div class="hero-content">
-      <div class="hero-label">💻 Software Engineer</div>
+      <div class="hero-label">Software Engineer</div>
       <h1>Hi, I'm <span class="gradient-text">Kosala Daneshwara</span></h1>
       <p>
         A passionate Software Engineering Undergraduate crafting innovative full-stack applications,
@@ -400,11 +555,16 @@ footer p{color:var(--gray);margin-top:1rem}
 
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary"><span><i class="fas fa-rocket"></i> View Projects</span></a>
-        <a href="#contact" class="btn btn-secondary"><span><i class="fas fa-envelope"></i> Get In Touch</span></a>
+        <a href="#contactFormSection" class="btn btn-secondary"><span><i class="fas fa-envelope"></i> Get In Touch</span></a>
+
+        <!-- Put your CV PDF as: Kosala_CV.pdf in same folder -->
+        <a href="Kosala_CV.pdf" class="btn btn-warning" download>
+          <span><i class="fas fa-download"></i> Download CV</span>
+        </a>
       </div>
     </div>
 
-    <div class="hero-image" id="contact">
+    <div class="hero-image">
       <div class="profile-card">
         <div class="profile-img">
           <img src="cv_photo.jpg" alt="Kosala"
@@ -449,7 +609,7 @@ footer p{color:var(--gray);margin-top:1rem}
     <div class="section-header">
       <div class="section-label">Highlights</div>
       <h2>What I Do Best</h2>
-      <p>Quick view of my strongest areas ✅</p>
+      <p>Quick view of my strongest areas</p>
     </div>
 
     <div class="highlights-grid">
@@ -532,10 +692,15 @@ footer p{color:var(--gray);margin-top:1rem}
     <div class="section-header">
       <div class="section-label">Portfolio</div>
       <h2>Featured Projects</h2>
+      <p>Click a project card to view screenshots</p>
     </div>
 
     <div class="projects-grid">
-      <div class="project-card">
+      <div class="project-card"
+        data-title="Personal Financial Management System"
+        data-img="p1.png"
+        data-desc="Budgeting and reporting with Oracle/SQLite sync, PL/SQL automation, and structured database design."
+        data-tech="PHP, Oracle, SQLite, PL/SQL, Cloud Sync">
         <div class="project-number">01</div>
         <h3>Personal Financial Management System</h3>
         <div class="project-tech">PHP | Oracle | SQLite | PL/SQL | Cloud Sync</div>
@@ -549,7 +714,11 @@ footer p{color:var(--gray);margin-top:1rem}
         </a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card"
+        data-title="Hotel Management System"
+        data-img="p2.png"
+        data-desc="Microservices-based hotel system with React UI, booking workflows, and clean API separation."
+        data-tech="Spring Boot, React, MySQL, Microservices">
         <div class="project-number">02</div>
         <h3>Hotel Management System</h3>
         <div class="project-tech">Spring Boot | React | MySQL | Microservices</div>
@@ -563,7 +732,11 @@ footer p{color:var(--gray);margin-top:1rem}
         </a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card"
+        data-title="Hostel Management System"
+        data-img="p3.png"
+        data-desc="PHP + MySQL hostel system with management modules and reporting features."
+        data-tech="PHP, MySQL, HTML, CSS">
         <div class="project-number">03</div>
         <h3>Hostel Management System</h3>
         <div class="project-tech">PHP | HTML | CSS | MySQL</div>
@@ -577,7 +750,11 @@ footer p{color:var(--gray);margin-top:1rem}
         </a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card"
+        data-title="PizzaMania Android App"
+        data-img="p4.png"
+        data-desc="Android ordering app with Firebase cart updates, Maps branch detection, and admin workflows."
+        data-tech="Java, Firebase, SQLite, Google Maps">
         <div class="project-number">04</div>
         <h3>PizzaMania Android App</h3>
         <div class="project-tech">Java | Firebase | SQLite | Google Maps API</div>
@@ -591,7 +768,11 @@ footer p{color:var(--gray);margin-top:1rem}
         </a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card"
+        data-title="Landslide Early Warning System"
+        data-img="p5.png"
+        data-desc="IoT prototype with sensor readings pushed to Firebase and dashboard-based warning logic."
+        data-tech="Arduino, ESP8266, MPU6050, Firebase, IoT">
         <div class="project-number">05</div>
         <h3>Landslide Early Warning System</h3>
         <div class="project-tech">Arduino | ESP8266 | MPU6050 | Firebase | IoT</div>
@@ -605,7 +786,11 @@ footer p{color:var(--gray);margin-top:1rem}
         </a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card"
+        data-title="River Trash Collector Robot"
+        data-img="p6.png"
+        data-desc="Arduino robot that detects obstacles and collects floating trash using servo mechanisms and weight sensing."
+        data-tech="Arduino, Ultrasonic, Servo, HX711, C++">
         <div class="project-number">06</div>
         <h3>River Trash Collector Robot</h3>
         <div class="project-tech">Arduino | Ultrasonic | Servo | HX711</div>
@@ -619,7 +804,11 @@ footer p{color:var(--gray);margin-top:1rem}
         </a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card"
+        data-title="Library Management System"
+        data-img="p7.png"
+        data-desc="C# desktop system with CRUD workflows for books and members, issue/return tracking, and validations."
+        data-tech="C#, SQL Server">
         <div class="project-number">07</div>
         <h3>Library Management System</h3>
         <div class="project-tech">C# | SQL Server</div>
@@ -662,7 +851,6 @@ footer p{color:var(--gray);margin-top:1rem}
         <div class="education-year">Completed</div>
       </div>
 
-      <!-- ✅ Added O/L results -->
       <div class="education-item">
         <h3>G.C.E. Ordinary Level (O/L)</h3>
         <div class="education-school">Sri Lanka</div>
@@ -677,152 +865,70 @@ footer p{color:var(--gray);margin-top:1rem}
     <div class="section-header">
       <div class="section-label">Certifications</div>
       <h2>Professional Credentials</h2>
-      <p>All certifications added from LinkedIn 🏅</p>
+      <p>All certifications added from LinkedIn</p>
     </div>
 
     <div class="certs-grid">
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Oracle Data Platform 2025 Certified Foundations Associate</strong>
-          Oracle — Issued Dec 2025
-        </div>
-      </div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Oracle Data Platform 2025 Certified Foundations Associate</strong>Oracle — Issued Dec 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Graphic Design Workshop</strong>ZeroPlastic in NIBM — Issued Aug 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Developing Microsoft Azure Solutions</strong>Microsoft Learn Student Ambassadors (Sri Lanka) — Issued Jul 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>HRXTech</strong>University of Moratuwa — Issued Jul 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Microsoft Azure</strong>Microsoft Learn Student Ambassadors — Issued Jul 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>MCP Server using .NET</strong>Microsoft Learn Student Ambassadors — Issued Jun 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>AI for Beginners</strong>HP LIFE — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Agile Project Management Foundation</strong>LinkedIn — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>HP Life - Agile Project Management</strong>HP LIFE — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Chatbot Development With Azure AI Foundry</strong>Microsoft Learn Student Ambassadors — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>HackerRank SQL Basics</strong>HackerRank — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Java Basics (HackerRank)</strong>HackerRank — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>JavaScript BootCamp</strong>LetsUpgrade — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Lu-SQL Bootcamp</strong>LetsUpgrade — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Postman API 102</strong>Postman — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Web Development</strong>SoloLearn — Issued Jan 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Quantum Computing Fundamentals & Azure Quantum Development Kit</strong>Microsoft Learn Student Ambassadors — Issued 2025</div></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>TS: Microsoft Learn Student Ambassador - Navigate GitHub Copilot</strong>Microsoft Learn Student Ambassadors — Issued 2025</div></div>
+    </div>
+  </div>
+</section>
 
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Graphic Design Workshop</strong>
-          ZeroPlastic in NIBM — Issued Aug 2025
-        </div>
-      </div>
+<section id="contactFormSection">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label">Contact</div>
+      <h2>Send a Message</h2>
+      <p>Messages are delivered via EmailJS</p>
+    </div>
 
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Developing Microsoft Azure Solutions</strong>
-          Microsoft Learn Student Ambassadors (Sri Lanka) — Issued Jul 2025
-        </div>
-      </div>
+    <div class="form-wrap">
+      <div class="form-card">
+        <form id="contactForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" name="from_name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" name="reply_to" required placeholder="Your email">
+            </div>
+          </div>
 
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>HRXTech</strong>
-          University of Moratuwa — Issued Jul 2025
-        </div>
-      </div>
+          <div class="form-group" style="margin-top:1rem;">
+            <label>Message</label>
+            <textarea name="message" required placeholder="Write your message"></textarea>
+          </div>
 
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Microsoft Azure</strong>
-          Microsoft Learn Student Ambassadors — Issued Jul 2025
-        </div>
-      </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">
+              <span><i class="fas fa-paper-plane"></i> Send</span>
+            </button>
+            <a class="btn btn-secondary" href="mailto:kosalaathapaththu1234@gmail.com">
+              <span><i class="fas fa-envelope"></i> Email Direct</span>
+            </a>
+          </div>
 
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>MCP Server using .NET</strong>
-          Microsoft Learn Student Ambassadors — Issued Jun 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>AI for Beginners</strong>
-          HP LIFE — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Agile Project Management Foundation</strong>
-          LinkedIn — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>HP Life - Agile Project Management</strong>
-          HP LIFE — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Chatbot Development With Azure AI Foundry</strong>
-          Microsoft Learn Student Ambassadors — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>HackerRank SQL Basics</strong>
-          HackerRank — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Java Basics (HackerRank)</strong>
-          HackerRank — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>JavaScript BootCamp</strong>
-          LetsUpgrade — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Lu-SQL Bootcamp</strong>
-          LetsUpgrade — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Postman API 102</strong>
-          Postman — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Web Development</strong>
-          SoloLearn — Issued Jan 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>Quantum Computing Fundamentals & Azure Quantum Development Kit</strong>
-          Microsoft Learn Student Ambassadors — Issued 2025
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <i class="fas fa-certificate"></i>
-        <div class="cert-content">
-          <strong>TS: Microsoft Learn Student Ambassador - Navigate GitHub Copilot</strong>
-          Microsoft Learn Student Ambassadors — Issued 2025
-        </div>
+          <div class="status" id="statusBox"></div>
+        </form>
       </div>
     </div>
   </div>
@@ -838,11 +944,32 @@ footer p{color:var(--gray);margin-top:1rem}
       <a class="social-link telegram" href="https://t.me/+94719148762" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
     </div>
 
-    <p>📩 Email: <a href="mailto:kosalaathapaththu1234@gmail.com" style="color:var(--secondary);text-decoration:none;">kosalaathapaththu1234@gmail.com</a></p>
-    <p>📍 Colombo, Sri Lanka</p>
+    <p>Email: <a href="mailto:kosalaathapaththu1234@gmail.com" style="color:var(--secondary);text-decoration:none;">kosalaathapaththu1234@gmail.com</a></p>
+    <p>Colombo, Sri Lanka</p>
     <p style="margin-top:1.5rem;">© <span id="year"></span> Kosala Daneshwara Athapaththu — Portfolio Website</p>
   </div>
 </footer>
+
+<!-- Project Modal -->
+<div class="modal" id="projectModal">
+  <div class="modal-card">
+    <div class="modal-top">
+      <h3 id="modalTitle">Project</h3>
+      <button class="modal-close" id="modalClose"><i class="fas fa-xmark"></i></button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-img">
+        <img id="modalImg" src="" alt="Project Screenshot">
+      </div>
+
+      <div class="modal-info">
+        <p id="modalDesc"></p>
+        <div class="badges" id="modalBadges"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   // Navbar scroll effect
@@ -875,6 +1002,99 @@ footer p{color:var(--gray);margin-top:1rem}
 
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- Theme Toggle ---------- */
+  const themeToggle = document.getElementById("themeToggle");
+  const savedTheme = localStorage.getItem("theme");
+  if(savedTheme === "light"){
+    document.body.classList.add("light");
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+    const isLight = document.body.classList.contains("light");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+    themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  });
+
+  /* ---------- Project Modal (Screenshot Popup) ---------- */
+  const modal = document.getElementById("projectModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalImg = document.getElementById("modalImg");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalBadges = document.getElementById("modalBadges");
+
+  document.querySelectorAll(".project-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      if(e.target.closest("a")) return; // allow GitHub link clicks
+
+      modalTitle.textContent = card.dataset.title || "Project";
+      modalImg.src = card.dataset.img || "";
+      modalDesc.textContent = card.dataset.desc || "";
+
+      modalBadges.innerHTML = "";
+      const tech = (card.dataset.tech || "")
+        .split(",")
+        .map(t => t.trim())
+        .filter(Boolean);
+
+      tech.forEach(t => {
+        const span = document.createElement("span");
+        span.textContent = t;
+        modalBadges.appendChild(span);
+      });
+
+      modal.classList.add("active");
+    });
+  });
+  document.getElementById("modalClose").addEventListener("click", () => modal.classList.remove("active"));
+  modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("active"); });
+
+  /* ---------- EmailJS Contact Form ---------- */
+  /*
+    Steps:
+    1) Create account at emailjs.com
+    2) Add Email Service
+    3) Create Email Template
+    4) Replace the IDs below
+  */
+  const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+  const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+  const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+  if(EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY"){
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
+  const contactForm = document.getElementById("contactForm");
+  const statusBox = document.getElementById("statusBox");
+
+  if(contactForm){
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      statusBox.style.display = "block";
+      statusBox.className = "status";
+      statusBox.textContent = "Sending...";
+
+      try{
+        if(EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"){
+          statusBox.className = "status err";
+          statusBox.textContent = "EmailJS is not configured. Add your public key, service id and template id in the script.";
+          return;
+        }
+
+        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
+        statusBox.className = "status ok";
+        statusBox.textContent = "Message sent successfully.";
+        contactForm.reset();
+      }catch(err){
+        console.error(err);
+        statusBox.className = "status err";
+        statusBox.textContent = "Failed to send. Please verify EmailJS settings.";
+      }
+    });
+  }
 </script>
 
 </body>
