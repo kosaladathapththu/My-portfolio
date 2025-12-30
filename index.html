@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kosala Daneshwara | Software Engineer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#7c3aed;--secondary:#06b6d4;--accent:#f59e0b;
+  --dark:#0a0a0a;--gray:#94a3b8;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,-apple-system,sans-serif;background:var(--dark);
+  color:#fff;line-height:1.6;overflow-x:hidden
+}
+.bg-canvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;
+  background:
+    radial-gradient(circle at 20% 50%,rgba(124,58,237,.15) 0%,transparent 50%),
+    radial-gradient(circle at 80% 80%,rgba(6,182,212,.15) 0%,transparent 50%)
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(10,10,10,.8);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.05)
+}
+nav.scrolled{
+  background:rgba(10,10,10,.95);
+  box-shadow:0 10px 40px rgba(0,0,0,.5)
+}
+.nav-container{
+  max-width:1400px;margin:0 auto;padding:1.2rem 2rem;
+  display:flex;justify-content:space-between;align-items:center
+}
+.logo{
+  font-size:1.5rem;font-weight:900;letter-spacing:-1px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:#fff;text-decoration:none;font-weight:600;position:relative;
+  padding:.5rem 0;transition:all .3s
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:0;height:2px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  transition:width .3s
+}
+.nav-links a:hover::after{width:100%}
+.menu-toggle{
+  display:none;background:0 0;border:none;color:#fff;
+  font-size:1.5rem;cursor:pointer
+}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 4rem}
+.hero-container{
+  max-width:1400px;margin:0 auto;display:grid;
+  grid-template-columns:1.2fr .8fr;gap:4rem;align-items:center
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.hero-content{animation:slideUp 1s ease}
+.hero-label{
+  display:inline-block;padding:.5rem 1rem;background:rgba(124,58,237,.1);
+  border:1px solid rgba(124,58,237,.3);
+  border-radius:50px;color:var(--primary);font-weight:600;margin-bottom:1.5rem
+}
+.hero-content h1{
+  font-size:4rem;font-weight:900;line-height:1.1;margin-bottom:1.5rem;
+  background:linear-gradient(135deg,#fff,var(--gray));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.gradient-text{
+  background:linear-gradient(135deg,var(--primary),var(--secondary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.hero-content p{
+  font-size:1.25rem;color:var(--gray);margin-bottom:2rem;line-height:1.8
+}
+.hero-stats{display:flex;gap:3rem;margin-bottom:2.5rem}
+.stat{text-align:center}
+.stat-number{
+  font-size:2.5rem;font-weight:900;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.stat-label{color:var(--gray);font-size:.9rem;margin-top:.25rem}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  padding:1rem 2rem;border-radius:50px;text-decoration:none;
+  font-weight:700;display:inline-flex;align-items:center;gap:.75rem;
+  transition:all .3s;border:none;cursor:pointer;font-size:1rem;
+  position:relative;overflow:hidden
+}
+.btn::before{
+  content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;
+  background:rgba(255,255,255,.2);transform:translate(-50%,-50%);
+  transition:width .6s,height .6s
+}
+.btn:hover::before{width:300px;height:300px}
+.btn span{position:relative;z-index:1}
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary),#6d28d9);color:#fff;
+  box-shadow:0 10px 40px rgba(124,58,237,.4)
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(124,58,237,.5)}
+.btn-secondary{
+  background:rgba(255,255,255,.05);color:#fff;border:2px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(10px)
+}
+.btn-secondary:hover{
+  background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);
+  transform:translateY(-3px)
+}
+
+.profile-card{
+  background:rgba(17,17,17,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:3rem;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  animation:slideUp 1s ease .3s backwards;position:relative;overflow:hidden
+}
+.profile-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent))
+}
+.profile-img{
+  width:220px;height:220px;border-radius:50%;margin:0 auto 2rem;
+  border:4px solid var(--primary);
+  box-shadow:0 0 60px rgba(124,58,237,.6),0 0 100px rgba(6,182,212,.3);
+  overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;
+  position:relative
+}
+@keyframes gradientRotate{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.profile-img::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  background:linear-gradient(45deg,var(--primary),var(--secondary),var(--accent),var(--primary));
+  background-size:300%;animation:gradientRotate 3s ease infinite;z-index:-1
+}
+.profile-img img{
+  width:100%;height:100%;object-fit:cover;object-position:45% 5%;
+  transform:scale(1.12)
+}
+.profile-img i{font-size:5rem;color:rgba(255,255,255,.2)}
+.contact-grid{display:grid;gap:1rem}
+.contact-item{
+  display:flex;align-items:center;gap:1rem;padding:1rem;
+  background:rgba(255,255,255,.03);border-radius:15px;transition:all .3s;
+  border:1px solid rgba(255,255,255,.05)
+}
+.contact-item:hover{
+  background:rgba(255,255,255,.08);transform:translateX(5px);
+  border-color:var(--primary)
+}
+.contact-item i{color:var(--primary);width:24px}
+.contact-item a,.contact-item span{color:#fff;text-decoration:none;font-size:.95rem}
+
+section{padding:6rem 2rem}
+.section-container{max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{
+  display:inline-block;padding:.5rem 1rem;background:rgba(124,58,237,.1);
+  border:1px solid rgba(124,58,237,.3);border-radius:50px;color:var(--primary);
+  font-size:.85rem;font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px
+}
+.section-header h2{
+  font-size:3rem;font-weight:900;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.section-header p{color:var(--gray);font-size:1.1rem;max-width:700px;margin:0 auto}
+
+/* Extra sections (to fill free space nicely) */
+.highlights-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;max-width:1100px;margin:0 auto
+}
+.highlight-card{
+  background:rgba(17,17,17,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:22px;
+  padding:2rem;transition:all .4s;position:relative;overflow:hidden
+}
+.highlight-card:hover{
+  transform:translateY(-10px);
+  border-color:var(--secondary);
+  box-shadow:0 30px 70px rgba(6,182,212,.25)
+}
+.highlight-card h3{
+  display:flex;gap:.75rem;align-items:center;
+  font-size:1.2rem;margin-bottom:.6rem
+}
+.highlight-card h3 i{color:var(--secondary)}
+.highlight-card p{color:var(--gray)}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.skill-card{
+  background:rgba(17,17,17,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:25px;padding:2.5rem;
+  transition:all .4s;position:relative;overflow:hidden
+}
+.skill-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  transform:scaleX(0);transition:transform .4s
+}
+.skill-card:hover::before{transform:scaleX(1)}
+.skill-card:hover{
+  transform:translateY(-10px);
+  border-color:var(--primary);
+  box-shadow:0 30px 60px rgba(124,58,237,.3)
+}
+.skill-card h3{
+  color:#fff;margin-bottom:1.5rem;font-size:1.3rem;
+  display:flex;align-items:center;gap:.75rem
+}
+.skill-card h3 i{color:var(--primary);font-size:1.5rem}
+.skill-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem}
+.skill-card li{
+  padding:.6rem 1rem;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);border-radius:12px;
+  font-size:.9rem;color:#f1f5f9;transition:all .3s
+}
+.skill-card li:hover{
+  background:rgba(124,58,237,.2);
+  border-color:var(--primary);
+  transform:translateY(-2px)
+}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2.5rem}
+.project-card{
+  background:rgba(17,17,17,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:25px;padding:2.5rem;
+  transition:all .4s;position:relative;overflow:hidden;cursor:pointer
+}
+.project-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(6,182,212,.1));
+  opacity:0;transition:opacity .4s
+}
+.project-card:hover::before{opacity:1}
+.project-card:hover{
+  transform:translateY(-15px) scale(1.02);
+  border-color:var(--primary);
+  box-shadow:0 40px 80px rgba(124,58,237,.4)
+}
+.project-number{
+  position:absolute;top:1.5rem;right:1.5rem;
+  font-size:3rem;font-weight:900;color:rgba(124,58,237,.1);z-index:1
+}
+.project-card h3{font-size:1.4rem;margin-bottom:.75rem;color:#fff;position:relative;z-index:2}
+.project-tech{
+  color:var(--secondary);font-size:.9rem;margin-bottom:1.25rem;
+  font-weight:700;position:relative;z-index:2
+}
+.project-card ul{list-style:none;margin-bottom:1.5rem;color:var(--gray);position:relative;z-index:2}
+.project-card li{padding-left:1.5rem;position:relative;margin-bottom:.75rem;line-height:1.6}
+.project-card li::before{content:'→';position:absolute;left:0;color:var(--primary);font-weight:900}
+.project-link{
+  display:inline-flex;align-items:center;gap:.5rem;color:var(--primary);
+  text-decoration:none;font-weight:700;transition:all .3s;position:relative;z-index:2
+}
+.project-link:hover{gap:1rem;color:var(--secondary)}
+
+.education-timeline{position:relative;padding-left:3rem;max-width:900px;margin:0 auto}
+.education-timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--primary),var(--secondary),var(--accent))
+}
+.education-item{
+  position:relative;padding:2rem;margin-bottom:2.5rem;
+  background:rgba(17,17,17,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:20px;transition:all .4s
+}
+.education-item::before{
+  content:'';position:absolute;left:-3.4rem;top:2rem;width:16px;height:16px;
+  background:var(--primary);border-radius:50%;
+  box-shadow:0 0 30px var(--primary);
+  border:3px solid var(--dark)
+}
+.education-item:hover{
+  transform:translateX(15px);
+  border-color:var(--primary);
+  box-shadow:0 20px 60px rgba(124,58,237,.3)
+}
+.education-item h3{color:#fff;margin-bottom:.5rem;font-size:1.3rem}
+.education-school{color:var(--secondary);font-weight:700;margin-bottom:.5rem}
+.education-year{color:var(--gray);font-size:.95rem}
+
+.certs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+  gap:1.5rem;max-width:1200px;margin:0 auto
+}
+.cert-item{
+  display:flex;align-items:flex-start;gap:1.25rem;padding:2rem;
+  background:rgba(17,17,17,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:20px;transition:all .4s
+}
+.cert-item:hover{
+  transform:translateX(10px);
+  border-color:var(--secondary);
+  box-shadow:0 20px 60px rgba(6,182,212,.25)
+}
+.cert-item i{color:var(--secondary);font-size:2rem;margin-top:.25rem}
+.cert-content strong{color:#fff;display:block;margin-bottom:.25rem}
+.cert-content{color:var(--gray);line-height:1.6}
+
+footer{
+  padding:4rem 2rem 2rem;background:rgba(10,10,10,.8);
+  backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.05)
+}
+.footer-content{max-width:1400px;margin:0 auto;text-align:center}
+.social-links{display:flex;justify-content:center;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+.social-link{
+  width:60px;height:60px;border-radius:50%;
+  background:rgba(124,58,237,.1);
+  border:2px solid rgba(124,58,237,.3);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary);text-decoration:none;
+  transition:all .4s;font-size:1.3rem;position:relative;overflow:hidden
+}
+.social-link::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:var(--primary);transform:scale(0);transition:transform .4s
+}
+.social-link i{position:relative;z-index:1;transition:color .3s}
+.social-link:hover::before{transform:scale(1)}
+.social-link:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(124,58,237,.5)}
+.social-link:hover i{color:#fff}
+.social-link.github:hover::before{background:#333}
+.social-link.linkedin:hover::before{background:#0077b5}
+.social-link.twitter:hover::before{background:#1da1f2}
+.social-link.whatsapp:hover::before{background:#25d366}
+.social-link.telegram:hover::before{background:#0088cc}
+
+footer p{color:var(--gray);margin-top:1rem}
+.small-note{color:rgba(255,255,255,.65);font-size:.95rem;max-width:850px;margin:0 auto}
+
+@media(max-width:1024px){
+  .hero-container{grid-template-columns:1fr;text-align:center}
+  .hero-content h1{font-size:3rem}
+  .hero-stats{justify-content:center}
+  .hero-buttons{justify-content:center}
+  .education-timeline{padding-left:2rem}
+}
+@media(max-width:768px){
+  .nav-links{
+    position:fixed;top:80px;left:-100%;width:100%;
+    flex-direction:column;background:rgba(10,10,10,.98);
+    padding:2rem;gap:1rem;transition:left .3s
+  }
+  .nav-links.active{left:0}
+  .menu-toggle{display:block}
+  .hero-content h1{font-size:2.5rem}
+  .projects-grid,.certs-grid{grid-template-columns:1fr}
+  .section-header h2{font-size:2rem}
+}
+</style>
+</head>
+
+<body>
+<div class="bg-canvas"></div>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">Kosala D. Athapaththu</div>
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#highlights">Highlights</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-label">💻 Software Engineer</div>
+      <h1>Hi, I'm <span class="gradient-text">Kosala Daneshwara</span></h1>
+      <p>
+        A passionate Software Engineering Undergraduate crafting innovative full-stack applications,
+        Android solutions, microservices architectures, and IoT systems that make a difference.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-number">7+</div><div class="stat-label">Projects</div></div>
+        <div class="stat"><div class="stat-number">10+</div><div class="stat-label">Technologies</div></div>
+        <div class="stat"><div class="stat-number">12+</div><div class="stat-label">Certifications</div></div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary"><span><i class="fas fa-rocket"></i> View Projects</span></a>
+        <a href="#contact" class="btn btn-secondary"><span><i class="fas fa-envelope"></i> Get In Touch</span></a>
+      </div>
+    </div>
+
+    <div class="hero-image" id="contact">
+      <div class="profile-card">
+        <div class="profile-img">
+          <img src="cv_photo.jpg" alt="Kosala"
+            onerror="this.parentElement.innerHTML='<i class=\\'fas fa-user\\'></i>'"/>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-item"><i class="fas fa-phone"></i><span>+94 71 914 8762</span></div>
+          <div class="contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/94719148762" target="_blank">WhatsApp</a></div>
+          <div class="contact-item"><i class="fab fa-telegram"></i><a href="https://t.me/+94719148762" target="_blank">Telegram</a></div>
+          <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:kosalaathapaththu1234@gmail.com">kosalaathapaththu1234@gmail.com</a></div>
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Colombo, Sri Lanka</span></div>
+          <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/kosala-d-athapaththu-a453b9248/" target="_blank">LinkedIn Profile</a></div>
+          <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/kosaladathapththu" target="_blank">GitHub Profile</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label">About Me</div>
+      <h2>Building The Future</h2>
+      <p>
+        I'm a detail-oriented software engineering undergraduate with hands-on experience building full-stack web apps,
+        Android apps, and microservices systems. I love clean code, strong databases, and scalable APIs.
+      </p>
+    </div>
+
+    <p class="small-note">
+      I’m currently looking for an <strong>Intern role</strong> (Backend / Full-Stack / Android / Database / IoT).
+      I enjoy teamwork, learning fast, and delivering stable features with good UI and clean backend logic.
+    </p>
+  </div>
+</section>
+
+<section id="highlights">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label">Highlights</div>
+      <h2>What I Do Best</h2>
+      <p>Quick view of my strongest areas ✅</p>
+    </div>
+
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <h3><i class="fas fa-server"></i> Backend & APIs</h3>
+        <p>REST APIs, Spring Boot microservices, clean service-to-service communication, Postman testing.</p>
+      </div>
+
+      <div class="highlight-card">
+        <h3><i class="fas fa-database"></i> Databases</h3>
+        <p>Oracle / MySQL / SQLite / SQL Server, PL/SQL procedures, triggers, normalized schema design.</p>
+      </div>
+
+      <div class="highlight-card">
+        <h3><i class="fas fa-mobile-screen-button"></i> Android Apps</h3>
+        <p>Java Android apps with Firebase + SQLite + Google Maps API and smooth app flows.</p>
+      </div>
+
+      <div class="highlight-card">
+        <h3><i class="fas fa-microchip"></i> IoT Systems</h3>
+        <p>Arduino + ESP8266 + sensors, Firebase data push, dashboards, alert logic, prototype testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label">Technical Skills</div>
+      <h2>Tech Stack & Expertise</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+        <ul><li>Java</li><li>PHP</li><li>C#</li><li>JavaScript</li><li>Python</li><li>C++</li><li>SQL / PL-SQL</li></ul>
+      </div>
+
+      <div class="skill-card">
+        <h3><i class="fas fa-layer-group"></i> Frameworks & Libraries</h3>
+        <ul><li>Spring Boot</li><li>React.js</li><li>Android SDK</li><li>Node.js</li><li>Express.js</li><li>Bootstrap</li><li>jQuery</li></ul>
+      </div>
+
+      <div class="skill-card">
+        <h3><i class="fas fa-database"></i> Databases</h3>
+        <ul><li>Oracle DB</li><li>MySQL</li><li>SQLite</li><li>Firebase</li><li>MongoDB</li><li>SQL Server</li></ul>
+      </div>
+
+      <div class="skill-card">
+        <h3><i class="fas fa-paint-brush"></i> Frontend</h3>
+        <ul><li>HTML5</li><li>CSS3</li><li>JavaScript ES6+</li><li>Responsive Design</li><li>AJAX</li><li>JSON</li></ul>
+      </div>
+
+      <div class="skill-card">
+        <h3><i class="fas fa-tools"></i> Tools</h3>
+        <ul><li>Git & GitHub</li><li>Postman</li><li>REST APIs</li><li>Microservices</li><li>VS Code</li><li>Android Studio</li><li>IntelliJ IDEA</li></ul>
+      </div>
+
+      <div class="skill-card">
+        <h3><i class="fas fa-microchip"></i> IoT & Hardware</h3>
+        <ul><li>Arduino</li><li>ESP8266</li><li>MPU6050</li><li>Servo Motors</li><li>Load Cells (HX711)</li><li>Ultrasonic Sensors</li></ul>
+      </div>
+
+      <div class="skill-card">
+        <h3><i class="fas fa-cloud"></i> Cloud</h3>
+        <ul><li>Firebase</li><li>Google Cloud (Basics)</li><li>Azure Basics</li><li>Cloud Sync</li><li>Version Control</li></ul>
+      </div>
+
+      <div class="skill-card">
+        <h3><i class="fas fa-lightbulb"></i> Concepts</h3>
+        <ul><li>OOP</li><li>SOLID</li><li>Design Patterns</li><li>Agile/SDLC</li><li>API Design</li><li>Clean Code</li><li>Database Design</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label">Portfolio</div>
+      <h2>Featured Projects</h2>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">01</div>
+        <h3>Personal Financial Management System</h3>
+        <div class="project-tech">PHP | Oracle | SQLite | PL/SQL | Cloud Sync</div>
+        <ul>
+          <li>Built budgeting and reporting modules with normalized database structure</li>
+          <li>Implemented automation using PL/SQL procedures and triggers</li>
+          <li>Designed cloud sync mechanism for local and cloud data handling</li>
+        </ul>
+        <a href="https://github.com/kosaladathapththu/Personal-Financial-System" target="_blank" class="project-link">
+          View on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">02</div>
+        <h3>Hotel Management System</h3>
+        <div class="project-tech">Spring Boot | React | MySQL | Microservices</div>
+        <ul>
+          <li>Distributed system with 5 microservices + 1 UI service</li>
+          <li>Room and booking workflows with clean APIs</li>
+          <li>Scalable structure with separation of concerns</li>
+        </ul>
+        <a href="https://github.com/kosaladathapththu/Hotel-Management-System" target="_blank" class="project-link">
+          View on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">03</div>
+        <h3>Hostel Management System</h3>
+        <div class="project-tech">PHP | HTML | CSS | MySQL</div>
+        <ul>
+          <li>Database-driven modules and management screens</li>
+          <li>CRUD features with structured MySQL tables</li>
+          <li>Reports for residents and inventory management</li>
+        </ul>
+        <a href="https://github.com/kosaladathapththu/Hostel-Management-System" target="_blank" class="project-link">
+          View on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">04</div>
+        <h3>PizzaMania Android App</h3>
+        <div class="project-tech">Java | Firebase | SQLite | Google Maps API</div>
+        <ul>
+          <li>Food ordering flow with real-time cart updates (Firebase)</li>
+          <li>Google Maps for branch detection + navigation</li>
+          <li>Admin panel for order tracking and product management</li>
+        </ul>
+        <a href="https://github.com/kosaladathapththu/PizzaMania" target="_blank" class="project-link">
+          View on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">05</div>
+        <h3>Landslide Early Warning System</h3>
+        <div class="project-tech">Arduino | ESP8266 | MPU6050 | Firebase | IoT</div>
+        <ul>
+          <li>Sensor data collected and pushed to Firebase in real-time</li>
+          <li>Web dashboard for monitoring + alerts</li>
+          <li>Multi-level logic for early warning decisions</li>
+        </ul>
+        <a href="https://github.com/kosaladathapththu/Landslide_Ditection-IOT" target="_blank" class="project-link">
+          View on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">06</div>
+        <h3>River Trash Collector Robot</h3>
+        <div class="project-tech">Arduino | Ultrasonic | Servo | HX711</div>
+        <ul>
+          <li>Obstacle detection + automated collection logic (C++)</li>
+          <li>HX711 load cell weight + LCD output</li>
+          <li>Robotics flow for real prototype testing</li>
+        </ul>
+        <a href="https://github.com/kosaladathapththu/Trash-Collecting-Robot-For--River" target="_blank" class="project-link">
+          View on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">07</div>
+        <h3>Library Management System</h3>
+        <div class="project-tech">C# | SQL Server</div>
+        <ul>
+          <li>Books, members, issue/return workflows</li>
+          <li>CRUD operations + validations</li>
+          <li>Structured database schema</li>
+        </ul>
+        <a href="https://github.com/kosaladathapththu/LibraryManagementSystem" target="_blank" class="project-link">
+          View on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label">Education</div>
+      <h2>Academic Journey</h2>
+    </div>
+
+    <div class="education-timeline">
+      <div class="education-item">
+        <h3>Higher National Diploma in Software Engineering</h3>
+        <div class="education-school">NIBM (National Institute of Business Management)</div>
+        <div class="education-year">2024 – Present</div>
+      </div>
+
+      <div class="education-item">
+        <h3>Diploma in Software Engineering</h3>
+        <div class="education-school">NIBM (National Institute of Business Management)</div>
+        <div class="education-year">2023 – 2024</div>
+      </div>
+
+      <div class="education-item">
+        <h3>G.C.E. Advanced Level (Physical Science)</h3>
+        <div class="education-school">Sri Lanka</div>
+        <div class="education-year">Completed</div>
+      </div>
+
+      <!-- ✅ Added O/L results -->
+      <div class="education-item">
+        <h3>G.C.E. Ordinary Level (O/L)</h3>
+        <div class="education-school">Sri Lanka</div>
+        <div class="education-year">Results: <strong>7 A</strong> and <strong>2 B</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label">Certifications</div>
+      <h2>Professional Credentials</h2>
+      <p>All certifications added from LinkedIn 🏅</p>
+    </div>
+
+    <div class="certs-grid">
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Oracle Data Platform 2025 Certified Foundations Associate</strong>
+          Oracle — Issued Dec 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Graphic Design Workshop</strong>
+          ZeroPlastic in NIBM — Issued Aug 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Developing Microsoft Azure Solutions</strong>
+          Microsoft Learn Student Ambassadors (Sri Lanka) — Issued Jul 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>HRXTech</strong>
+          University of Moratuwa — Issued Jul 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Microsoft Azure</strong>
+          Microsoft Learn Student Ambassadors — Issued Jul 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>MCP Server using .NET</strong>
+          Microsoft Learn Student Ambassadors — Issued Jun 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>AI for Beginners</strong>
+          HP LIFE — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Agile Project Management Foundation</strong>
+          LinkedIn — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>HP Life - Agile Project Management</strong>
+          HP LIFE — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Chatbot Development With Azure AI Foundry</strong>
+          Microsoft Learn Student Ambassadors — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>HackerRank SQL Basics</strong>
+          HackerRank — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Java Basics (HackerRank)</strong>
+          HackerRank — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>JavaScript BootCamp</strong>
+          LetsUpgrade — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Lu-SQL Bootcamp</strong>
+          LetsUpgrade — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Postman API 102</strong>
+          Postman — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Web Development</strong>
+          SoloLearn — Issued Jan 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>Quantum Computing Fundamentals & Azure Quantum Development Kit</strong>
+          Microsoft Learn Student Ambassadors — Issued 2025
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-content">
+          <strong>TS: Microsoft Learn Student Ambassador - Navigate GitHub Copilot</strong>
+          Microsoft Learn Student Ambassadors — Issued 2025
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-content">
+    <div class="social-links">
+      <a class="social-link github" href="https://github.com/kosaladathapththu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a class="social-link linkedin" href="https://www.linkedin.com/in/kosala-d-athapaththu-a453b9248/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a class="social-link twitter" href="https://x.com/KAthapathtu" target="_blank" title="X / Twitter"><i class="fab fa-twitter"></i></a>
+      <a class="social-link whatsapp" href="https://wa.me/94719148762" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a class="social-link telegram" href="https://t.me/+94719148762" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+
+    <p>📩 Email: <a href="mailto:kosalaathapaththu1234@gmail.com" style="color:var(--secondary);text-decoration:none;">kosalaathapaththu1234@gmail.com</a></p>
+    <p>📍 Colombo, Sri Lanka</p>
+    <p style="margin-top:1.5rem;">© <span id="year"></span> Kosala Daneshwara Athapaththu — Portfolio Website</p>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById("navbar");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 40) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    const icon = menuToggle.querySelector("i");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+  });
+
+  // Close menu after clicking a link (mobile)
+  document.querySelectorAll(".nav-links a").forEach(a => {
+    a.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      const icon = menuToggle.querySelector("i");
+      icon.classList.add("fa-bars");
+      icon.classList.remove("fa-xmark");
+    });
+  });
+
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
