@@ -6,7 +6,6 @@
 <title>Kosala Daneshwara | Software Engineer</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -901,34 +900,44 @@ body.light .status{
 
     <div class="form-wrap">
       <div class="form-card">
-        <form id="contactForm">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" name="from_name" required placeholder="Your name">
-            </div>
-            <div class="form-group">
-              <label>Your Email</label>
-              <input type="email" name="reply_to" required placeholder="Your email">
-            </div>
-          </div>
+        <form action="https://formsubmit.co/kosalaathapaththu1234@gmail.com" method="POST">
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" name="name" required placeholder="Your name">
+    </div>
 
-          <div class="form-group" style="margin-top:1rem;">
-            <label>Message</label>
-            <textarea name="message" required placeholder="Write your message"></textarea>
-          </div>
+    <div class="form-group">
+      <label>Your Email</label>
+      <input type="email" name="email" required placeholder="Your email">
+    </div>
+  </div>
 
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">
-              <span><i class="fas fa-paper-plane"></i> Send</span>
-            </button>
-            <a class="btn btn-secondary" href="mailto:kosalaathapaththu1234@gmail.com">
-              <span><i class="fas fa-envelope"></i> Email Direct</span>
-            </a>
-          </div>
+  <div class="form-group" style="margin-top:1rem;">
+    <label>Message</label>
+    <textarea name="message" required placeholder="Write your message"></textarea>
+  </div>
 
-          <div class="status" id="statusBox"></div>
-        </form>
+  <!-- ✅ Optional hidden settings -->
+  <input type="hidden" name="_subject" value="New message from Kosala Portfolio">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">
+      <span><i class="fas fa-paper-plane"></i> Send</span>
+    </button>
+
+    <a class="btn btn-secondary" href="mailto:kosalaathapaththu1234@gmail.com">
+      <span><i class="fas fa-envelope"></i> Email Direct</span>
+    </a>
+  </div>
+
+  <div class="status" style="display:block;">
+    ✅ After click Send, it will open a FormSubmit page and send email.
+  </div>
+</form>
+
       </div>
     </div>
   </div>
@@ -1050,50 +1059,7 @@ body.light .status{
   document.getElementById("modalClose").addEventListener("click", () => modal.classList.remove("active"));
   modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("active"); });
 
-  /* ---------- EmailJS Contact Form ---------- */
-  /*
-    Steps:
-    1) Create account at emailjs.com
-    2) Add Email Service
-    3) Create Email Template
-    4) Replace the IDs below
-  */
-  const EMAILJS_PUBLIC_KEY = "IEjQkAF4Ugh92v1f";
-const EMAILJS_SERVICE_ID = "service_04wrbdb";
-const EMAILJS_TEMPLATE_ID = "template_v061kz4";
-
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  
-
-  const contactForm = document.getElementById("contactForm");
-  const statusBox = document.getElementById("statusBox");
-
-  if(contactForm){
-    contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      statusBox.style.display = "block";
-      statusBox.className = "status";
-      statusBox.textContent = "Sending...";
-
-      try{
-        if(EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"){
-          statusBox.className = "status err";
-          statusBox.textContent = "EmailJS is not configured. Add your public key, service id and template id in the script.";
-          return;
-        }
-
-        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
-        statusBox.className = "status ok";
-        statusBox.textContent = "Message sent successfully.";
-        contactForm.reset();
-      }catch(err){
-        console.error(err);
-        statusBox.className = "status err";
-        statusBox.textContent = "Failed to send. Please verify EmailJS settings.";
-      }
-    });
-  }
+ 
 </script>
 
 </body>
