@@ -1058,9 +1058,9 @@ body.light .status{
     3) Create Email Template
     4) Replace the IDs below
   */
-  const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-  const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-  const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+  const EMAILJS_PUBLIC_KEY = "IEJjQkAF4Ugh92v1f";
+  const EMAILJS_SERVICE_ID = "service_04wrbdb";
+  const EMAILJS_TEMPLATE_ID = "service_04wrbdb";
 
   if(EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY"){
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -1078,7 +1078,7 @@ body.light .status{
       statusBox.textContent = "Sending...";
 
       try{
-        if(EMAILJS_PUBLIC_KEY === "service_04wrbdb"){
+        if(EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"){
           statusBox.className = "status err";
           statusBox.textContent = "EmailJS is not configured. Add your public key, service id and template id in the script.";
           return;
