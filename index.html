@@ -1058,13 +1058,12 @@ body.light .status{
     3) Create Email Template
     4) Replace the IDs below
   */
-  const EMAILJS_PUBLIC_KEY = "IEJjQkAF4Ugh92v1f";
-  const EMAILJS_SERVICE_ID = "service_04wrbdb";
-  const EMAILJS_TEMPLATE_ID = "service_04wrbdb";
+  const EMAILJS_PUBLIC_KEY = "IEjQkAF4Ugh92v1f";
+const EMAILJS_SERVICE_ID = "service_04wrbdb";
+const EMAILJS_TEMPLATE_ID = "template_v061kz4";
 
-  if(EMAILJS_PUBLIC_KEY !== "IEJjQkAF4Ugh92v1f"){
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  }
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
 
   const contactForm = document.getElementById("contactForm");
   const statusBox = document.getElementById("statusBox");
