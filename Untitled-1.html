@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kosala Daneshwara Athapaththu - CV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @page { size: A4; margin: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e9edf5;
+      color: #333;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ✅ FIX: prevent extra pages because of margins/min-height */
+    .container {
+      width: 210mm;
+      height: 297mm;               /* fixed A4 height */
+      margin: 0 auto;              /* no extra outer spacing */
+      background: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: stretch;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;            /* prevents spill to new page */
+    }
+
+    /* give screen view some spacing without affecting print */
+    @media screen {
+      .container { margin: 14px auto; }
+    }
+
+    .page-footer {
+      position: absolute;
+      bottom: 9mm;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8em;
+      color: #999;
+    }
+
+    /* --- SIDEBAR --- */
+    .sidebar {
+      width: 34%;
+      background: #2c3e50;
+      color: white;
+      padding: 30px 24px; /* slightly reduced to fit photo + keep 2 pages */
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-section {
+      text-align: left;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #465f76;
+    }
+
+    /* ✅ PHOTO SPACE */
+    .avatar-wrap{
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid rgba(97,176,255,0.9);
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin-bottom: 12px; /* space between photo and name */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+ .avatar-wrap img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 45% 5%;
+  display: block;
+}
+
+
+
+    /* if image not available, show icon placeholder */
+    .avatar-placeholder{
+      font-size: 2.1em;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .profile-section h1 {
+      font-size: 1.35em;
+      margin-bottom: 5px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .profile-section .title {
+      color: #61b0ff;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+
+    .sidebar-section { margin-bottom: 18px; page-break-inside: avoid; } /* reduced spacing to fit photo */
+
+    .sidebar-section h2 {
+      font-size: 0.95em;
+      margin-bottom: 10px;
+      color: #61b0ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-text {
+      font-size: 0.82em;
+      line-height: 1.6;
+      color: #ecf0f1;
+    }
+
+    .contact-item {
+      margin-bottom: 10px;
+      font-size: 0.82em;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.4;
+    }
+
+    .contact-item i {
+      color: #61b0ff;
+      width: 14px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .contact-item a, .contact-item span {
+      color: #ecf0f1;
+      text-decoration: none;
+      word-break: break-word; /* ✅ better than break-all */
+    }
+
+    /* --- MAIN CONTENT --- */
+    .main-content {
+      width: 66%;
+      padding: 34px 34px;  /* tuned for 2 pages */
+      flex-shrink: 0;
+    }
+
+    .section { margin-bottom: 22px; page-break-inside: avoid; } /* reduced from 30 */
+
+    .section-title {
+      font-size: 1.2em;
+      color: #2c3e50;
+      margin-bottom: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 5px;
+    }
+
+    /* CLEAN SKILLS LAYOUT (No Boxes) */
+    .skills-list { display: table; width: 100%; font-size: 0.9em; }
+    .skill-row { display: table-row; }
+    .skill-category {
+      display: table-cell;
+      width: 30%;
+      font-weight: 700;
+      color: #2c3e50;
+      padding-bottom: 7px;
+      vertical-align: top;
+    }
+    .skill-items {
+      display: table-cell;
+      color: #555;
+      padding-bottom: 7px;
+      line-height: 1.4;
+    }
+
+    /* EDUCATION */
+    .edu-item { margin-bottom: 13px; }
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+      gap: 12px;
+    }
+    .degree { font-weight: 700; color: #333; font-size: 0.95em; }
+    .year { font-size: 0.85em; color: #666; font-weight: 600; white-space: nowrap; }
+    .school { font-size: 0.9em; color: #555; font-style: italic; }
+
+    /* PROJECTS */
+    .project-item { margin-bottom: 16px; }
+    .project-item h3 {
+      color: #222;
+      font-size: 1em;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .project-tech {
+      font-size: 0.8em;
+      color: #2c3e50;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .repo-link {
+      font-size: 0.8em;
+      color: #0066cc;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .repo-link a { text-decoration: none; color: #0066cc; word-break: break-word; }
+    .repo-link i { color: #333; }
+
+    .project-bullets {
+      padding-left: 18px;
+      color: #444;
+      font-size: 0.85em;
+      line-height: 1.45;
+    }
+    .project-bullets li { margin-bottom: 3px; }
+
+    /* CERTIFICATIONS */
+    .cert-item {
+      font-size: 0.85em;
+      margin-bottom: 6px;
+      color: #444;
+      display: flex;
+      gap: 8px;
+    }
+    .cert-item i {
+      color: #2c3e50;
+      margin-top: 3px;
+      font-size: 0.8em;
+      flex-shrink: 0;
+    }
+
+    @media print {
+      body { background: white; margin: 0; }
+      .container { box-shadow: none; margin: 0; width: 100%; height: 297mm; }
+      .sidebar { background: #2c3e50 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===================== PAGE 1 ===================== -->
+<div class="container">
+  <div class="sidebar">
+
+    <div class="profile-section">
+
+      <!-- ✅ PHOTO AREA (Put your image file name here) -->
+      <div class="avatar-wrap">
+        <!-- Option A: Use image -->
+        <img src="cv_photo.jpg" alt="Kosala Photo"
+             onerror="this.style.display='none'; this.parentElement.querySelector('.avatar-placeholder').style.display='block';">
+        <!-- Option B: fallback icon -->
+        <i class="fa-solid fa-user avatar-placeholder" style="display:none;"></i>
+      </div>
+
+      <h1>Kosala<br>Daneshwara<br>Athapaththu</h1>
+      <div class="title">Software Engineering Undergraduate</div>
+    </div>
+
+    <div class="sidebar-section">
+      <h2><i class="fas fa-bullseye"></i> Target Role</h2>
+      <p class="sidebar-text">
+        <b>Intern</b><br>
+        Backend • Full-Stack • Android • Database
+      </p>
+    </div>
+
+    <div class="sidebar-section">
+      <h2><i class="fas fa-user"></i> Profile</h2>
+      <p class="sidebar-text">
+        Detail-oriented undergraduate with hands-on experience building full-stack web apps, Android apps, and microservices.
+        Strong in <b>REST APIs</b>, <b>Html,CSS,PHP</b>, and clean coding practices.
+      </p>
+    </div>
+
+    <div class="sidebar-section">
+      <h2><i class="fas fa-address-card"></i> Contact</h2>
+      <div class="contact-item"><i class="fas fa-phone"></i><span>+94 71 914 8762</span></div>
+      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:kosalaathapaththu1234@gmail.com">kosalaathapaththu1234@gmail.com</a></div>
+      <div class="contact-item"><i class="fas fa-location-dot"></i><span>Colombo, Sri Lanka</span></div>
+      <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/kosala-d-athapaththu-a453b9248/">linkedin.com/in/kosala-d-athapaththu-a453b9248</a></div>
+      <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/kosaladathapththu">github.com/kosaladathapththu</a></div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="section">
+      <h2 class="section-title">Education</h2>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="degree">Higher National Diploma in Software Engineering</span>
+          <span class="year">2024 – Present</span>
+        </div>
+        <div class="school">NIBM (National Institute of Business Management)</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="degree">Diploma in Software Engineering</span>
+          <span class="year">2023 – 2024</span>
+        </div>
+        <div class="school">NIBM (National Institute of Business Management)</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="degree">G.C.E. Advanced Level (Physical Science)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-list">
+        <div class="skill-row">
+          <div class="skill-category">Languages</div>
+          <div class="skill-items">Java, PHP, C#, SQL / PL-SQL, JavaScript, Python</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-category">Frameworks</div>
+          <div class="skill-items">Spring Boot, React, Android (Java), HTML5, CSS3</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-category">Databases</div>
+          <div class="skill-items">Oracle, MySQL, SQLite, Firebase, MongoDB</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-category">Tools</div>
+          <div class="skill-items">Git, GitHub, Postman, REST APIs, JWT, Microservices</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-category">Concepts</div>
+          <div class="skill-items">OOP, SOLID Principles, Agile/SDLC, API Design</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Selected Projects</h2>
+
+      <div class="project-item">
+        <h3>Personal Financial Management System (PFMS)</h3>
+        <div class="project-tech">PHP | Oracle | SQLite | PL/SQL | Cloud Sync</div>
+        <div class="repo-link">
+          <i class="fab fa-github"></i> - <a href="https://github.com/kosaladathapththu/Personal-Financial-System">github.com/kosaladathapththu/Personal-Financial-System</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Built budgeting and reporting modules with a clean, normalized database structure.</li>
+          <li>Implemented database automation using <b>PL/SQL</b> logic (procedures & triggers).</li>
+          <li>Designed a cloud sync mechanism for seamless local and cloud data handling.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <h3>Hotel Management System (Microservices)</h3>
+        <div class="project-tech">Spring Boot | React | MySQL | JWT</div>
+        <div class="repo-link">
+          <i class="fab fa-github"></i> - <a href="https://github.com/kosaladathapththu/Hotel-Management-System">github.com/kosaladathapththu/Hotel-Management-System</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Architected microservices for authentication, room management, and bookings.</li>
+          <li>Implemented secure <b>JWT authentication</b> and role-based API route protection.</li>
+          <li>Created interactive React dashboards for administrative workflows.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">Page 1 of 2</div>
+</div>
+
+<!-- ===================== PAGE 2 ===================== -->
+<div class="container">
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <h2><i class="fas fa-language"></i> Languages</h2>
+      <p class="sidebar-text">
+        • Sinhala (Native)<br>
+        • English (Working Proficiency)
+      </p>
+    </div>
+
+    <div class="sidebar-section">
+      <h2><i class="fas fa-heart"></i> Interests</h2>
+      <p class="sidebar-text">
+        Backend Engineering<br>
+        Database Optimization<br>
+        Cloud Computing<br>
+        IoT Systems
+      </p>
+    </div>
+
+    <div class="sidebar-section">
+      <h2><i class="fas fa-handshake"></i> Work Style</h2>
+      <p class="sidebar-text">
+        • Collaborative Team Player<br>
+        • Clean & Maintainable Code<br>
+        • Continuous Learner<br>
+        • Responsible & Punctual
+      </p>
+    </div>
+
+    <div class="sidebar-section">
+      <h2><i class="fas fa-info-circle"></i> References</h2>
+      <p class="sidebar-text">Available on request.</p>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="section">
+      <h2 class="section-title">Projects (Continued)</h2>
+
+      <div class="project-item">
+        <h3>PizzaMania Android Application</h3>
+        <div class="project-tech">Java | Firebase | SQLite | Google Maps API</div>
+        <div class="repo-link">
+          <i class="fab fa-github"></i> - <a href="https://github.com/kosaladathapththu/PizzaMania">github.com/kosaladathapththu/PizzaMania</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Developed a food ordering flow with real-time cart updates using Firebase.</li>
+          <li>Integrated Google Maps for automated branch detection and navigation.</li>
+          <li>Built an admin panel for order tracking and product management.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <h3>Landslide Early Warning System from IoT</h3>
+        <div class="project-tech">Arduino | ESP8266 | MPU6050 | Firebase</div>
+        <div class="repo-link">
+          <i class="fab fa-github"></i> - <a href="https://github.com/kosaladathapththu/Landslide_Ditection-IOT">github.com/kosaladathapththu/Landslide_Ditection-IOT</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Engineered a system collecting sensor data (tilt, vibration, moisture) pushed to Firebase.</li>
+          <li>Built a web dashboard for live environmental monitoring and instant alerts.</li>
+          <li>Designed multi-level sensor logic to trigger early warning decisions.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <h3>River Trash Collector Robot</h3>
+        <div class="project-tech">Arduino | Ultrasonic | Servo | HX711</div>
+        <div class="repo-link">
+          <i class="fab fa-github"></i> - <a href="https://github.com/kosaladathapththu/Trash-Collecting-Robot-For--River">github.com/kosaladathapththu/Trash-Collecting-Robot-For--River</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Programmed obstacle detection and automated trash collection logic using C++.</li>
+          <li>Integrated HX711 load cells to measure trash weight and display status on an LCD.</li>
+          <li>Designed the robotics control flow for real-world prototype testing.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Certifications</h2>
+      <div class="cert-item"><i class="fas fa-certificate"></i><span><strong>Oracle Data Platform 2025 Certified Foundations Associate</strong> – Oracle (Dec 2025)</span></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><span><strong>Developing Microsoft Azure Solutions</strong> – Microsoft Learn (Jul 2025)</span></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><span><strong>HackerRank SQL (Basic) & Java (Basic)</strong> – HackerRank (Jan 2025)</span></div>
+      <div class="cert-item"><i class="fas fa-certificate"></i><span><strong>Agile Project Management Foundation</strong> – HP LIFE (Jan 2025)</span></div>
+    </div>
+  </div>
+
+  <div class="page-footer">Page 2 of 2</div>
+</div>
+
+</body>
+</html>
