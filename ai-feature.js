@@ -42,7 +42,7 @@
     addMessage(text, "user");
     input.value = "";
     send.disabled = true;
-    const waiting = addMessage("Thinking…", "bot");
+    const waiting = addMessage("Thinking...", "bot");
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
