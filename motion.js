@@ -45,7 +45,7 @@
     .ai-launcher:hover .ai-cloud::before,.ai-launcher:hover .ai-cloud::after{background:#ffb84d;box-shadow:-8px 7px 0 -3px #ffb84d}
     @keyframes cloudBreathe{0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-2px) scale(1.018)}}
     @keyframes cloudHello{50%{transform:translateY(-5px) scale(1.035)}}
-    @media(max-width:560px){.ai-bot{width:64px!important;height:64px!important}.ai-bot__image{width:64px!important;height:64px!important}.ai-cloud{font-size:.76rem;padding:9px 15px;white-space:normal;max-width:155px}.ai-launcher{min-height:70px!important}}
+    @media(max-width:560px){.ai-launcher .ai-bot{display:grid!important}.ai-launcher .ai-cloud{display:flex!important}.ai-bot{width:64px!important;height:64px!important}.ai-bot__image{width:64px!important;height:64px!important}.ai-cloud{font-size:.76rem;padding:9px 15px;white-space:normal;max-width:155px}.ai-launcher{min-height:70px!important}}
     @media(prefers-reduced-motion:reduce){.motion-aurora::before,.motion-aurora::after,.ai-launcher::before,.ai-bot::before,.ai-bot__image,.nav-container,.hero-content>*,.profile-card{animation:none!important}.motion-item{opacity:1;transform:none;transition:none}}
   `;
   document.head.appendChild(style);
