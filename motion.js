@@ -46,6 +46,16 @@
     @keyframes cloudBreathe{0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-2px) scale(1.018)}}
     @keyframes cloudHello{50%{transform:translateY(-5px) scale(1.035)}}
     @media(max-width:560px){.ai-launcher .ai-bot{display:grid!important}.ai-launcher .ai-cloud{display:flex!important}.ai-bot{width:64px!important;height:64px!important}.ai-bot__image{width:64px!important;height:64px!important}.ai-cloud{font-size:.76rem;padding:9px 15px;white-space:normal;max-width:155px}.ai-launcher{min-height:70px!important}}
+    section.ai-panel{padding:0!important;width:min(430px,calc(100vw - 28px))!important;height:min(610px,calc(100vh - 118px))!important;grid-template-rows:auto minmax(0,1fr) auto!important;background:linear-gradient(160deg,#111a2a,#0a101b)!important;border:1px solid rgba(255,255,255,.13)!important;border-radius:26px!important;box-shadow:0 30px 100px rgba(0,0,0,.58)!important}
+    .ai-head{min-height:84px;padding:14px 16px 14px 78px!important;position:relative;background:rgba(255,255,255,.035);border-bottom:1px solid rgba(255,255,255,.09)!important}
+    .ai-head::before{content:"";position:absolute;left:15px;top:10px;width:56px;height:56px;background:url("image.png") center/contain no-repeat;filter:drop-shadow(0 7px 10px rgba(0,0,0,.35));animation:botFloat 2.8s ease-in-out infinite}
+    .ai-head strong{font-size:1rem!important;color:#fff}.ai-head span{color:#98a9c0!important;font-size:.74rem!important;margin-top:3px}.ai-close{width:38px!important;height:38px!important;border-radius:12px!important;background:rgba(255,255,255,.07)!important;color:#fff!important;transition:.2s}.ai-close:hover{background:#ffb84d!important;color:#111722!important;transform:rotate(6deg)}
+    .ai-messages{min-height:0!important;padding:18px!important;gap:12px!important;overflow-y:auto!important;overscroll-behavior:contain;background:radial-gradient(circle at 100% 0,rgba(77,124,255,.08),transparent 45%),#0a101b!important;scrollbar-width:thin;scrollbar-color:#36445b transparent}
+    .ai-msg{max-width:84%!important;padding:11px 14px!important;border-radius:16px!important;font-size:.86rem!important;line-height:1.55!important;box-shadow:0 6px 18px rgba(0,0,0,.13)}
+    .ai-msg.bot{background:#182337!important;border:1px solid rgba(255,255,255,.09)!important;color:#edf3fb!important;border-bottom-left-radius:5px!important}.ai-msg.user{background:linear-gradient(135deg,#4d7cff,#315de2)!important;color:#fff!important;border-bottom-right-radius:5px!important}
+    .ai-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}.ai-suggestion{border:1px solid rgba(255,184,77,.25);background:rgba(255,184,77,.08);color:#ffd28d;border-radius:999px;padding:7px 10px;font:700 .7rem Manrope,sans-serif;cursor:pointer;transition:.2s}.ai-suggestion:hover{background:#ffb84d;color:#111722;transform:translateY(-2px)}
+    .ai-form{padding:13px!important;gap:9px!important;background:#0f1726;border-top:1px solid rgba(255,255,255,.09)!important}.ai-input{min-width:0;height:48px;padding:0 14px!important;background:#182337!important;border:1px solid rgba(255,255,255,.1)!important;color:#fff!important;border-radius:14px!important}.ai-input::placeholder{color:#738198}.ai-input:focus{border-color:#4d7cff!important;box-shadow:0 0 0 3px rgba(77,124,255,.13)}.ai-send{width:48px!important;height:48px;border-radius:14px!important;background:#ffb84d!important;color:#111722!important;transition:.2s}.ai-send:hover{transform:translateY(-2px);background:#ffc86e!important}
+    @media(max-width:560px){section.ai-panel{right:8px!important;bottom:84px!important;width:calc(100vw - 16px)!important;height:min(620px,calc(100vh - 105px))!important;border-radius:22px!important}.ai-head{min-height:76px;padding-left:68px!important}.ai-head::before{width:48px;height:48px}.ai-messages{padding:14px!important}.ai-msg{max-width:90%!important}.ai-suggestion{font-size:.67rem}}
     @media(prefers-reduced-motion:reduce){.motion-aurora::before,.motion-aurora::after,.ai-launcher::before,.ai-bot::before,.ai-bot__image,.nav-container,.hero-content>*,.profile-card{animation:none!important}.motion-item{opacity:1;transform:none;transition:none}}
   `;
   document.head.appendChild(style);
@@ -72,6 +82,21 @@
     }
   }
 
+  const suggestions = document.createElement("div");
+  suggestions.className = "ai-suggestions";
+  ["Best projects?", "Technical skills?", "Why hire Kosala?"].forEach((label) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "ai-suggestion";
+    button.textContent = label;
+    button.addEventListener("click", () => {
+      const input = document.querySelector(".ai-input");
+      const form = document.querySelector(".ai-form");
+      if (input && form) { input.value = label; form.requestSubmit(); }
+    });
+    suggestions.appendChild(button);
+  });
+  document.querySelector(".ai-messages")?.appendChild(suggestions);
   if (reduced || !("IntersectionObserver" in window)) return;
   const targets = document.querySelectorAll(".section-header, .highlight-card, .skill-card, .project-card, .education-item, .cert-item, .form-card");
   const observer = new IntersectionObserver((entries) => {
