@@ -1,0 +1,40 @@
+/* Modern UX/Animation overrides */
+:root{
+  --motion-ease: cubic-bezier(.2,.7,.2,1);
+}
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(18px) scale(.995);transition:opacity .7s var(--motion-ease),transform .7s var(--motion-ease);will-change:opacity,transform}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* Subtle gradient animation for hero name */
+.gradient-animate{background:linear-gradient(90deg,#7c3aed,#06b6d4,#f59e0b);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 6s linear infinite}
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* Tilt effect for interactive cards */
+.tilt{transform-style:preserve-3d;transition:transform .25s var(--motion-ease);will-change:transform}
+.tilt:hover{box-shadow:0 32px 80px rgba(2,6,23,.45);transform:translateY(-8px) rotateX(0deg) rotateY(0deg)}
+
+/* 3D transform applied via JS */
+.tilt-inner{pointer-events:none}
+
+/* Focus-visible support for keyboard users */
+:focus{outline: none}
+.keyboard-nav :focus{outline:3px solid rgba(124,58,237,.18);outline-offset:4px;border-radius:8px}
+
+/* Button micro-ripple fallback */
+.btn-ripple{position:relative;overflow:hidden}
+.btn-ripple span{position:relative;z-index:2}
+.btn-ripple .ripple{position:absolute;border-radius:50%;transform:scale(0);opacity:.5;background:rgba(255,255,255,.35);pointer-events:none}
+
+/* Project card hover: lift + subtle skew */
+.project-card.tilt{transition:transform .32s var(--motion-ease),box-shadow .32s var(--motion-ease)}
+.project-card.tilt:hover{transform:perspective(800px) translateY(-8px) rotateX(6deg)}
+
+/* Social icon float */
+.social-link{transition:transform .25s var(--motion-ease),box-shadow .25s var(--motion-ease)}
+.social-link:hover{transform:translateY(-6px) scale(1.02)}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .reveal,.project-card,.tilt,.btn-ripple{transition:none!important;animation:none!important}
+}
