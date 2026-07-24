@@ -87,7 +87,7 @@
   if (launcher) {
     launcher.innerHTML = `
       <span class="ai-bot" aria-hidden="true">
-        <img class="ai-bot__image" src="image.png" alt="">
+        <video class="ai-bot__image" autoplay muted loop playsinline preload="metadata" poster="image.png" aria-hidden="true"><source src="bot-animated.mp4" type="video/mp4"></video>
       </span>
       <span class="ai-cloud">Ask anything from Kosala</span>`;
     const form = document.querySelector(".ai-form");
