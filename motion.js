@@ -32,6 +32,20 @@
     @keyframes heroChild{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
     .profile-card{animation:profileArrival .9s .18s cubic-bezier(.2,.7,.2,1) both}
     @keyframes profileArrival{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}
+    .ai-launcher{background:transparent!important;color:var(--text)!important;box-shadow:none!important;padding:8px 6px!important;gap:10px!important;min-height:82px!important;border-radius:24px!important;align-items:center!important}
+    .ai-launcher:hover{transform:translateY(-4px)!important;box-shadow:none!important}
+    .ai-launcher::before{inset:4px auto 4px 0!important;width:78px;border-radius:50%!important;border-color:rgba(77,124,255,.48)!important}
+    .ai-bot{width:76px!important;height:76px!important;margin:0!important;z-index:3}
+    .ai-bot::before{inset:7px!important;background:radial-gradient(circle,rgba(77,124,255,.32),transparent 70%)!important;filter:blur(8px)!important}
+    .ai-bot__image{width:76px!important;height:76px!important;filter:drop-shadow(0 12px 15px rgba(0,0,0,.35))!important}
+    .ai-cloud{position:relative;z-index:2;display:flex;align-items:center;min-height:54px;padding:10px 20px 10px 22px;background:#fff;color:#111722;border-radius:30px 34px 29px 32px;font-size:.84rem;font-weight:800;line-height:1.25;white-space:nowrap;box-shadow:0 14px 34px rgba(0,0,0,.3);animation:cloudBreathe 3s ease-in-out infinite}
+    .ai-cloud::before{content:"";position:absolute;width:17px;height:17px;left:-8px;bottom:8px;background:#fff;border-radius:50%;box-shadow:-8px 7px 0 -3px #fff}
+    .ai-cloud::after{content:"";position:absolute;inset:-5px 18px auto 24px;height:22px;background:#fff;border-radius:50%;z-index:-1}
+    .ai-launcher:hover .ai-cloud{background:#ffb84d;animation:cloudHello .65s ease}
+    .ai-launcher:hover .ai-cloud::before,.ai-launcher:hover .ai-cloud::after{background:#ffb84d;box-shadow:-8px 7px 0 -3px #ffb84d}
+    @keyframes cloudBreathe{0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-2px) scale(1.018)}}
+    @keyframes cloudHello{50%{transform:translateY(-5px) scale(1.035)}}
+    @media(max-width:560px){.ai-bot{width:64px!important;height:64px!important}.ai-bot__image{width:64px!important;height:64px!important}.ai-cloud{font-size:.76rem;padding:9px 15px;white-space:normal;max-width:155px}.ai-launcher{min-height:70px!important}}
     @media(prefers-reduced-motion:reduce){.motion-aurora::before,.motion-aurora::after,.ai-launcher::before,.ai-bot::before,.ai-bot__image,.nav-container,.hero-content>*,.profile-card{animation:none!important}.motion-item{opacity:1;transform:none;transition:none}}
   `;
   document.head.appendChild(style);
@@ -46,7 +60,7 @@
       <span class="ai-bot" aria-hidden="true">
         <img class="ai-bot__image" src="image.png" alt="">
       </span>
-      <span>Ask Kosala AI</span>`;
+      <span class="ai-cloud">Ask anything from Kosala</span>`;
     const form = document.querySelector(".ai-form");
     form?.addEventListener("submit", () => launcher.classList.add("is-thinking"));
     const messages = document.querySelector(".ai-messages");
