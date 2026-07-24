@@ -1,0 +1,135 @@
+                                           PROFILE
+
+        KOSALA                             Software Engineering undergraduate and software developer with hands-on experience
+   DANESHWARA                              in frontend development, full-stack web applications, IoT dashboards, Node-RED API
+  ATHAPATHTHU                              input flows, and ThingsBoard visualization work. I have practical experience developing
+                                           real business systems and renewable energy monitoring dashboards for solar, wind, and
+               Software Developer          hydro plant environments. I am focused on building clean, useful, and client-ready
+    Software Engineering Undergraduate     software solutions.
+
+     C O N TA C T                           EDUCATIONAL QUALIFICATIONS                                           2024 - Present
+                                                                                                                    2023 - 2024
+     +94 71 914 8762                       Higher National Diploma in Software Engineering                                  2020
+     kosalaathapaththu1234@gmail.com       NIBM - National Institute of Business Management
+     Colombo, Sri Lanka
+     linkedin.com/in/kosala-d-athapaththu  Diploma in Software Engineering
+     github.com/kosaladathapththu          NIBM - National Institute of Business Management
+
+     LANGUAGES                             G.C.E. Advanced Level - Physical Science Stream
+                                           Sri Sumangala National College - Wariyapola
+Sinhala - Native
+                                           WORK EXPERIENCE
+English - Working Proficiency
+                                           Software Developer (Intern)                                           May 2026 - Present
+                                           SLT-Mobitel, Colombo
+
+                                           · Develop frontend dashboards and software interfaces for business and monitoring
+                                             systems.
+
+                                           · Work with React-based UI development, API integration, and deployment-ready frontend
+                                             builds.
+
+AREAS OF INTEREST                          · Support data visualization workflows using Node-RED, ThingsBoard, and live monitoring
+                                             concepts.
+
+Frontend Development
+
+Full-Stack Development  IoT Dashboards     TECHNICAL SKILLS
+
+SCADA / Monitoring      Database Systems   Languages                   Java, PHP, C#, SQL / PL-SQL, JavaScript, Python, C++
+                                           Frontend                    React, HTML5, CSS3, JavaScript, Responsive UI Design
+API Integration                            Backend                     Spring Boot, Node.js, PHP, REST API Development
+                                           Databases                   Oracle, MySQL, SQLite, Firebase, MongoDB, SQL Server
+    KEY STRENGTHS                          IoT / Monitoring            ThingsBoard, Node-RED, MQTT Concepts, Dashboard Visualization
+                                           Tools                       Git, GitHub, Postman, VS Code, XAMPP, Laragon, Arduino IDE
+· Frontend UI Development
+· REST API Integration                     C E R T I F I C AT I O N S
+· Node-RED Data Flow Handling
+· ThingsBoard Dashboard Work
+· Clean Coding & Problem Solving
+
+                                           · Oracle Data Platform 2025 Certified Foundations Associate - Oracle
+                                           · Developing Microsoft Azure Solutions - Microsoft Learn
+                                           · HackerRank SQL (Basic) and Java (Basic)
+                                           · Agile Project Management Foundation - HP LIFE
+
+                                              ADDITIONAL EXPERIENCE
+
+                                           · Built and deployed live frontend projects for business use.
+                                           · Worked with Node-RED data flows for renewable energy monitoring use cases.
+                                           · Maintained GitHub repositories and used version control for academic and client projects.
+                                           · Created dashboard concepts for solar, wind, and hydro power plant visualization.
+
+                                                                                                                 Page 1 of 2
+     REFERENCES                            PROJECTS
+
+Chandula Rajapaksa                         Ceylex Renewable Energy Frontend                      AC Service Management System
+Consultant / Lecturer                      Dashboards
+NIBM, Colombo 07                                                                                 React | Google Sheets Database | Google Apps Script |
+chandula@nibm.lk                           React | Node-RED API Input | ThingsBoard | Solar,     Email Reminders | Business Workflow System
+                                           Wind & Hydro Plant Dashboards
+Amila Udayangani De Silva                                                                         · Developed a client-ready AC service
+Consultant / Lecturer                       · Developed frontend dashboard views for Ceylex          management frontend for Supun Group of
+NIBM, Colombo 07                               renewable energy monitoring projects.                 Companies.
+amila@nibm.lk
+                                            · Worked on solar plant dashboards, wind power        · Used Google Sheets as the database for service
+     MAIN COMPETENCIES                         plant digital twin / dashboard work, and hydro        records, customer details, job status, and order/
+· React Frontend Development                   power plant dashboard concepts under the              service tracking.
+· Business System Development                  same Ceylex project scope.
+· Renewable Energy Dashboards                                                                     · Implemented data synchronization workflows
+· API and Data Integration                  · Integrated plant data inputs from Node-RED             between the frontend and Google Sheets using
+· Database Design                              APIs and visualized key metrics such as plant         Google Apps Script APIs.
+· IoT System Integration                       status, active power, energy values, telemetry,
+                                               turbine/unit states, and KPI values.               · Supported automated reminder email
+     LIVE WORK                                                                                       workflows for pending services, follow-ups, and
+                                            · Worked with ThingsBoard dashboards, live               service-related notifications.
+AC Service Management System                   telemetry concepts, and animated visualization
+                                               ideas for monitoring systems.                      · Handled operational workflow needs such as
+Live frontend system developed for Supun                                                             record management, status updates, search,
+Group of Companies to support AC           Solar Soiling Detection ML Project                        filtering, and client-side data handling.
+service management workflows.
+                                           React Frontend | Flask Backend | Machine Learning     Centination Website
+     D E C L A R AT I O N                  Workflow
+                                                                                                 HTML | CSS | JavaScript | Live Deployment
+I hereby declare that all information       · Developed frontend interfaces for solar soiling /
+provided in this curriculum vitae is true      accuracy checking ML workflow.                        centination.com
+and accurate to the best of my
+knowledge.                                  · Connected frontend with Flask backend APIs to          github.com/kosaladathapaththu/Centination
+                                               support prediction and result display.             · Developed and deployed a responsive live
+
+                                           PizzaMania Android Application                            website with UI/UX-focused page layouts.
+                                                                                                  · Handled frontend design, performance
+                                           Java | Firebase | SQLite | Google Maps API
+                                                                                                     improvements, and domain integration.
+                                               github.com/kosaladathapaththu/PizzaMania
+                                            · Built an Android food ordering application with    Personal Financial Management System
+
+                                               cart, branch, and order management features.      PHP | Oracle | SQLite | PL/SQL | Cloud Sync
+                                            · Used Firebase, SQLite, and Google Maps API for
+                                                                                                     github.com/kosaladathapaththu/Personal-Financial-
+                                               data handling and location-based features.        System
+
+                                           Hotel Management System                                · Developed budgeting and reporting features
+                                                                                                     with a normalized database structure.
+                                           Spring Boot | React | MySQL | Microservices
+                                                                                                  · Used PL/SQL procedures and triggers for
+                                               github.com/kosaladathapaththu/Hotel-                  automation and data handling.
+                                           Management-System
+                                                                                                 Salvation Army Girls' Hostel Management
+                                            · Designed a microservice-based hotel                System
+                                               management system with room and booking
+                                               workflows.                                        PHP | MySQL | HTML | CSS | JavaScript
+
+                                            · Built clean REST API communication between             github.com/kosaladathapaththu/Hostel-
+                                               services and frontend UI.                         Management-System
+
+                                                                                                  · Developed role-based modules for admin,
+                                                                                                     matron, residents, employees, suppliers, and
+                                                                                                     guests.
+
+                                                                                                  · Implemented CRUD workflows, reports,
+                                                                                                     bookings, transactions, inventory, and supplier
+                                                                                                     orders.
+
+                                                                                                 Page 2 of 2
+
