@@ -1280,7 +1280,9 @@ const modalClose=document.getElementById("modalClose");
 
 function openModal(card){
   modalTitle.innerHTML='<i class="fas fa-image"></i> '+(card.dataset.title||"Project");
-  modalImg.src=card.dataset.img||"";
+  const projectImage=card.dataset.img||"";
+  modalImg.src=projectImage;
+  modalImg.parentElement.style.display=projectImage?"":"none";
   modalDesc.textContent=card.dataset.desc||"";
   modalBadges.innerHTML="";
   (card.dataset.tech||"").split(",").map(x=>x.trim()).filter(Boolean).forEach(t=>{
@@ -1398,6 +1400,6 @@ document.addEventListener("keydown",(e)=>{
 });
 </script>
 <script src="ai-feature.js"></script>
-<script src="motion.js?v=4"></script>
+<script src="motion.js?v=5"></script>
 </body>
 </html>
