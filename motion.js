@@ -10,22 +10,16 @@
 
     .ai-launcher{overflow:visible!important;isolation:isolate}
     .ai-launcher::before{content:"";position:absolute;inset:-7px;border:1px solid rgba(255,184,77,.5);border-radius:19px;opacity:0;animation:botSignal 3s ease-out infinite;pointer-events:none}
-    .ai-bot{width:31px;height:31px;position:relative;display:grid;place-items:center;flex:0 0 auto}
-    .ai-bot__antenna{position:absolute;width:2px;height:7px;background:#111722;top:0;left:50%;transform-origin:bottom;animation:antennaWave 2.6s ease-in-out infinite}
-    .ai-bot__antenna::before{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#111722;left:-1.5px;top:-3px;box-shadow:0 0 0 3px rgba(17,23,34,.12)}
-    .ai-bot__head{position:absolute;left:3px;right:3px;bottom:2px;height:21px;border:2px solid #111722;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:5px;background:rgba(255,255,255,.22)}
-    .ai-bot__eye{width:4px;height:6px;border-radius:4px;background:#111722;animation:botBlink 4s infinite}
-    .ai-bot__mouth{position:absolute;width:8px;height:2px;background:#111722;border-radius:4px;bottom:3px;opacity:.7}
-    .ai-launcher:hover .ai-bot__head{animation:botNod .65s ease}
-    .ai-launcher.is-thinking .ai-bot__head{animation:botThink .8s ease-in-out infinite alternate}
-    .ai-launcher.is-thinking .ai-bot__eye{animation:botScan .75s ease-in-out infinite alternate}
+    .ai-bot{width:42px;height:42px;position:relative;display:grid;place-items:center;flex:0 0 auto;margin:-7px 1px -7px -8px}
+    .ai-bot::before{content:"";position:absolute;inset:3px;border-radius:50%;background:rgba(255,255,255,.35);filter:blur(5px);animation:botGlow 2.4s ease-in-out infinite}
+    .ai-bot__image{position:relative;width:42px;height:42px;object-fit:contain;display:block;filter:drop-shadow(0 5px 7px rgba(17,23,34,.2));transform-origin:50% 70%;animation:botFloat 2.8s ease-in-out infinite}
+    .ai-launcher:hover .ai-bot__image{animation:botHello .75s ease-in-out}
+    .ai-launcher.is-thinking .ai-bot__image{animation:botThink .7s ease-in-out infinite alternate}
     @keyframes botSignal{0%{opacity:.7;transform:scale(.92)}70%,100%{opacity:0;transform:scale(1.16)}}
-    @keyframes antennaWave{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(9deg)}}
-    @keyframes botBlink{0%,44%,48%,100%{transform:scaleY(1)}46%{transform:scaleY(.08)}}
-    @keyframes botNod{50%{transform:translateY(2px) rotate(3deg)}}
-    @keyframes botThink{to{transform:translateY(-2px)}}
-    @keyframes botScan{to{transform:translateX(2px)}}
-
+    @keyframes botGlow{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:.8;transform:scale(1.12)}}
+    @keyframes botFloat{0%,100%{transform:translateY(1px) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+    @keyframes botHello{0%,100%{transform:rotate(0)}30%{transform:rotate(-10deg) scale(1.08)}65%{transform:rotate(8deg) scale(1.08)}}
+    @keyframes botThink{to{transform:translateY(-3px) rotate(5deg) scale(1.06)}}
     .motion-item{opacity:0;transform:translateY(34px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1);transition-delay:var(--motion-delay,0ms)}
     .motion-item.motion-in{opacity:1;transform:none}
     .section-header.motion-item{transform:translateY(24px)}
@@ -38,7 +32,7 @@
     @keyframes heroChild{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
     .profile-card{animation:profileArrival .9s .18s cubic-bezier(.2,.7,.2,1) both}
     @keyframes profileArrival{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}
-    @media(prefers-reduced-motion:reduce){.motion-aurora::before,.motion-aurora::after,.ai-launcher::before,.ai-bot__antenna,.ai-bot__eye,.nav-container,.hero-content>*,.profile-card{animation:none!important}.motion-item{opacity:1;transform:none;transition:none}}
+    @media(prefers-reduced-motion:reduce){.motion-aurora::before,.motion-aurora::after,.ai-launcher::before,.ai-bot::before,.ai-bot__image,.nav-container,.hero-content>*,.profile-card{animation:none!important}.motion-item{opacity:1;transform:none;transition:none}}
   `;
   document.head.appendChild(style);
 
@@ -50,11 +44,7 @@
   if (launcher) {
     launcher.innerHTML = `
       <span class="ai-bot" aria-hidden="true">
-        <span class="ai-bot__antenna"></span>
-        <span class="ai-bot__head">
-          <span class="ai-bot__eye"></span><span class="ai-bot__eye"></span>
-          <span class="ai-bot__mouth"></span>
-        </span>
+        <img class="ai-bot__image" src="image.png" alt="">
       </span>
       <span>Ask Kosala AI</span>`;
     const form = document.querySelector(".ai-form");
