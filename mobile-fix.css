@@ -67,3 +67,22 @@
 @media(max-height:520px) and (orientation:landscape){
   section.ai-panel{inset:5px!important}.ai-head{min-height:60px!important}.ai-head::before{width:40px!important;height:40px!important}.ai-messages{padding:9px!important}.ai-launcher{bottom:8px!important}
 }
+
+/* Mobile navbar quick actions: no secondary floating bar. */
+.nav-quick{display:none}
+@media(max-width:900px){
+  .nav-container{gap:.4rem!important}
+  .logo{max-width:calc(100vw - 250px)!important;white-space:nowrap!important}
+  .nav-actions{display:flex!important;align-items:center!important;gap:.35rem!important;margin-left:auto!important}
+  .nav-quick{display:grid!important;place-items:center!important;width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:10px!important;text-decoration:none!important;background:rgba(255,255,255,.065)!important;border:1px solid rgba(255,255,255,.1)!important;color:#dce5f2!important}
+  .nav-quick-cv{color:#ffd080!important;background:rgba(255,184,77,.1)!important}
+  .nav-quick span{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important}
+}
+@media(max-width:480px){
+  .logo{max-width:104px!important;font-size:.76rem!important}
+  .nav-container{padding-left:.65rem!important}
+}
+@media(max-width:380px){
+  .logo{display:none!important}
+  .nav-actions{width:100%!important;justify-content:space-between!important}
+}
