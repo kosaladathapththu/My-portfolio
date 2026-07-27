@@ -15,14 +15,14 @@
   codefield.className = "showcase-codefield";
   codefield.setAttribute("aria-hidden", "true");
   const codeWords = [
-    ["React", "7%", "24%", "-7deg", "9vw", "-5vh", "16s", "-3s"],
-    ["JAVA", "68%", "17%", "5deg", "-8vw", "8vh", "19s", "-11s"],
-    ["SQL", "28%", "48%", "-3deg", "12vw", "5vh", "21s", "-7s"],
-    ["API", "73%", "57%", "7deg", "-10vw", "-7vh", "17s", "-5s"],
-    ["IoT", "11%", "76%", "4deg", "8vw", "-8vh", "20s", "-14s"],
-    ["Spring", "57%", "83%", "-6deg", "9vw", "-6vh", "23s", "-9s"],
-    ["Cloud", "40%", "12%", "3deg", "-7vw", "7vh", "18s", "-12s"],
-    ["Oracle", "78%", "38%", "-4deg", "-9vw", "6vh", "22s", "-4s"]
+    ["React", "7%", "24%", "-7deg", "9vw", "-5vh", "9s", "-3s"],
+    ["JAVA", "68%", "17%", "5deg", "-8vw", "8vh", "11s", "-6s"],
+    ["SQL", "28%", "48%", "-3deg", "12vw", "5vh", "12s", "-7s"],
+    ["API", "73%", "57%", "7deg", "-10vw", "-7vh", "10s", "-5s"],
+    ["IoT", "11%", "76%", "4deg", "8vw", "-8vh", "12s", "-8s"],
+    ["Spring", "57%", "83%", "-6deg", "9vw", "-6vh", "13s", "-9s"],
+    ["Cloud", "40%", "12%", "3deg", "-7vw", "7vh", "10s", "-6s"],
+    ["Oracle", "78%", "38%", "-4deg", "-9vw", "6vh", "12s", "-4s"]
   ];
   codeWords.forEach(([word,x,y,r,dx,dy,speed,delay]) => {
     const item = document.createElement("span");
