@@ -42,3 +42,6 @@ nav,body.light nav,body:not(.light) nav{isolation:isolate;overflow:hidden!import
 @media(max-width:900px){nav,body.light nav,body:not(.light) nav{overflow:visible!important}.logo{padding:.4rem .5rem!important}.nav-links{overflow-y:auto!important}.nav-links a.active::before{left:12px;right:auto;top:25%;bottom:25%;width:2px;height:auto}}
 /* Footer must be the final scrolling content; all UI after it is an overlay. */
 html,body{padding-bottom:0!important}footer#contact{position:relative!important;inset:auto!important;transform:none!important;margin-bottom:0!important}.modal,.backtop,.toast,.mobile-cta,.ai-launcher,section.ai-panel{position:fixed!important}
+/* Profile view counter */
+.stat:nth-child(4) .stat-number{color:#ff7b70!important;text-shadow:0 0 24px rgba(255,123,112,.22)}.stat-views .stat-number{min-width:2ch}.stat-unavailable{opacity:.55}
+
