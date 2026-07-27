@@ -63,7 +63,7 @@
     .ai-launcher{width:300px!important;height:142px!important;min-height:142px!important;padding:0!important;display:block!important;background:transparent!important}
     .ai-launcher::before{left:2px!important;top:auto!important;bottom:-4px!important;width:94px!important;height:94px!important;inset:auto auto -4px 2px!important}
     .ai-bot{position:absolute!important;left:0!important;bottom:0!important;width:94px!important;height:94px!important;margin:0!important;animation:botOrbit 4.2s ease-in-out infinite!important}
-    .ai-bot__image{width:94px!important;height:94px!important;animation:botFloatLarge 2.7s ease-in-out infinite!important}
+    .ai-bot__image{width:94px!important;height:94px!important;animation:botFloatLarge 2.7s ease-in-out infinite!important;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse 46% 50% at 50% 50%,#000 72%,transparent 100%);mask-image:radial-gradient(ellipse 46% 50% at 50% 50%,#000 72%,transparent 100%)}
     .ai-cloud{position:absolute!important;right:0!important;top:4px!important;min-height:58px!important;padding:12px 20px!important;animation:cloudDrift 3.2s ease-in-out infinite!important;transform-origin:20% 100%}
     .ai-cloud::before{left:18px!important;bottom:-9px!important;width:18px!important;height:18px!important;box-shadow:-10px 9px 0 -4px #fff!important}
     .ai-launcher:hover .ai-bot__image{animation:botHelloLoop 1s ease-in-out infinite!important}.ai-launcher:hover .ai-cloud{animation:cloudHelloLoop 1.2s ease-in-out infinite!important;background:#ffb84d!important}.ai-launcher.is-thinking .ai-bot__image{animation:botThinkLarge .62s ease-in-out infinite alternate!important}.ai-launcher.is-thinking .ai-cloud{animation:cloudThink 1s ease-in-out infinite!important}
