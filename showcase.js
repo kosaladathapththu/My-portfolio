@@ -11,6 +11,39 @@
   progress.setAttribute("aria-hidden", "true");
   document.body.prepend(progress, grid, ambient);
 
+  const codefield = document.createElement("div");
+  codefield.className = "showcase-codefield";
+  codefield.setAttribute("aria-hidden", "true");
+  const codeWords = [
+    ["React", "7%", "24%", "-7deg", "9vw", "-5vh", "16s", "-3s"],
+    ["JAVA", "68%", "17%", "5deg", "-8vw", "8vh", "19s", "-11s"],
+    ["SQL", "28%", "48%", "-3deg", "12vw", "5vh", "21s", "-7s"],
+    ["API", "73%", "57%", "7deg", "-10vw", "-7vh", "17s", "-5s"],
+    ["IoT", "11%", "76%", "4deg", "8vw", "-8vh", "20s", "-14s"],
+    ["Spring", "57%", "83%", "-6deg", "9vw", "-6vh", "23s", "-9s"],
+    ["Cloud", "40%", "12%", "3deg", "-7vw", "7vh", "18s", "-12s"],
+    ["Oracle", "78%", "38%", "-4deg", "-9vw", "6vh", "22s", "-4s"]
+  ];
+  codeWords.forEach(([word,x,y,r,dx,dy,speed,delay]) => {
+    const item = document.createElement("span");
+    item.className = "showcase-codeword";
+    item.textContent = word;
+    [["--x",x],["--y",y],["--r",r],["--dx",dx],["--dy",dy],["--speed",speed],["--delay",delay]].forEach(([key,value]) => item.style.setProperty(key,value));
+    codefield.append(item);
+  });
+  [["18%","36%","34px","#2ee7df","8vw","5vh","12s","-2s"],["82%","29%","42px","#5577ff","-7vw","8vh","15s","-8s"],["63%","69%","28px","#ffc857","9vw","-6vh","13s","-5s"],["32%","87%","38px","#9b6cff","-6vw","-7vh","17s","-10s"]].forEach(([x,y,size,node,dx,dy,speed,delay]) => {
+    const item = document.createElement("i");
+    item.className = "showcase-node";
+    [["--x",x],["--y",y],["--size",size],["--node",node],["--dx",dx],["--dy",dy],["--speed",speed],["--delay",delay]].forEach(([key,value]) => item.style.setProperty(key,value));
+    codefield.append(item);
+  });
+  const orbit = document.createElement("i");
+  orbit.className = "showcase-orbit";
+  orbit.style.setProperty("--x", "72%");
+  orbit.style.setProperty("--y", "72%");
+  codefield.append(orbit);
+  document.body.prepend(codefield);
+
   const tech = ["Full-Stack", "Spring Boot", "React", "Java", "Microservices", "Oracle", "MySQL", "Android", "IoT", "REST APIs", "Arduino", "Cloud"];
   const ribbon = document.createElement("div");
   ribbon.className = "showcase-ribbon";
