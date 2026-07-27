@@ -20,6 +20,7 @@
   const messages = panel.querySelector(".ai-messages");
   const toggle = (open) => {
     panel.classList.toggle("open", open);
+    document.body.classList.toggle("ai-open", open);
     launcher.setAttribute("aria-expanded", String(open));
     if (open) input.focus();
   };
