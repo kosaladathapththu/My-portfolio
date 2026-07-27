@@ -31,17 +31,6 @@
     [["--x",x],["--y",y],["--r",r],["--dx",dx],["--dy",dy],["--speed",speed],["--delay",delay]].forEach(([key,value]) => item.style.setProperty(key,value));
     codefield.append(item);
   });
-  [["18%","36%","34px","#2ee7df","8vw","5vh","12s","-2s"],["82%","29%","42px","#5577ff","-7vw","8vh","15s","-8s"],["63%","69%","28px","#ffc857","9vw","-6vh","13s","-5s"],["32%","87%","38px","#9b6cff","-6vw","-7vh","17s","-10s"]].forEach(([x,y,size,node,dx,dy,speed,delay]) => {
-    const item = document.createElement("i");
-    item.className = "showcase-node";
-    [["--x",x],["--y",y],["--size",size],["--node",node],["--dx",dx],["--dy",dy],["--speed",speed],["--delay",delay]].forEach(([key,value]) => item.style.setProperty(key,value));
-    codefield.append(item);
-  });
-  const orbit = document.createElement("i");
-  orbit.className = "showcase-orbit";
-  orbit.style.setProperty("--x", "72%");
-  orbit.style.setProperty("--y", "72%");
-  codefield.append(orbit);
   const bandTech = ["React", "Spring Boot", "Java", "REST API", "Oracle", "Microservices", "Android", "IoT", "Cloud", "MySQL"];
   ["one", "two"].forEach((variant, bandIndex) => {
     const band = document.createElement("div");
