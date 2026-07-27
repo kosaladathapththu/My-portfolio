@@ -97,6 +97,9 @@
   addEventListener("scroll", updateProgress, { passive: true });
   updateProgress();
 
+  const pageFooter = document.querySelector("footer#contact");
+  if (pageFooter) document.body.append(pageFooter);
+
   if (matchMedia("(pointer:fine)").matches) {
     document.querySelectorAll(".highlight-card,.skill-card,.project-card,.cert-item").forEach(card => card.addEventListener("pointermove", event => {
       const rect = card.getBoundingClientRect();
