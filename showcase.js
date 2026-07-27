@@ -42,6 +42,21 @@
   orbit.style.setProperty("--x", "72%");
   orbit.style.setProperty("--y", "72%");
   codefield.append(orbit);
+  const bandTech = ["React", "Spring Boot", "Java", "REST API", "Oracle", "Microservices", "Android", "IoT", "Cloud", "MySQL"];
+  ["one", "two"].forEach((variant, bandIndex) => {
+    const band = document.createElement("div");
+    band.className = `showcase-diagonal ${variant}`;
+    const bandTrack = document.createElement("div");
+    bandTrack.className = "showcase-diagonal-track";
+    [...bandTech, ...bandTech, ...bandTech].forEach((name, index) => {
+      const item = document.createElement("span");
+      item.textContent = name;
+      item.style.setProperty("--band-color", ["#2ee7df", "#5577ff", "#9b6cff", "#ffc857", "#ff6f61"][(index + bandIndex) % 5]);
+      bandTrack.append(item);
+    });
+    band.append(bandTrack);
+    codefield.append(band);
+  });
   document.body.prepend(codefield);
 
   const tech = ["Full-Stack", "Spring Boot", "React", "Java", "Microservices", "Oracle", "MySQL", "Android", "IoT", "REST APIs", "Arduino", "Cloud"];
