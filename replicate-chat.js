@@ -17,7 +17,7 @@
     const card = document.createElement("article");
     card.className = "ai-image-card";
     card.innerHTML = `
-      <div class="ai-image-frame"><img src="${url}" alt="AI-generated technology wallpaper"></div>
+      <div class="ai-image-frame"><img src="${url}" alt="AI-generated technology wallpaper" loading="eager" referrerpolicy="no-referrer"></div>
       <div class="ai-image-actions">
         <div><strong>Wallpaper ready</strong><span>Generated with Replicate</span></div>
         <a href="${url}" target="_blank" rel="noopener" aria-label="Open generated wallpaper"><i class="fas fa-arrow-up-right-from-square"></i></a>
@@ -33,6 +33,7 @@
     event.stopImmediatePropagation();
     if (!text) return;
     addMessage(text, "user");
+    window.novaChat?.remember("user", text);
     input.value = "";
     send.disabled = true;
     const waiting = addMessage("Creating your wallpaper with Replicate...", "bot");
@@ -43,7 +44,9 @@
         body: JSON.stringify({ style: "futuristic" }),
       });
       const data = await response.json();
-      waiting.textContent = response.ok ? "Done - here is your generated wallpaper." : (data.error || "Image generation failed.");
+      const statusText = response.ok ? "Done - here is your generated wallpaper." : (data.error || "Image generation failed.");
+      waiting.textContent = statusText;
+      if (response.ok) window.novaChat?.remember("assistant", statusText);
       if (response.ok && data.image) showImage(data.image);
     } catch {
       waiting.textContent = "The image generator is temporarily unavailable.";
