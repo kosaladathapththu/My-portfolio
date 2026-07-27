@@ -715,7 +715,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
 <link rel="stylesheet" href="game2-beauty.css?v=1"/>
 <link rel="stylesheet" href="replicate-chat.css?v=2"/>
 <link rel="stylesheet" href="mobile-fix.css?v=2"/>
-<link rel="stylesheet" href="showcase.css?v=8"/>
+<link rel="stylesheet" href="showcase.css?v=9"/>
 </head>
 
 <body>
@@ -787,32 +787,36 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
       </div>
     </div>
 
-    <div class="hero-image">
-      <div class="profile-card profile-card-v2">
-        <div class="profile-visual">
-          <div class="profile-img">
-            <img src="portfolio.png" alt="Kosala Daneshwara Athapaththu" loading="eager" onerror="this.parentElement.innerHTML='<i class=\'fas fa-user\'></i>'"/>
-          </div>
-          <div class="availability-badge"><span></span> Open to opportunities</div>
-        </div>
-        <div class="profile-intro">
-          <span class="profile-eyebrow">Let’s build something meaningful</span>
-          <h2>Kosala Daneshwara</h2>
-          <p>Software Engineer · Full-Stack · Android · IoT</p>
-        </div>
-        <div class="contact-grid">
-          <a class="contact-item contact-primary" href="tel:+94719148762"><i class="fas fa-phone"></i><span><small>Call me</small>+94 71 914 8762</span><i class="fas fa-arrow-up-right-from-square contact-arrow"></i></a>
-          <a class="contact-item contact-primary" href="mailto:kosalaathapaththu1234@gmail.com"><i class="fas fa-envelope"></i><span><small>Email me</small><span id="emailLink">kosalaathapaththu1234@gmail.com</span></span><i class="fas fa-arrow-up-right-from-square contact-arrow"></i></a>
-          <div class="contact-location"><i class="fas fa-location-dot"></i><span>Based in Colombo, Sri Lanka</span><strong>Available worldwide</strong></div>
-          <div class="contact-socials" aria-label="Social contact links">
-            <a href="https://wa.me/94719148762" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-            <a href="https://t.me/+94719148762" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i><span>Telegram</span></a>
-            <a href="https://www.linkedin.com/in/kosala-d-athapaththu-a453b9248/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
-            <a href="https://github.com/kosaladathapththu" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i><span>GitHub</span></a>
-          </div>
-          <button class="btn btn-secondary copy-btn profile-copy" id="copyEmailBtn" type="button"><span><i class="fas fa-copy"></i> Copy Email</span></button>
-        </div>
+    <div class="hero-image hero-portrait">
+      <div class="portrait-stage">
+        <div class="portrait-status"><span></span> Available for work</div>
+        <img src="portfolio.png" alt="Kosala Daneshwara Athapaththu" loading="eager"/>
+        <div class="portrait-caption"><strong>Kosala Daneshwara</strong><span>Software Engineer</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="quick-contact-section" aria-labelledby="quickContactTitle">
+  <div class="quick-contact-shell">
+    <div class="quick-contact-heading">
+      <span class="quick-contact-kicker"><i class="fas fa-sparkles"></i> Connect with me</span>
+      <h2 id="quickContactTitle">Let’s start a conversation.</h2>
+      <p>Available for internships, collaborations and software projects.</p>
+    </div>
+    <div class="quick-contact-cards">
+      <a class="quick-contact-card" href="tel:+94719148762"><span class="quick-icon phone"><i class="fas fa-phone"></i></span><span><small>Phone</small><strong>+94 71 914 8762</strong></span><i class="fas fa-arrow-right quick-arrow"></i></a>
+      <a class="quick-contact-card" href="mailto:kosalaathapaththu1234@gmail.com"><span class="quick-icon mail"><i class="fas fa-envelope"></i></span><span><small>Email</small><strong id="emailLink">kosalaathapaththu1234@gmail.com</strong></span><i class="fas fa-arrow-right quick-arrow"></i></a>
+      <div class="quick-contact-card"><span class="quick-icon place"><i class="fas fa-location-dot"></i></span><span><small>Location</small><strong>Colombo, Sri Lanka</strong></span><span class="remote-dot">Worldwide</span></div>
+    </div>
+    <div class="quick-contact-actions">
+      <div class="quick-socials" aria-label="Social links">
+        <a href="https://wa.me/94719148762" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/+94719148762" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.linkedin.com/in/kosala-d-athapaththu-a453b9248/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/kosaladathapththu" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+      <button class="quick-copy" id="copyEmailBtn" type="button"><i class="fas fa-copy"></i> Copy email</button>
     </div>
   </div>
 </section>
@@ -1061,7 +1065,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
     <article class="experience-card">
       <div class="experience-logo"><img src="slt_logo_new.be681e06.png" alt="SLT-MOBITEL logo"></div>
       <div class="experience-content">
-        <div class="experience-top"><div><span class="experience-type">Current internship</span><h3>Software Developer (Intern)</h3><p class="experience-company">SLT-MOBITEL Â· Colombo, Sri Lanka</p></div><span class="experience-date">May 2026 - Present</span></div>
+        <div class="experience-top"><div><span class="experience-type">Current internship</span><h3>Software Developer (Intern)</h3><p class="experience-company">SLT-MOBITEL · Colombo, Sri Lanka</p></div><span class="experience-date">May 2026 - Present</span></div>
         <ul><li>Develop frontend dashboards and software interfaces for business and monitoring systems.</li><li>Build React-based interfaces, integrate APIs, and prepare deployment-ready frontend builds.</li><li>Support renewable-energy visualization workflows using Node-RED, ThingsBoard, and live monitoring concepts.</li></ul>
         <div class="experience-tags"><span>React</span><span>Node-RED</span><span>ThingsBoard</span><span>API Integration</span><span>IoT Dashboards</span></div>
       </div>
