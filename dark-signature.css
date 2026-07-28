@@ -54,3 +54,11 @@ body:not(.light) .footer-title{font-size:clamp(2.35rem,4vw,4.35rem)!important;li
 body:not(.light) .footer-brand>p{max-width:590px!important}
 body:not(.light) .footer-meta{margin-top:clamp(1.5rem,3vw,3rem)!important}
 @media(max-width:760px){body:not(.light) footer#contact{padding-top:3rem!important}.footer-content{gap:2rem!important}.footer-title{font-size:clamp(2.35rem,11vw,3.6rem)!important}.footer-meta{margin-top:.5rem!important}}
+/* Open technology marquee following the user-defined portrait arc. */
+.portrait-arc-marquee{position:absolute;z-index:1;left:-27%;top:-12%;width:154%;height:138%;overflow:visible;pointer-events:none;filter:drop-shadow(0 0 9px rgba(169,79,100,.22))}
+.portrait-arc-track{fill:none;stroke:url(#portraitArcStroke);stroke-width:34;stroke-linecap:round;opacity:.12}
+.portrait-arc-text{fill:#dfc99f;font:800 13px Manrope,Inter,sans-serif;letter-spacing:2.4px;text-transform:uppercase}
+.portrait-stage>img,.portrait-caption{position:relative;z-index:2}
+body.light .portrait-arc-track{opacity:.11}body.light .portrait-arc-text{fill:#704c3e}.light .portrait-arc-marquee{filter:drop-shadow(0 0 7px rgba(111,83,61,.16))}
+@media(max-width:900px){.portrait-arc-marquee{left:-20%;top:-8%;width:140%;height:128%}.portrait-arc-track{stroke-width:30}.portrait-arc-text{font-size:12px;letter-spacing:2px}}
+@media(max-width:480px){.portrait-arc-marquee{left:-17%;top:-5%;width:134%;height:120%}.portrait-arc-track{stroke-width:27}.portrait-arc-text{font-size:11px;letter-spacing:1.65px}}
