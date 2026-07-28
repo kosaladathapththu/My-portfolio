@@ -70,3 +70,7 @@ body.light .portrait-arc-track{opacity:.11}body.light .portrait-arc-text{fill:#7
 body.light .portrait-arc-track{opacity:.22!important}body.light .portrait-arc-text{fill:#765643!important}
 @media(max-width:900px){.portrait-arc-marquee{left:-1%!important;top:-1%!important;width:123%!important;height:114%!important}.portrait-arc-track{stroke-width:2!important}.portrait-arc-text{font-size:10.5px!important;letter-spacing:1.7px!important}}
 @media(max-width:480px){.portrait-arc-marquee{left:0!important;top:0!important;width:118%!important;height:110%!important}.portrait-arc-text{font-size:10px!important;letter-spacing:1.45px!important}}
+/* Keep the original hero circle; the open marquee rides over its edge. */
+.hero::before{display:block!important}
+.portrait-arc-track{opacity:.12!important;stroke-width:2!important}
+body.light .portrait-arc-track{opacity:.1!important}
