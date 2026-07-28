@@ -54,10 +54,10 @@
 
   /* Section-level scroll transitions */
   const sectionTransitions = [...document.querySelectorAll("section:not(.hero) > .section-container, footer .footer-content")];
-  const sectionDirections = ["section-from-top", "section-from-bottom", "section-from-left", "section-from-right"];
   sectionTransitions.forEach((item, index) => {
-    item.classList.add("section-transition", sectionDirections[index % sectionDirections.length]);
+    item.classList.add("section-transition", "section-from-bottom");
     item.style.setProperty("--section-index", String(index));
+    item.querySelectorAll(".opportunity-card,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.form-card").forEach((card, cardIndex) => card.style.setProperty("--academic-delay", `${80 + cardIndex * 90}ms`));
   });
   if ("IntersectionObserver" in window) {
     const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
