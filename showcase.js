@@ -31,21 +31,21 @@
     [["--x",x],["--y",y],["--r",r],["--dx",dx],["--dy",dy],["--speed",speed],["--delay",delay]].forEach(([key,value]) => item.style.setProperty(key,value));
     codefield.append(item);
   });
-  const bandTech = ["React", "Spring Boot", "Java", "REST API", "Oracle", "Microservices", "Android", "IoT", "Cloud", "MySQL"];
-  ["one", "two"].forEach((variant, bandIndex) => {
-    const band = document.createElement("div");
-    band.className = `showcase-diagonal ${variant}`;
-    const bandTrack = document.createElement("div");
-    bandTrack.className = "showcase-diagonal-track";
-    [...bandTech, ...bandTech, ...bandTech].forEach((name, index) => {
-      const item = document.createElement("span");
-      item.textContent = name;
-      item.style.setProperty("--band-color", ["#2ee7df", "#5577ff", "#9b6cff", "#ffc857", "#ff6f61"][(index + bandIndex) % 5]);
-      bandTrack.append(item);
+  const orbitHost = document.querySelector(".portrait-stage");
+  const orbitTech = "REACT / SPRING BOOT / JAVA / REST API / ORACLE / MICROSERVICES / ANDROID / IOT / CLOUD / MYSQL / ";
+  if (orbitHost) {
+    [
+      { className: "orbit-one", id: "portraitOrbitOuter", gradient: "portraitGradientOuter", path: "M300 38 A262 262 0 1 1 299.9 38", length: 1645 },
+      { className: "orbit-two", id: "portraitOrbitInner", gradient: "portraitGradientInner", path: "M300 78 A222 222 0 1 1 299.9 78", length: 1395 }
+    ].forEach((ring, ringIndex) => {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 600 600");
+      svg.setAttribute("aria-hidden", "true");
+      svg.classList.add("portrait-orbit-ring", ring.className);
+      svg.innerHTML = `<defs><linearGradient id="${ring.gradient}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ee7df"/><stop offset="32%" stop-color="#5577ff"/><stop offset="64%" stop-color="#a96cff"/><stop offset="100%" stop-color="#ff806f"/></linearGradient></defs><path id="${ring.id}" d="${ring.path}" fill="none"/><text textLength="${ring.length}" lengthAdjust="spacing"><textPath href="#${ring.id}" startOffset="${ringIndex * 4}%">${orbitTech.repeat(3)}</textPath></text>`;
+      orbitHost.prepend(svg);
     });
-    band.append(bandTrack);
-    (document.querySelector(".portrait-stage") || codefield).append(band);
-  });
+  }
   document.body.prepend(codefield);
 
   const tech = ["Full-Stack", "Spring Boot", "React", "Java", "Microservices", "Oracle", "MySQL", "Android", "IoT", "REST APIs", "Arduino", "Cloud"];
