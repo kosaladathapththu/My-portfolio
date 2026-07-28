@@ -41,7 +41,7 @@
       svg.setAttribute("viewBox", "0 0 600 600");
       svg.setAttribute("aria-hidden", "true");
       svg.classList.add("portrait-orbit-ring", ring.className);
-      svg.innerHTML = `<defs><linearGradient id="${ring.gradient}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ee7df"/><stop offset="32%" stop-color="#5577ff"/><stop offset="64%" stop-color="#a96cff"/><stop offset="100%" stop-color="#ff806f"/></linearGradient></defs><g class="portrait-orbit-spinner"><path id="${ring.id}" d="${ring.path}" fill="none"/><text textLength="${ring.length}" lengthAdjust="spacing"><textPath href="#${ring.id}" startOffset="${ringIndex * 4}%">${orbitTech}</textPath></text></g>`;
+      svg.innerHTML = `<defs><linearGradient id="${ring.gradient}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ee7df"/><stop offset="32%" stop-color="#5577ff"/><stop offset="64%" stop-color="#a96cff"/><stop offset="100%" stop-color="#ff806f"/></linearGradient></defs><g class="portrait-orbit-spinner"><animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="16s" repeatCount="indefinite"/><path class="portrait-orbit-guide" id="${ring.id}" d="${ring.path}" fill="none" stroke="url(#${ring.gradient})" stroke-width="3" stroke-linecap="round" stroke-dasharray="18 10"/><text textLength="${ring.length}" lengthAdjust="spacing"><textPath href="#${ring.id}" startOffset="${ringIndex * 4}%">${orbitTech}</textPath></text></g>`;
       orbitHost.prepend(svg);
     });
   }
