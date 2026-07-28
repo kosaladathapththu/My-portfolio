@@ -35,14 +35,13 @@
   const orbitTech = "REACT / SPRING BOOT / JAVA / REST API / ORACLE / MICROSERVICES / ANDROID / IOT / CLOUD / MYSQL / ";
   if (orbitHost) {
     [
-      { className: "orbit-one", id: "portraitOrbitOuter", gradient: "portraitGradientOuter", path: "M300 38 A262 262 0 1 1 299.9 38", length: 1645 },
-      { className: "orbit-two", id: "portraitOrbitInner", gradient: "portraitGradientInner", path: "M300 78 A222 222 0 1 1 299.9 78", length: 1395 }
+      { className: "orbit-one", id: "portraitOrbitOuter", gradient: "portraitGradientOuter", path: "M300 48 A252 252 0 1 1 299.9 48", length: 1580 }
     ].forEach((ring, ringIndex) => {
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       svg.setAttribute("viewBox", "0 0 600 600");
       svg.setAttribute("aria-hidden", "true");
       svg.classList.add("portrait-orbit-ring", ring.className);
-      svg.innerHTML = `<defs><linearGradient id="${ring.gradient}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ee7df"/><stop offset="32%" stop-color="#5577ff"/><stop offset="64%" stop-color="#a96cff"/><stop offset="100%" stop-color="#ff806f"/></linearGradient></defs><path id="${ring.id}" d="${ring.path}" fill="none"/><text textLength="${ring.length}" lengthAdjust="spacing"><textPath href="#${ring.id}" startOffset="${ringIndex * 4}%">${orbitTech.repeat(3)}</textPath></text>`;
+      svg.innerHTML = `<defs><linearGradient id="${ring.gradient}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2ee7df"/><stop offset="32%" stop-color="#5577ff"/><stop offset="64%" stop-color="#a96cff"/><stop offset="100%" stop-color="#ff806f"/></linearGradient></defs><path id="${ring.id}" d="${ring.path}" fill="none"/><text textLength="${ring.length}" lengthAdjust="spacing"><textPath href="#${ring.id}" startOffset="${ringIndex * 4}%">${orbitTech}</textPath></text>`;
       orbitHost.prepend(svg);
     });
   }
