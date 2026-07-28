@@ -86,6 +86,18 @@
   addEventListener("scroll", updateProgress, { passive: true });
   updateProgress();
 
+  const contactRail = document.getElementById("contactRail");
+  const updateContactRail = () => {
+    if (!contactRail) return;
+    const trigger = Math.min(520, Math.max(240, innerHeight * .38));
+    const visible = scrollY > trigger;
+    contactRail.classList.toggle("is-visible", visible);
+    contactRail.setAttribute("aria-hidden", String(!visible));
+  };
+  addEventListener("scroll", updateContactRail, { passive: true });
+  addEventListener("resize", updateContactRail, { passive: true });
+  updateContactRail();
+
   const pageFooter = document.querySelector("footer#contact");
   if (pageFooter) document.body.append(pageFooter);
 
