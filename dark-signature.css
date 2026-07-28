@@ -54,23 +54,6 @@ body:not(.light) .footer-title{font-size:clamp(2.35rem,4vw,4.35rem)!important;li
 body:not(.light) .footer-brand>p{max-width:590px!important}
 body:not(.light) .footer-meta{margin-top:clamp(1.5rem,3vw,3rem)!important}
 @media(max-width:760px){body:not(.light) footer#contact{padding-top:3rem!important}.footer-content{gap:2rem!important}.footer-title{font-size:clamp(2.35rem,11vw,3.6rem)!important}.footer-meta{margin-top:.5rem!important}}
-/* Open technology marquee following the user-defined portrait arc. */
-.portrait-arc-marquee{position:absolute;z-index:1;left:-27%;top:-12%;width:154%;height:138%;overflow:visible;pointer-events:none;filter:drop-shadow(0 0 9px rgba(169,79,100,.22))}
-.portrait-arc-track{fill:none;stroke:url(#portraitArcStroke);stroke-width:34;stroke-linecap:round;opacity:.12}
-.portrait-arc-text{fill:#dfc99f;font:800 13px Manrope,Inter,sans-serif;letter-spacing:2.4px;text-transform:uppercase}
-.portrait-stage>img,.portrait-caption{position:relative;z-index:2}
-body.light .portrait-arc-track{opacity:.11}body.light .portrait-arc-text{fill:#704c3e}.light .portrait-arc-marquee{filter:drop-shadow(0 0 7px rgba(111,83,61,.16))}
-@media(max-width:900px){.portrait-arc-marquee{left:-20%;top:-8%;width:140%;height:128%}.portrait-arc-track{stroke-width:30}.portrait-arc-text{font-size:12px;letter-spacing:2px}}
-@media(max-width:480px){.portrait-arc-marquee{left:-17%;top:-5%;width:134%;height:120%}.portrait-arc-track{stroke-width:27}.portrait-arc-text{font-size:11px;letter-spacing:1.65px}}
-/* Align the open marquee with—and replace—the original hero shadow ring. */
-.hero::before{display:none!important}
-.portrait-arc-marquee{left:-2%!important;top:-3%!important;width:130%!important;height:120%!important;filter:drop-shadow(0 0 5px rgba(214,165,71,.16))!important}
-.portrait-arc-track{stroke-width:2!important;opacity:.28!important}
-.portrait-arc-text{fill:#d8c08f!important;font-size:11px!important;letter-spacing:2px!important}
-body.light .portrait-arc-track{opacity:.22!important}body.light .portrait-arc-text{fill:#765643!important}
-@media(max-width:900px){.portrait-arc-marquee{left:-1%!important;top:-1%!important;width:123%!important;height:114%!important}.portrait-arc-track{stroke-width:2!important}.portrait-arc-text{font-size:10.5px!important;letter-spacing:1.7px!important}}
-@media(max-width:480px){.portrait-arc-marquee{left:0!important;top:0!important;width:118%!important;height:110%!important}.portrait-arc-text{font-size:10px!important;letter-spacing:1.45px!important}}
-/* Keep the original hero circle; the open marquee rides over its edge. */
+
+/* Preserve the original subtle hero background circle. */
 .hero::before{display:block!important}
-.portrait-arc-track{opacity:.12!important;stroke-width:2!important}
-body.light .portrait-arc-track{opacity:.1!important}
