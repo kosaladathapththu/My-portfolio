@@ -54,8 +54,9 @@
 
   /* Section-level scroll transitions */
   const sectionTransitions = [...document.querySelectorAll("section:not(.hero) > .section-container, footer .footer-content")];
+  const sectionDirections = ["section-from-top", "section-from-bottom", "section-from-left", "section-from-right"];
   sectionTransitions.forEach((item, index) => {
-    item.classList.add("section-transition", index % 2 ? "section-from-right" : "section-from-left");
+    item.classList.add("section-transition", sectionDirections[index % sectionDirections.length]);
     item.style.setProperty("--section-index", String(index));
   });
   if ("IntersectionObserver" in window) {
