@@ -5,7 +5,11 @@
   const section = document.createElement("section");
   section.id = "mini-game";
   section.innerHTML = `
-    <div class="section-container">
+        <div class="section-video-bg" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata"><source src="back4.mp4" type="video/mp4"></video>
+      <div class="section-video-shade"></div>
+    </div>
+<div class="section-container">
       <div class="section-header">
         <div class="section-label"><i class="fas fa-gamepad"></i> Mini Game</div>
         <h2>Bug Hunt</h2>
