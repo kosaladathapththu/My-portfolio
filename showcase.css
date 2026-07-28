@@ -99,3 +99,5 @@ body.light .portrait-orbit-guide{opacity:.58;filter:drop-shadow(0 0 4px rgba(79,
 .portrait-orbit-guide{stroke:none!important;opacity:0!important;filter:none!important}
 .portrait-orbit-ring text{font-size:16px!important;letter-spacing:1.55px!important}
 @media(max-width:900px){.portrait-orbit-ring{left:-3%!important;top:1%!important;width:106%!important;height:106%!important}.portrait-orbit-ring text{font-size:14px!important;letter-spacing:1.2px!important}}
+/* Portrait orbit removed by request. */
+.portrait-orbit-ring{display:none!important}
