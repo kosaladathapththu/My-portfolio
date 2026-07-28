@@ -894,20 +894,9 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
     <div class="section-header">
       <div class="section-label"><i class="fas fa-rocket"></i> Portfolio</div>
       <h2>Featured Projects</h2>
-      <p>Search and filter projects, then click a project card to view screenshots.</p>
+      <p>A curated collection of software, mobile, database, and IoT work. Select any project to explore it.</p>
     </div>
 
-    <div class="projects-toolbar" aria-label="Projects toolbar">
-      <div class="toolbar-top">
-        <div class="searchbox" role="search">
-          <i class="fas fa-magnifying-glass"></i>
-          <input id="projectSearch" type="search" placeholder="Search projects (name / tech / keywords)..." autocomplete="off"/>
-        </div>
-        <div class="filters" id="filterChips" aria-label="Tech filters"></div>
-      </div>
-    </div>
-
-    <div class="projects-meta" id="projectsMeta">Showing all projects</div>
 
     <div class="projects-grid" id="projectsGrid">
       <div class="project-card" data-title="Personal Financial Management System" data-img="project1.png" data-desc="Budgeting and reporting with Oracle/SQLite sync, PL/SQL automation, and structured database design." data-tech="PHP, Oracle, SQLite, PL/SQL, Cloud Sync">
@@ -1331,53 +1320,6 @@ for(let i=0;i<26;i++){
   p.style.animationDuration=(10+Math.random()*10)+"s";
   particlesContainer.appendChild(p);
 }
-
-/* Projects search + tech chips */
-const projectSearch=document.getElementById("projectSearch");
-const projectsGrid=document.getElementById("projectsGrid");
-const projectsMeta=document.getElementById("projectsMeta");
-const filterChips=document.getElementById("filterChips");
-const cards=[...projectsGrid.querySelectorAll(".project-card")];
-
-const allTech=new Set();
-cards.forEach(c=>{
-  (c.dataset.tech||"").split(",").map(x=>x.trim()).filter(Boolean).forEach(t=>allTech.add(t));
-});
-const techList=["All", ...[...allTech].sort((a,b)=>a.localeCompare(b))];
-
-let activeTech="All";
-function renderChips(){
-  filterChips.innerHTML="";
-  techList.forEach(t=>{
-    const btn=document.createElement("button");
-    btn.className="chip"+(t===activeTech?" active":"");
-    btn.type="button";
-    btn.innerHTML='<i class="fas fa-filter"></i> '+t;
-    btn.addEventListener("click",()=>{
-      activeTech=t;
-      renderChips();
-      applyFilters();
-    });
-    filterChips.appendChild(btn);
-  });
-}
-renderChips();
-
-function applyFilters(){
-  const q=(projectSearch.value||"").trim().toLowerCase();
-  let shown=0;
-  cards.forEach(c=>{
-    const content=((c.dataset.title||"")+" "+(c.dataset.tech||"")+" "+(c.dataset.desc||"")).toLowerCase();
-    const matchText=!q || content.includes(q);
-    const matchTech=(activeTech==="All") || (c.dataset.tech||"").split(",").map(x=>x.trim()).includes(activeTech);
-    const ok=matchText && matchTech;
-    c.style.display=ok?"":"none";
-    if(ok) shown++;
-  });
-  projectsMeta.textContent=(shown===cards.length) ? "Showing all projects" : ("Showing "+shown+" of "+cards.length+" projects");
-}
-projectSearch.addEventListener("input",applyFilters);
-applyFilters();
 
 /* Back to top */
 const backTop=document.getElementById("backTop");
