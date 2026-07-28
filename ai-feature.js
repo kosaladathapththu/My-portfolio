@@ -1,6 +1,6 @@
 (() => {
   const STORAGE_KEY = "nova-chat-history-v1";
-  const greeting = "Hi! I can answer questions about Kosala, share his public contact details, or help with general questions.";
+  const greeting = "Hi! Ask about Kosala's software services, past projects, technical capabilities, or how to start a project.";
   const launcher = document.createElement("button");
   launcher.className = "ai-launcher";
   launcher.setAttribute("aria-label", "Ask about Kosala");
@@ -10,7 +10,7 @@
   panel.className = "ai-panel";
   panel.setAttribute("aria-label", "Portfolio assistant");
   panel.innerHTML = `
-    <div class="ai-head"><div><strong>Nova AI assistant</strong><span>Portfolio details and general questions</span></div><div class="ai-head-actions"><button class="ai-clear" aria-label="Clear chat history" title="Clear chat history"><i class="fas fa-trash-can"></i></button><button class="ai-close" aria-label="Close"><i class="fas fa-xmark"></i></button></div></div>
+    <div class="ai-head"><div><strong>Nova AI assistant</strong><span>Software services, projects, and general questions</span></div><div class="ai-head-actions"><button class="ai-clear" aria-label="Clear chat history" title="Clear chat history"><i class="fas fa-trash-can"></i></button><button class="ai-close" aria-label="Close"><i class="fas fa-xmark"></i></button></div></div>
     <div class="ai-messages" aria-live="polite"><div class="ai-msg bot">${greeting}</div></div>
     <form class="ai-form"><input class="ai-input" maxlength="1200" placeholder="Ask me anything..." aria-label="Your question" required><button class="ai-send" aria-label="Send"><i class="fas fa-arrow-up"></i></button></form>`;
   document.body.append(launcher, panel);

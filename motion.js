@@ -103,7 +103,7 @@
 
   const suggestions = document.createElement("div");
   suggestions.className = "ai-suggestions";
-  ["Best projects?", "Technical skills?", "Why hire Kosala?"].forEach((label) => {
+  ["What can Kosala build?", "View project experience", "Start a software project"].forEach((label) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "ai-suggestion";

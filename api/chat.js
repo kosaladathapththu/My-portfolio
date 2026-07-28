@@ -1,10 +1,10 @@
-const context = `Kosala Daneshwara is a software engineer experienced in web,
+const context = `Kosala Daneshwara provides software project development services across web,
 mobile, database, IoT, and desktop development. Projects include a Personal
 Financial Management System (PHP, Oracle, SQLite, PL/SQL), Hotel Management
 System (Spring Boot, React, MySQL, microservices), Hostel Management System,
 PizzaMania Android app, Landslide Early Warning IoT system, River Trash
 Collector Robot, and C# Library Management System. Answer only from this
-portfolio context. Be concise and professional. If unsure, say so.`;
+portfolio context. Help potential clients understand his services and project fit. Be concise and professional. If unsure, say so.`;
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
