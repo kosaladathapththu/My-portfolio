@@ -52,6 +52,19 @@
     section.dataset.showcaseIndex = String(index + 1).padStart(2, "0");
   });
 
+  /* Section-level scroll transitions */
+  const sectionTransitions = [...document.querySelectorAll("section:not(.hero) > .section-container, footer .footer-content")];
+  sectionTransitions.forEach((item, index) => {
+    item.classList.add("section-transition", index % 2 ? "section-from-right" : "section-from-left");
+    item.style.setProperty("--section-index", String(index));
+  });
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("is-section-visible");
+      else if (entry.intersectionRatio === 0) entry.target.classList.remove("is-section-visible");
+    }), { threshold: [0, .12], rootMargin: "-5% 0px -9% 0px" });
+    sectionTransitions.forEach(item => sectionObserver.observe(item));
+  } else sectionTransitions.forEach(item => item.classList.add("is-section-visible"));
   const revealItems = document.querySelectorAll(".section-header,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.game-shell,.memory-shell,.form-card");
   revealItems.forEach((item, index) => {
     item.classList.add("showcase-reveal");
