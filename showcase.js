@@ -44,7 +44,7 @@
       bandTrack.append(item);
     });
     band.append(bandTrack);
-    codefield.append(band);
+    (document.querySelector(".portrait-stage") || codefield).append(band);
   });
   document.body.prepend(codefield);
 
