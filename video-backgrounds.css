@@ -11,3 +11,16 @@ body.light .section-video-shade{background:linear-gradient(90deg,rgba(247,243,23
 body.light #mini-game .section-video-shade{background:linear-gradient(110deg,rgba(241,247,240,.94),rgba(241,247,240,.72),rgba(241,247,240,.91))}
 @media(max-width:700px){.section-video-bg video{opacity:.14;object-position:center}.section-video-shade{background:linear-gradient(180deg,rgba(18,19,16,.84),rgba(18,19,16,.94))}body.light .section-video-shade{background:linear-gradient(180deg,rgba(247,243,236,.84),rgba(247,243,236,.95))}}
 @media(prefers-reduced-motion:reduce){.section-video-bg{display:none}}
+/* Visibility correction: keep motion obvious without reducing readability. */
+#about::before,#mini-game::before{display:none!important}
+.section-video-bg{z-index:1!important}
+.section-video-bg video{opacity:.48!important;filter:saturate(.9) contrast(1.1) brightness(.82)!important}
+.section-video-shade{background:linear-gradient(90deg,rgba(18,19,16,.76) 0%,rgba(18,19,16,.38) 48%,rgba(18,19,16,.68) 100%),linear-gradient(180deg,rgba(18,19,16,.34),rgba(18,19,16,.7))!important}
+#mini-game .section-video-bg video{opacity:.55!important;filter:saturate(1) contrast(1.12) brightness(.78)!important}
+#mini-game .section-video-shade{background:linear-gradient(115deg,rgba(10,17,14,.66),rgba(10,17,14,.3) 52%,rgba(10,17,14,.62)),linear-gradient(180deg,rgba(10,17,14,.26),rgba(10,17,14,.7))!important}
+body:not(.light) #mini-game :is(.game-shell,.memory-shell){background:linear-gradient(145deg,rgba(24,35,29,.78),rgba(13,22,17,.82))!important;backdrop-filter:blur(7px) saturate(1.05)!important}
+body:not(.light) #about .opportunity-card{background:linear-gradient(135deg,rgba(30,32,27,.82),rgba(20,21,18,.86))!important;backdrop-filter:blur(6px)!important}
+body.light .section-video-bg video{opacity:.34!important;filter:saturate(.82) contrast(1.02) brightness(1.08)!important}
+body.light .section-video-shade{background:linear-gradient(90deg,rgba(247,243,236,.78),rgba(247,243,236,.48),rgba(247,243,236,.72))!important}
+body.light #mini-game :is(.game-shell,.memory-shell){background:rgba(255,255,255,.8)!important;backdrop-filter:blur(7px)!important}
+@media(max-width:700px){.section-video-bg video{opacity:.34!important}.section-video-shade{background:linear-gradient(180deg,rgba(18,19,16,.6),rgba(18,19,16,.8))!important}#mini-game .section-video-bg video{opacity:.4!important}body.light .section-video-shade{background:linear-gradient(180deg,rgba(247,243,236,.68),rgba(247,243,236,.86))!important}}
