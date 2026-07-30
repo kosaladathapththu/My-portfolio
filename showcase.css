@@ -117,7 +117,7 @@ body.light .portrait-orbit-guide{opacity:.58;filter:drop-shadow(0 0 4px rgba(79,
 /* Hire Me CTA positioned at the page top. */
 .hire-me-fixed{left:auto!important;right:22px!important;top:22px!important;bottom:auto!important;z-index:5100!important}@media(max-width:1500px){.hire-me-fixed{top:92px!important;right:16px!important}}@media(max-width:900px){.hire-me-fixed{top:72px!important;right:10px!important;left:auto!important;bottom:auto!important}}@media(max-width:480px){.hire-me-fixed{top:68px!important;right:9px!important}}
 /* Face the portrait toward the portfolio content. */
-.portrait-stage>img{animation-name:portraitBreatheLeft!important}
+.portrait-stage>img{animation-name:portraitBreatheLeft!important;scale:-1 1!important}
 @keyframes portraitBreatheLeft{
   0%,100%{transform:scaleX(-1) translateY(0)}
   50%{transform:scaleX(-1) translateY(-8px)}
