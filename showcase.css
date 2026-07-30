@@ -122,3 +122,18 @@ body.light .portrait-orbit-guide{opacity:.58;filter:drop-shadow(0 0 4px rgba(79,
   0%,100%{transform:scaleX(-1) translateY(0)}
   50%{transform:scaleX(-1) translateY(-8px)}
 }
+/* Final hero motion and mobile flow overrides. */
+.hero-content h1 span{animation:nameRainbowPulse 2.6s ease-in-out infinite!important;transform:none!important}
+.portrait-stage>img{animation:portraitGentleFloat 3.4s ease-in-out infinite!important;scale:-1 1!important}
+@keyframes portraitGentleFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+@media(max-width:900px){
+  .hero-container{display:flex!important;flex-direction:column!important;gap:1rem!important}
+  .hero-content{order:1!important}
+  .hero-portrait{order:2!important;margin-top:-3rem!important;transform:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-content h1 span,.portrait-stage>img{animation:none!important}
+}
