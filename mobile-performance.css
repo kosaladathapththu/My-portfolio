@@ -1,0 +1,12 @@
+/* Mobile rendering budget: keep the design while avoiding costly work during touch scrolling. */
+@media (max-width: 900px) {
+  html { scroll-behavior: auto !important; }
+  .showcase-ambient,.showcase-grid,.showcase-codefield,.motion-aurora,.particles,.shapes,.grid-bg,.orbs,.fx-mesh { display: none !important; }
+  nav,.nav-links,.nav-overlay,.highlight-card,.skill-card,.project-card,.education-item,.cert-item,.form-card,.projects-toolbar,.experience-card,.opportunity-card,.hire-me-fixed { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .motion-item { filter: none !important; transition-duration: .5s !important; }
+  .section-transition { filter: none !important; transition-duration: .55s !important; will-change: auto !important; }
+  .section-transition.is-section-visible :is(.opportunity-card,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.form-card,.footer-content) { animation-duration: .52s !important; }
+  html.mobile-scrolling .ai-launcher { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+  html.mobile-scrolling .hire-me-fixed { animation-play-state: paused !important; }
+  .hero-content h1 span,.portrait-stage > img,.opportunity-status span,.hire-me-fixed,.hire-me-dot { animation-duration: 4s !important; }
+}

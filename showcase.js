@@ -83,7 +83,15 @@
     const total = document.documentElement.scrollHeight - innerHeight;
     document.documentElement.style.setProperty("--sc-progress", `${total > 0 ? Math.min(100, scrollY / total * 100) : 0}%`);
   };
-  addEventListener("scroll", updateProgress, { passive: true });
+  let progressFrame;
+  const requestProgressUpdate = () => {
+    if (progressFrame) return;
+    progressFrame = requestAnimationFrame(() => {
+      progressFrame = 0;
+      updateProgress();
+    });
+  };
+  addEventListener("scroll", requestProgressUpdate, { passive: true });
   updateProgress();
 
   const contactRail = document.getElementById("contactRail");
@@ -113,7 +121,14 @@
       scheduleRailHide();
     };
 
-    addEventListener("scroll", revealContactRail, { passive: true });
+    let railScrollFrame;
+    addEventListener("scroll", () => {
+      if (railScrollFrame) return;
+      railScrollFrame = requestAnimationFrame(() => {
+        railScrollFrame = 0;
+        revealContactRail();
+      });
+    }, { passive: true });
     addEventListener("pointermove", (event) => {
       if (event.clientX >= innerWidth - edgeRevealWidth) revealContactRail();
     }, { passive: true });
