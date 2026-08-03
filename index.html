@@ -438,6 +438,10 @@ body.light .chip.active{background:rgba(6,182,212,.18);border-color:rgba(6,182,2
 .project-card ul{list-style:none;margin-bottom:1.25rem;color:var(--gray);position:relative;z-index:2}
 .project-card li{padding-left:1.35rem;position:relative;margin-bottom:.65rem;line-height:1.6}
 .project-card li::before{content:'\2192';position:absolute;left:0;color:var(--primary);font-weight:900}
+.project-proof{display:flex;flex-wrap:wrap;gap:.5rem;margin:-.3rem 0 1rem;position:relative;z-index:2}
+.project-proof span{padding:.38rem .62rem;border:1px solid var(--border);border-radius:999px;color:var(--gray);font-size:.75rem;line-height:1.25;background:rgba(255,255,255,.035)}
+.project-proof b{color:var(--secondary);margin-right:.25rem}
+@media(max-width:560px){.hero-label{max-width:100%;flex-wrap:wrap;line-height:1.4}.project-proof{gap:.4rem}.project-proof span{font-size:.7rem}.certifications-toggle{width:100%;min-width:0}}
 .project-link{
   display:inline-flex;align-items:center;gap:.5rem;color:var(--primary);
   text-decoration:none;font-weight:900;transition:all .25s;position:relative;z-index:2
@@ -479,6 +483,10 @@ body.light .chip.active{background:rgba(6,182,212,.18);border-color:rgba(6,182,2
 .cert-item i{color:var(--secondary);font-size:1.8rem;margin-top:.25rem}
 .cert-content strong{color:#fff;display:block;margin-bottom:.25rem}
 .cert-content{color:var(--gray);line-height:1.6}
+.certs-grid .cert-item:nth-child(n+9){display:none}
+#certifications.certifications-expanded .certs-grid .cert-item{display:flex}
+.certifications-actions{display:flex;justify-content:center;margin-top:2rem}
+.certifications-toggle{min-width:230px;justify-content:center}
 
 /* Contact form */
 .form-wrap{max-width:900px;margin:0 auto}
@@ -719,7 +727,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
 <link rel="stylesheet" href="mobile-fix.css?v=2"/>
 <link rel="stylesheet" href="showcase.css?v=38"/>
 <link rel="stylesheet" href="light-premium.css?v=1"/>
-<link rel="stylesheet" href="dark-signature.css?v=11"/>
+<link rel="stylesheet" href="dark-signature.css?v=12"/>
 <link rel="stylesheet" href="video-backgrounds.css?v=4"/>
 <link rel='stylesheet' href='chatbot-beauty.css?v=6'/>
 </head>
@@ -788,7 +796,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
 <section class="hero" id="home">
   <div class="hero-container">
     <div class="hero-content">
-      <div class="hero-label"><i class="fas fa-laptop-code"></i> Software Project Developer</div>
+      <div class="hero-label"><i class="fas fa-laptop-code"></i> Software Developer | Full-Stack, IoT &amp; Dashboard Solutions</div>
       <h1>Hi, I'm <span class="gradient-text">Kosala Daneshwara</span></h1>
       <p>I design and build reliable digital products for businesses and individuals—from full-stack platforms and mobile applications to scalable APIs, dashboards, and IoT solutions.</p>
 
@@ -796,8 +804,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
         <div class="stat"><div class="stat-number">30+</div><div class="stat-label">Projects</div></div>
         <div class="stat"><div class="stat-number">10+</div><div class="stat-label">Technologies</div></div>
         <div class="stat"><div class="stat-number">18+</div><div class="stat-label">Certifications</div></div>
-        <div class="stat stat-views"><div class="stat-number" id="profileViewCount" aria-live="polite">—</div><div class="stat-label">Profile Views</div></div>
-      </div>
+     </div>
 
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary"><span><i class="fas fa-rocket"></i> Explore Project Work</span></a>
@@ -935,6 +942,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <li>Integrated Node-RED API inputs and visualized plant status, power, energy, telemetry, and KPI values</li>
           <li>Created dashboard concepts and animated monitoring visualizations</li>
         </ul>
+        <div class="project-proof"><span><b>Role</b> Frontend Developer</span><span><b>Status</b> Professional project</span></div>
       </div>
 
       <div class="project-card" data-title="Solar Soiling Detection ML Project" data-img="" data-desc="React and Flask workflow for solar soiling prediction and accuracy checking." data-tech="React, Flask, Machine Learning, REST API">
@@ -946,6 +954,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <li>Connected the React frontend to Flask prediction APIs</li>
           <li>Designed clear prediction and result-display workflows</li>
         </ul>
+        <div class="project-proof"><span><b>Role</b> Frontend &amp; API Integration</span><span><b>Status</b> ML prototype</span></div>
       </div>
 
       <div class="project-card" data-title="AC Service Management System" data-img="" data-desc="Client-ready service management system for Supun Group of Companies using Google Sheets and Apps Script." data-tech="React, Google Sheets, Google Apps Script, Email Automation">
@@ -957,6 +966,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <li>Synchronized customers, service records, job status, and orders through Apps Script APIs</li>
           <li>Supported automated reminders, searching, filtering, and operational status updates</li>
         </ul>
+        <div class="project-proof"><span><b>Role</b> Full-Stack Developer</span><span><b>Result</b> Centralized service workflow</span><span><b>Status</b> Client system</span></div>
       </div>
 
       <div class="project-card" data-title="Centination Website" data-img="" data-desc="Responsive, performance-focused live website with custom UI and domain integration." data-tech="HTML, CSS, JavaScript, Live Deployment">
@@ -968,6 +978,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <li>Improved frontend performance and completed domain integration</li>
           <li>Delivered a production website for live use</li>
         </ul>
+        <div class="project-proof"><span><b>Role</b> Frontend Developer</span><span><b>Status</b> Live production website</span></div>
         <a href="https://centination.com" target="_blank" rel="noopener" class="project-link">Visit Website <i class="fas fa-arrow-right"></i></a>
       </div>
 
@@ -980,6 +991,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <li>Uses adaptive thresholds and device context such as battery, urgency, risk, CPU, and memory state</li>
           <li>Supports sound, motion, environmental, and custom sensor-gating modules</li>
         </ul>
+        <div class="project-proof"><span><b>Role</b> IoT &amp; Edge Developer</span><span><b>Status</b> Live demo</span></div>
         <a href='https://caad-gate.netlify.app/' target='_blank' rel='noopener' class='project-link'>Visit CAAD Gate <i class='fas fa-arrow-right'></i></a>
       </div>
 
@@ -992,6 +1004,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <li>Manages inventory, products, sales, customers, suppliers, and advance-payment transactions</li>
           <li>Supports bulk product creation using a structured Excel template sheet</li>
         </ul>
+        <div class="project-proof"><span><b>Role</b> Full-Stack ERP Developer</span><span><b>Status</b> Private client system</span></div>
       </div>
 
       <div class='project-card' data-title='Online Payments Fraud Detection' data-img='' data-desc='Machine-learning pipeline for detecting fraudulent online transactions in a highly imbalanced dataset.' data-tech='Python, Scikit-learn, SMOTE, Random Forest, Machine Learning, Jupyter'>
@@ -1003,6 +1016,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <li>Applied SMOTE only to training data to improve fraud-class detection without data leakage</li>
           <li>Compared Logistic Regression, Decision Tree, and Random Forest models with detailed evaluation metrics</li>
         </ul>
+        <div class="project-proof"><span><b>Role</b> ML Developer</span><span><b>Status</b> GitHub case study</span></div>
         <a href='https://github.com/kosaladathapththu/Online-Payments-Fraud-Detection' target='_blank' rel='noopener' class='project-link'>View ML Project <i class='fas fa-arrow-right'></i></a>
       </div>
 
@@ -1137,7 +1151,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
       <article class="education-item" data-step="02">
         <div class="education-icon education-icon-ssc"><img class="ssc-education-logo" src="ssc logo.jpg" alt="Wariyapola Sri Sumangala College logo" loading="lazy"/></div>
         <div class="education-copy">
-          <div class="education-meta"><span class="education-status school">Advanced Level</span><span class="education-result"><b>1 C</b><b>2 S</b></span></div>
+          <div class="education-meta"><span class="education-status school">Advanced Level</span><span class="education-result"><b>G.C.E. A/L – 1C, 2S</b></span></div>
           <h3>G.C.E. Advanced Level <span>(Physical Science)</span></h3>
           <div class="education-school"><i class="fas fa-school"></i> Wariyapola Sri Sumangala M.M.V</div>
         </div>
@@ -1145,7 +1159,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
       <article class="education-item" data-step="01">
         <div class="education-icon education-icon-ssc"><img class="ssc-education-logo" src="ssc logo.jpg" alt="Wariyapola Sri Sumangala College logo" loading="lazy"/></div>
         <div class="education-copy">
-          <div class="education-meta"><span class="education-status school">Ordinary Level</span><span class="education-result"><b>7 A</b><b>2 B</b></span></div>
+          <div class="education-meta"><span class="education-status school">Ordinary Level</span><span class="education-result"><b>G.C.E. O/L – 7A, 2B</b></span></div>
           <h3>G.C.E. Ordinary Level <span>(O/L)</span></h3>
           <div class="education-school"><i class="fas fa-school"></i> Wariyapola Sri Sumangala M.M.V</div>
         </div>
@@ -1165,7 +1179,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
     <div class="section-header">
       <div class="section-label"><i class="fas fa-certificate"></i> Certifications</div>
       <h2>Professional Credentials</h2>
-      <p>All certifications added from LinkedIn</p>
+      <p>A focused selection of credentials across cloud, databases, AI, APIs, and software development.</p>
     </div>
     <div class="certs-grid">
       <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Oracle Data Platform 2025 Certified Foundations Associate</strong>Oracle — Issued Dec 2025</div></div>
@@ -1186,6 +1200,9 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
       <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Web Development</strong>SoloLearn — Issued Jan 2025</div></div>
       <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>Quantum Computing Fundamentals & Azure Quantum Development Kit</strong>Microsoft Learn Student Ambassadors — Issued 2025</div></div>
       <div class="cert-item"><i class="fas fa-certificate"></i><div class="cert-content"><strong>TS: Microsoft Learn Student Ambassador - Navigate GitHub Copilot</strong>Microsoft Learn Student Ambassadors — Issued 2025</div></div>
+    </div>
+    <div class="certifications-actions">
+      <button class="btn btn-secondary certifications-toggle" id="certificationsToggle" type="button" aria-expanded="false"><span><i class="fas fa-award"></i> View All Certifications</span></button>
     </div>
   </div>
 </section>
@@ -1221,12 +1238,11 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
           <input type="hidden" name="_template" value="table">
 
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit"><span><i class="fas fa-paper-plane"></i> Send</span></button>
+            <button class="btn btn-primary" type="submit"><span><i class="fas fa-paper-plane"></i> Send Project Inquiry</span></button>
             <a class="btn btn-secondary" href="mailto:kosalaathapaththu1234@gmail.com"><span><i class="fas fa-envelope"></i> Email Direct</span></a>
           </div>
 
-          <div class="status"><i class="fas fa-circle-info"></i> After clicking Send, FormSubmit will open and send the email.</div>
-        </form>
+       </form>
       </div>
     </div>
   </div>
@@ -1385,6 +1401,17 @@ document.querySelectorAll(".project-card").forEach(card=>{
 modalClose.addEventListener("click",closeModal);
 modal.addEventListener("click",(e)=>{ if(e.target===modal) closeModal(); });
 
+/* Certification preview */
+const certificationsSection=document.getElementById("certifications");
+const certificationsToggle=document.getElementById("certificationsToggle");
+if(certificationsSection&&certificationsToggle){
+  certificationsToggle.addEventListener("click",()=>{
+    const expanded=certificationsSection.classList.toggle("certifications-expanded");
+    certificationsToggle.setAttribute("aria-expanded",String(expanded));
+    certificationsToggle.querySelector("span").innerHTML=expanded?'<i class="fas fa-chevron-up"></i> Show Featured Certifications':'<i class="fas fa-award"></i> View All Certifications';
+  });
+}
+
 /* Particles */
 const particlesContainer=document.getElementById("particles");
 for(let i=0;i<26;i++){
@@ -1437,7 +1464,7 @@ document.addEventListener("keydown",(e)=>{
 <script src="game2-beauty.js?v=1"></script>
 <script src="replicate-chat.js?v=2"></script>
 <script src="showcase.js?v=17"></script>
-<script src="profile-views.js?v=1"></script>
+
 <script src="ui-protection.js?v=1"></script>
 <script src="video-backgrounds.js?v=1"></script>
 </body>
