@@ -61,12 +61,13 @@
   });
   if ("IntersectionObserver" in window) {
     const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("is-section-visible");
-      else if (entry.intersectionRatio === 0) entry.target.classList.remove("is-section-visible");
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-section-visible");
+      sectionObserver.unobserve(entry.target);
     }), { threshold: [0, .12], rootMargin: "-5% 0px -9% 0px" });
     sectionTransitions.forEach(item => sectionObserver.observe(item));
   } else sectionTransitions.forEach(item => item.classList.add("is-section-visible"));
-  const revealItems = document.querySelectorAll(".section-header,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.game-shell,.memory-shell,.form-card");
+  const revealItems = [...document.querySelectorAll(".section-header,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.game-shell,.memory-shell,.form-card")].filter(item => !item.closest(".section-transition"));
   revealItems.forEach((item, index) => {
     item.classList.add("showcase-reveal");
     item.style.setProperty("--sc-delay", `${(index % 4) * 65}ms`);

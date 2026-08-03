@@ -117,7 +117,7 @@
   });
   document.querySelector(".ai-messages")?.appendChild(suggestions);
   if (reduced || !("IntersectionObserver" in window)) return;
-  const targets = document.querySelectorAll(".section-header, .highlight-card, .skill-card, .project-card, .education-item, .cert-item, .form-card, .experience-card");
+  const targets = [...document.querySelectorAll(".section-header, .highlight-card, .skill-card, .project-card, .education-item, .cert-item, .form-card, .experience-card")].filter(element => !element.closest(".section-transition"));
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
