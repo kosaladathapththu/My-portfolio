@@ -20,10 +20,17 @@
     @keyframes botFloat{0%,100%{transform:translateY(1px) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
     @keyframes botHello{0%,100%{transform:rotate(0)}30%{transform:rotate(-10deg) scale(1.08)}65%{transform:rotate(8deg) scale(1.08)}}
     @keyframes botThink{to{transform:translateY(-3px) rotate(5deg) scale(1.06)}}
-    .motion-item{opacity:0;transform:translateY(34px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1);transition-delay:var(--motion-delay,0ms)}
-    .motion-item.motion-in{opacity:1;transform:none}
-    .section-header.motion-item{transform:translateY(24px)}
-    .project-card.motion-item,.skill-card.motion-item,.highlight-card.motion-item,.cert-item.motion-item{will-change:transform}
+    .motion-item{opacity:0;transform:translate3d(0,30px,0);filter:blur(6px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .7s ease!important;transition-delay:var(--motion-delay,0ms)!important}
+    .motion-item.motion-in{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+    .section-header.motion-item{transform:translate3d(0,25px,0)}
+    .motion-item.motion-left{transform:translate3d(-30px,0,0)}
+    .motion-item.motion-right{transform:translate3d(30px,0,0)}
+    .motion-item.motion-scale{transform:scale(.97)}
+    .motion-item.motion-left.motion-in,.motion-item.motion-right.motion-in{transform:translate3d(0,0,0)}
+    .motion-item.motion-scale.motion-in{transform:scale(1)}
+    .project-card.motion-item,.skill-card.motion-item,.highlight-card.motion-item,.cert-item.motion-item{will-change:transform,opacity,filter}
+    .education-timeline.motion-line::before{transform:scaleY(0);transform-origin:top;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+    .education-timeline.motion-line.motion-in::before{transform:scaleY(1)}
     .project-card.motion-in:hover,.skill-card.motion-in:hover,.highlight-card.motion-in:hover,.cert-item.motion-in:hover{transform:translateY(-8px) perspective(900px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg))!important}
     .nav-container{animation:navArrival .7s cubic-bezier(.2,.7,.2,1) both}
     @keyframes navArrival{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
@@ -75,7 +82,8 @@
     @keyframes botThinkLarge{to{transform:translateY(-7px) rotate(7deg) scale(1.08)}}
     @keyframes cloudThink{0%,100%{transform:scale(1)}50%{transform:scale(1.04) translateY(-4px)}}
     @media(max-width:560px){.ai-launcher{width:246px!important;height:124px!important;min-height:124px!important}.ai-bot{width:80px!important;height:80px!important}.ai-bot__image{width:80px!important;height:80px!important}.ai-launcher::before{width:80px!important;height:80px!important}.ai-cloud{top:3px!important;max-width:180px!important;min-height:50px!important;padding:10px 15px!important}}
-    @media(prefers-reduced-motion:reduce){.motion-aurora::before,.motion-aurora::after,.ai-launcher::before,.ai-bot::before,.ai-bot,.ai-bot__image,.ai-cloud,.nav-container,.hero-content>*,.profile-card{animation:none!important}.motion-item{opacity:1;transform:none;transition:none}}
+    @media(max-width:700px){.motion-item.motion-left{transform:translate3d(-18px,0,0)}.motion-item.motion-right{transform:translate3d(18px,0,0)}.motion-item{filter:blur(4px)}.motion-item.motion-in{transform:translate3d(0,0,0);filter:none}}
+    @media(prefers-reduced-motion:reduce){.motion-aurora::before,.motion-aurora::after,.ai-launcher::before,.ai-bot::before,.ai-bot,.ai-bot__image,.ai-cloud,.nav-container,.hero-content>*,.profile-card{animation:none!important}.motion-item{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}.education-timeline.motion-line::before{transform:none!important;transition:none!important}}
   `;
   document.head.appendChild(style);
 
@@ -117,19 +125,43 @@
   });
   document.querySelector(".ai-messages")?.appendChild(suggestions);
   if (reduced || !("IntersectionObserver" in window)) return;
-  const targets = [...document.querySelectorAll(".section-header, .highlight-card, .skill-card, .project-card, .education-item, .cert-item, .form-card, .experience-card")].filter(element => !element.closest(".section-transition"));
+  const revealGroups = [
+    { selector: ".section-header", type: "up", stagger: 0 },
+    { selector: "#about .opportunity-copy", type: "left", stagger: 0 },
+    { selector: "#about .opportunity-action", type: "right", stagger: 0 },
+    { selector: ".highlight-card", type: "up", stagger: 100 },
+    { selector: ".skill-card", type: "up", stagger: 90 },
+    { selector: ".project-card", type: "alternate", stagger: 90 },
+    { selector: ".experience-card", type: "up", stagger: 0 },
+    { selector: ".education-item", type: "up", stagger: 100 },
+    { selector: ".cert-item", type: "up", stagger: 85 },
+    { selector: ".form-card", type: "scale", stagger: 0 }
+  ];
+  const targets = [];
+  revealGroups.forEach(({ selector, type, stagger }) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      if (element.closest(".section-transition")) return;
+      element.classList.add("motion-item");
+      if (type === "left" || (type === "alternate" && index % 2 === 0)) element.classList.add("motion-left");
+      if (type === "right" || (type === "alternate" && index % 2 === 1)) element.classList.add("motion-right");
+      if (type === "scale") element.classList.add("motion-scale");
+      element.style.setProperty("--motion-delay", `${Math.min(index, 5) * stagger}ms`);
+      targets.push(element);
+    });
+  });
+  const educationTimeline = document.querySelector(".education-timeline");
+  if (educationTimeline) {
+    educationTimeline.classList.add("motion-line");
+    targets.push(educationTimeline);
+  }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add("motion-in");
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.1, rootMargin: "0px 0px -7% 0px" });
-  targets.forEach((element, index) => {
-    element.classList.add("motion-item");
-    element.style.setProperty("--motion-delay", `${(index % 3) * 70}ms`);
-    observer.observe(element);
-  });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  targets.forEach((element) => observer.observe(element));
 
   if (window.matchMedia("(pointer:fine)").matches) {
     document.querySelectorAll(".project-card, .skill-card, .highlight-card, .cert-item").forEach((card) => {
