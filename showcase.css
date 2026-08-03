@@ -157,3 +157,7 @@ body.light .certificates-backdrop-shade{background:radial-gradient(ellipse at ce
 body.light #certifications .cert-item{background:rgba(255,255,255,.78)!important;backdrop-filter:blur(6px) saturate(1.02)!important}
 @media(max-width:700px){.certificate-sheet{width:86vw;max-width:500px;opacity:.32}.certificate-sheet-solo{left:-32%;top:5%;transform:rotate(-7deg)}.certificate-sheet-oracle{right:-32%;top:5%;width:80vw;opacity:.27;transform:rotate(7deg)}.certificate-sheet-sql{left:50%;right:auto;bottom:3%;transform:translateX(-50%) rotate(2deg)}.certificates-backdrop-shade{background:linear-gradient(180deg,rgba(18,19,16,.68),rgba(18,19,16,.5) 45%,rgba(18,19,16,.72))}body.light .certificate-sheet{opacity:.28}body.light .certificate-sheet-oracle{opacity:.24}body.light .certificates-backdrop-shade{background:linear-gradient(180deg,rgba(247,243,236,.72),rgba(247,243,236,.55) 45%,rgba(247,243,236,.76))}}
 @media(prefers-reduced-motion:reduce){.certificate-sheet{will-change:auto}}
+/* Keep the quick-contact rail clear of the assistant launcher. */
+body.contact-rail-active .ai-launcher{right:105px!important}
+body.ai-open .contact-rail{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translate3d(145%,-50%,0) scale(.92)!important}
+@media(max-width:900px){body.contact-rail-active .ai-launcher{right:78px!important}}

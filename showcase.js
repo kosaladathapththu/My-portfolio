@@ -96,6 +96,7 @@
     const setContactRailVisible = (visible) => {
       contactRail.classList.toggle("is-visible", visible);
       contactRail.setAttribute("aria-hidden", String(!visible));
+      document.body.classList.toggle("contact-rail-active", visible);
     };
     const cancelRailHide = () => clearTimeout(railHideTimer);
     const scheduleRailHide = () => {
@@ -104,6 +105,10 @@
       railHideTimer = setTimeout(() => setContactRailVisible(false), railHideDelay);
     };
     const revealContactRail = () => {
+      if (document.body.classList.contains("ai-open")) {
+        setContactRailVisible(false);
+        return;
+      }
       setContactRailVisible(true);
       scheduleRailHide();
     };
@@ -133,6 +138,12 @@
     });
     contactRail.addEventListener("click", revealContactRail);
     addEventListener("resize", scheduleRailHide, { passive: true });
+    new MutationObserver(() => {
+      if (document.body.classList.contains("ai-open")) {
+        cancelRailHide();
+        setContactRailVisible(false);
+      }
+    }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
     if (scrollY > 0) revealContactRail();
     else setContactRailVisible(false);
