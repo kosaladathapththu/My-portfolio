@@ -1,0 +1,13 @@
+/* Lightweight desktop pointer accent; the native cursor remains visible. */
+@media (hover:hover) and (pointer:fine) {
+  .cursor-aura,.cursor-ring{position:fixed;left:0;top:0;z-index:7000;pointer-events:none;opacity:0;will-change:transform,opacity;transform:translate3d(-100px,-100px,0);transition:opacity .2s ease,width .2s ease,height .2s ease,border-color .2s ease,background .2s ease}
+  .cursor-aura{width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:#e88b55;box-shadow:0 0 18px rgba(232,139,85,.58)}
+  .cursor-ring{width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid rgba(232,139,85,.52);border-radius:50%;background:rgba(232,139,85,.035);box-shadow:0 0 24px rgba(232,139,85,.1)}
+  html.cursor-active .cursor-aura,html.cursor-active .cursor-ring{opacity:1}
+  html.cursor-interactive .cursor-ring{width:48px;height:48px;margin:-24px 0 0 -24px;border-color:rgba(159,182,154,.8);background:rgba(159,182,154,.08)}
+  html.cursor-interactive .cursor-aura{background:#b7c9af;box-shadow:0 0 22px rgba(183,201,175,.65)}
+  html.cursor-pressed .cursor-ring{width:27px;height:27px;margin:-13.5px 0 0 -13.5px;border-color:#f2b77f;background:rgba(242,183,127,.15)}
+  body.light .cursor-aura{background:#cc6c38;box-shadow:0 0 16px rgba(204,108,56,.38)}
+  body.light .cursor-ring{border-color:rgba(164,76,34,.5);background:rgba(204,108,56,.025)}
+}
+@media (prefers-reduced-motion:reduce),(hover:none),(pointer:coarse){.cursor-aura,.cursor-ring{display:none!important}}
