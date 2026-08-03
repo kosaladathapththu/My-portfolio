@@ -4,27 +4,23 @@
   if (!finePointer.matches || reducedMotion.matches) return;
 
   const aura = document.createElement("span");
-  const ring = document.createElement("span");
   aura.className = "cursor-aura";
-  ring.className = "cursor-ring";
   aura.setAttribute("aria-hidden", "true");
-  ring.setAttribute("aria-hidden", "true");
-  document.body.append(aura, ring);
+  document.body.append(aura);
 
   let targetX = -100;
   let targetY = -100;
-  let ringX = -100;
-  let ringY = -100;
+  let glowX = -100;
+  let glowY = -100;
   let frame = 0;
   let initialized = false;
 
   const render = () => {
     frame = 0;
-    ringX += (targetX - ringX) * .2;
-    ringY += (targetY - ringY) * .2;
-    aura.style.transform = `translate3d(${targetX}px,${targetY}px,0)`;
-    ring.style.transform = `translate3d(${ringX}px,${ringY}px,0)`;
-    if (Math.abs(targetX - ringX) > .12 || Math.abs(targetY - ringY) > .12) frame = requestAnimationFrame(render);
+    glowX += (targetX - glowX) * .28;
+    glowY += (targetY - glowY) * .28;
+    aura.style.transform = `translate3d(${glowX}px,${glowY}px,0)`;
+    if (Math.abs(targetX - glowX) > .12 || Math.abs(targetY - glowY) > .12) frame = requestAnimationFrame(render);
   };
   const requestRender = () => {
     if (!frame) frame = requestAnimationFrame(render);
@@ -35,8 +31,8 @@
     targetY = event.clientY;
     if (!initialized) {
       initialized = true;
-      ringX = targetX;
-      ringY = targetY;
+      glowX = targetX;
+      glowY = targetY;
       document.documentElement.classList.add("cursor-active");
     }
     const interactive = event.target.closest?.("a,button,input,textarea,.project-card,.skill-card,.cert-item");
