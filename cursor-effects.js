@@ -1,74 +1,74 @@
 (() => {
-  const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
-  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  if (!finePointer.matches || reducedMotion.matches) return;
+  if (innerWidth <= 900) return;
 
+  const canvas = document.createElement("canvas");
   const aura = document.createElement("span");
+  canvas.className = "cursor-canvas";
   aura.className = "cursor-aura";
+  canvas.setAttribute("aria-hidden", "true");
   aura.setAttribute("aria-hidden", "true");
-  const sparks = Array.from({ length: 8 }, () => {
-    const spark = document.createElement("span");
-    spark.className = "cursor-spark";
-    spark.setAttribute("aria-hidden", "true");
-    return spark;
-  });
-  document.body.append(aura, ...sparks);
+  document.body.append(canvas, aura);
 
-  let targetX = -100;
-  let targetY = -100;
-  let glowX = -100;
-  let glowY = -100;
+  const context = canvas.getContext("2d", { alpha: true });
+  const points = [];
+  let pixelRatio = 1;
   let frame = 0;
-  let initialized = false;
-  let sparkIndex = 0;
-  let lastSparkAt = 0;
-  let lastSparkX = -100;
-  let lastSparkY = -100;
+  let lastX = -100;
+  let lastY = -100;
 
-  const render = () => {
+  const resize = () => {
+    pixelRatio = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(innerWidth * pixelRatio);
+    canvas.height = Math.round(innerHeight * pixelRatio);
+    canvas.style.width = `${innerWidth}px`;
+    canvas.style.height = `${innerHeight}px`;
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  };
+  const draw = () => {
     frame = 0;
-    glowX += (targetX - glowX) * .35;
-    glowY += (targetY - glowY) * .35;
-    aura.style.transform = `translate3d(${glowX}px,${glowY}px,0)`;
-    if (Math.abs(targetX - glowX) > .1 || Math.abs(targetY - glowY) > .1) frame = requestAnimationFrame(render);
+    context.clearRect(0, 0, innerWidth, innerHeight);
+    for (let index = points.length - 1; index >= 0; index -= 1) {
+      const point = points[index];
+      point.life -= .055;
+      point.y += .16;
+      if (point.life <= 0) {
+        points.splice(index, 1);
+        continue;
+      }
+      const radius = 1.8 + point.life * 3.8;
+      const gradient = context.createRadialGradient(point.x, point.y, 0, point.x, point.y, radius * 2.2);
+      gradient.addColorStop(0, `rgba(${point.green ? "190,226,180" : "255,169,99"},${point.life * .92})`);
+      gradient.addColorStop(.45, `rgba(${point.green ? "151,190,143" : "235,121,64"},${point.life * .42})`);
+      gradient.addColorStop(1, "rgba(0,0,0,0)");
+      context.fillStyle = gradient;
+      context.beginPath();
+      context.arc(point.x, point.y, radius * 2.2, 0, Math.PI * 2);
+      context.fill();
+    }
+    if (points.length) frame = requestAnimationFrame(draw);
   };
-  const requestRender = () => {
-    if (!frame) frame = requestAnimationFrame(render);
-  };
-  const emitSpark = (x, y, now) => {
-    const distance = Math.hypot(x - lastSparkX, y - lastSparkY);
-    if (now - lastSparkAt < 34 || distance < 8) return;
-    lastSparkAt = now;
-    lastSparkX = x;
-    lastSparkY = y;
-    const spark = sparks[sparkIndex++ % sparks.length];
-    spark.getAnimations().forEach((animation) => animation.cancel());
-    spark.animate([
-      { opacity: .78, transform: `translate3d(${x}px,${y}px,0) scale(1)` },
-      { opacity: 0, transform: `translate3d(${x}px,${y + 7}px,0) scale(.2)` }
-    ], { duration: 480, easing: "cubic-bezier(.2,.7,.2,1)", fill: "forwards" });
+  const requestDraw = () => {
+    if (!frame) frame = requestAnimationFrame(draw);
   };
 
-  addEventListener("pointermove", (event) => {
-    targetX = event.clientX;
-    targetY = event.clientY;
-    if (!initialized) {
-      initialized = true;
-      glowX = targetX;
-      glowY = targetY;
-      lastSparkX = targetX;
-      lastSparkY = targetY;
-      document.documentElement.classList.add("cursor-active");
-    }
+  addEventListener("mousemove", (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
+    aura.style.transform = `translate3d(${x}px,${y}px,0)`;
+    document.documentElement.classList.add("cursor-active");
     const interactive = event.target.closest?.("a,button,input,textarea,.project-card,.skill-card,.cert-item");
     document.documentElement.classList.toggle("cursor-interactive", Boolean(interactive));
-    emitSpark(targetX, targetY, event.timeStamp);
-    requestRender();
+    if (Math.hypot(x - lastX, y - lastY) >= 5) {
+      points.push({ x, y, life: 1, green: Boolean(interactive) });
+      if (points.length > 24) points.shift();
+      lastX = x;
+      lastY = y;
+      requestDraw();
+    }
   }, { passive: true });
-  addEventListener("pointerdown", () => document.documentElement.classList.add("cursor-pressed"), { passive: true });
-  addEventListener("pointerup", () => document.documentElement.classList.remove("cursor-pressed"), { passive: true });
+  addEventListener("mousedown", () => document.documentElement.classList.add("cursor-pressed"), { passive: true });
+  addEventListener("mouseup", () => document.documentElement.classList.remove("cursor-pressed"), { passive: true });
   document.documentElement.addEventListener("mouseleave", () => document.documentElement.classList.remove("cursor-active","cursor-interactive","cursor-pressed"));
-  document.documentElement.addEventListener("mouseenter", () => {
-    if (initialized) document.documentElement.classList.add("cursor-active");
-  });
+  addEventListener("resize", resize, { passive: true });
+  resize();
 })();
