@@ -87,16 +87,56 @@
   updateProgress();
 
   const contactRail = document.getElementById("contactRail");
-  const updateContactRail = () => {
-    if (!contactRail) return;
-    const trigger = Math.min(520, Math.max(240, innerHeight * .38));
-    const visible = scrollY > trigger;
-    contactRail.classList.toggle("is-visible", visible);
-    contactRail.setAttribute("aria-hidden", String(!visible));
-  };
-  addEventListener("scroll", updateContactRail, { passive: true });
-  addEventListener("resize", updateContactRail, { passive: true });
-  updateContactRail();
+  if (contactRail) {
+    const railHideDelay = 2800;
+    const edgeRevealWidth = 96;
+    let railHideTimer;
+    let railInteracting = false;
+
+    const setContactRailVisible = (visible) => {
+      contactRail.classList.toggle("is-visible", visible);
+      contactRail.setAttribute("aria-hidden", String(!visible));
+    };
+    const cancelRailHide = () => clearTimeout(railHideTimer);
+    const scheduleRailHide = () => {
+      cancelRailHide();
+      if (railInteracting) return;
+      railHideTimer = setTimeout(() => setContactRailVisible(false), railHideDelay);
+    };
+    const revealContactRail = () => {
+      setContactRailVisible(true);
+      scheduleRailHide();
+    };
+
+    addEventListener("scroll", revealContactRail, { passive: true });
+    addEventListener("pointermove", (event) => {
+      if (event.clientX >= innerWidth - edgeRevealWidth) revealContactRail();
+    }, { passive: true });
+    contactRail.addEventListener("pointerenter", () => {
+      railInteracting = true;
+      cancelRailHide();
+    });
+    contactRail.addEventListener("pointerleave", () => {
+      railInteracting = false;
+      scheduleRailHide();
+    });
+    contactRail.addEventListener("focusin", () => {
+      railInteracting = true;
+      revealContactRail();
+      cancelRailHide();
+    });
+    contactRail.addEventListener("focusout", () => {
+      requestAnimationFrame(() => {
+        railInteracting = contactRail.contains(document.activeElement);
+        if (!railInteracting) scheduleRailHide();
+      });
+    });
+    contactRail.addEventListener("click", revealContactRail);
+    addEventListener("resize", scheduleRailHide, { passive: true });
+
+    if (scrollY > 0) revealContactRail();
+    else setContactRailVisible(false);
+  }
 
   const pageFooter = document.querySelector("footer#contact");
   if (pageFooter) document.body.append(pageFooter);
