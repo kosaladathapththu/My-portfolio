@@ -22,3 +22,6 @@ section.ai-panel{width:min(760px,calc(100vw - 32px))!important}.ai-head{display:
 
 /* Zoom-safe desktop dimensions. */
 @media(min-width:901px){body.ai-open .ai-launcher{opacity:0!important;visibility:hidden!important;pointer-events:none!important}section.ai-panel{top:120px!important;right:24px!important;bottom:24px!important;width:min(980px,calc(100vw - 48px))!important;height:auto!important;max-height:none!important}.ai-body{grid-template-columns:220px minmax(0,1fr)!important}.ai-sidebar{width:220px!important}.ai-messages{padding:20px!important}.ai-form{padding:14px!important}.ai-input{min-width:0!important}}
+
+/* The animated robot and speech cloud are the launcher; hide its hit-area box. */
+.ai-launcher,.ai-launcher:hover,body.light .ai-launcher{border-color:transparent!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;outline:none!important}
