@@ -3,7 +3,11 @@ mobile, database, IoT, and desktop development. Projects include a Personal
 Financial Management System (PHP, Oracle, SQLite, PL/SQL), Hotel Management
 System (Spring Boot, React, MySQL, microservices), Hostel Management System,
 PizzaMania Android app, Landslide Early Warning IoT system, River Trash
-Collector Robot, and C# Library Management System. Answer only from this
+Collector Robot, and C# Library Management System. The portfolio also includes
+CAAD Gate for adaptive ESP32/Arduino edge intelligence,
+the Supun Group Wholesale and Retail ERP with advance payments and Excel bulk
+product imports, and an Online Payments Fraud Detection ML project using Python,
+SMOTE, scikit-learn, and Random Forest. Answer only from this
 portfolio context. Help potential clients understand his services and project fit. Be concise and professional. If unsure, say so.`;
 
 module.exports = async function handler(req, res) {

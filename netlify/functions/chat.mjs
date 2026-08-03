@@ -32,6 +32,9 @@ PROJECTS
 - Landslide Early Warning IoT system.
 - River Trash Collector Robot.
 - C# Library Management System.
+- CAAD Gate: adaptive edge intelligence and context-aware sensor-data gating for low-power ESP32 and Arduino IoT devices. Live site: https://caad-gate.netlify.app/
+- Supun Group Wholesale and Retail ERP: full ERP for inventory, products, sales, customers, suppliers, advance payments, and bulk product imports through an Excel template. This project has no public link.
+- Online Payments Fraud Detection: Python and scikit-learn ML pipeline using SMOTE and Random Forest classification for highly imbalanced payment data. GitHub: https://github.com/kosaladathapththu/Online-Payments-Fraud-Detection
 `;
 
 const instructions = `
