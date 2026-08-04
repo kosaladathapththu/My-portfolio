@@ -161,3 +161,7 @@ body.light #certifications .cert-item{background:rgba(255,255,255,.78)!important
 body.contact-rail-active .ai-launcher{right:105px!important}
 body.ai-open .contact-rail{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translate3d(145%,-50%,0) scale(.92)!important}
 @media(max-width:900px){body.contact-rail-active .ai-launcher{right:78px!important}}
+/* Hide the moving technology words only while the Hero is in view. */
+.showcase-codefield{transition:opacity .35s ease,visibility .35s ease}
+body.hero-words-hidden .showcase-codefield{opacity:0!important;visibility:hidden!important}
+body.hero-words-hidden .showcase-codeword{animation-play-state:paused!important}

@@ -33,6 +33,19 @@
   });
   document.body.prepend(codefield);
 
+  const heroSection = document.querySelector(".hero");
+  if (heroSection) {
+    const setHeroWordVisibility = (hidden) => document.body.classList.toggle("hero-words-hidden", hidden);
+    const heroRect = heroSection.getBoundingClientRect();
+    setHeroWordVisibility(heroRect.bottom > 0 && heroRect.top < innerHeight);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => setHeroWordVisibility(entry.isIntersecting), {
+        threshold: 0,
+        rootMargin: "0px"
+      }).observe(heroSection);
+    }
+  }
+
   const tech = ["Full-Stack", "Spring Boot", "React", "Java", "Microservices", "Oracle", "MySQL", "Android", "IoT", "REST APIs", "Arduino", "Cloud"];
   const ribbon = document.createElement("div");
   ribbon.className = "showcase-ribbon";
