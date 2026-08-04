@@ -726,7 +726,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
 <link rel="stylesheet" href="replicate-chat.css?v=2"/>
 <link rel="stylesheet" href="mobile-fix.css?v=2"/>
 <link rel="stylesheet" href="showcase.css?v=42"/>
-<link rel="stylesheet" href="light-premium.css?v=1"/>
+<link rel="stylesheet" href="light-premium.css?v=2"/>
 <link rel="stylesheet" href="dark-signature.css?v=12"/>
 <link rel="stylesheet" href="video-backgrounds.css?v=6"/>
 <link rel='stylesheet' href='chatbot-beauty.css?v=6'/>
@@ -1316,7 +1316,7 @@ document.getElementById("year").textContent=(new Date).getFullYear();
 /* Theme toggle */
 const themeToggle=document.getElementById("themeToggle");
 const savedTheme=localStorage.getItem("theme");
-if(savedTheme==="light"){
+if(savedTheme!=="dark"){
   document.body.classList.add("light");
   themeToggle.innerHTML='<i class="fas fa-sun"></i>';
 }
