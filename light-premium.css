@@ -77,3 +77,9 @@ body.light .opportunity-kicker{color:#46515a!important}
 body.light .opportunity-status{color:#287449!important}
 body.light .cert-item>i,body.light .cert-icon{color:#695c4e!important;filter:none!important}
 @media(max-width:900px){body.light :is(#about,#projects) .section-video-bg video{opacity:.18!important}body.light :is(#about,#projects) .section-video-shade{background:rgba(244,246,248,.86)!important}}
+/* Smooth native page navigation with fixed-header clearance. */
+html{scroll-behavior:smooth!important;scroll-padding-top:112px}
+body{-webkit-overflow-scrolling:touch}
+section[id],footer[id]{scroll-margin-top:112px}
+@media(max-width:900px){html{scroll-padding-top:88px}section[id],footer[id]{scroll-margin-top:88px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
