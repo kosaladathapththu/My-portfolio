@@ -34,3 +34,46 @@ body.light #projects .section-video-shade{background:linear-gradient(115deg,rgba
 body.light :is(.ai-panel,.ai-messages,.ai-msg.bot,.chat-history-sidebar,.chat-conversation){color:#17202a!important}
 body.light .contact-rail-label{color:#303943!important}
 @media(max-width:900px){body.light .hero-content h1 .gradient-text:hover{letter-spacing:-.06em!important}body.light .section-video-bg video{opacity:.26!important}body.light #projects .section-video-bg video{opacity:.36!important}}
+/* Final light-mode authority: monochrome, professional, and high contrast. */
+body.light{--professional-ink:#14171a;--professional-slate:#4b5560;--professional-soft:#e8ecef;--professional-accent:#b7772b}
+body.light nav,body.light nav.scrolled{background:rgba(255,255,255,.96)!important;border:1px solid rgba(20,23,26,.16)!important;box-shadow:0 16px 42px rgba(20,23,26,.14)!important}
+body.light nav::before{height:2px!important;background:#343a40!important;background-size:auto!important;animation:none!important;box-shadow:none!important}
+body.light nav::after{background:none!important}
+body.light .logo{color:var(--professional-ink)!important;background:#eef1f3!important;border-color:#d2d8dd!important}
+body.light .logo::after{background:#68727b!important;box-shadow:none!important;animation:none!important}
+body.light .nav-links a{color:#4b5661!important}
+body.light .nav-links a:hover,body.light .nav-links a.active{color:#111315!important;background:#e8ecef!important;border-color:#cdd3d8!important;box-shadow:none!important}
+body.light .nav-links a.active::before{background:#515961!important;box-shadow:none!important}
+body.light .showcase-progress{background:#343a40!important;box-shadow:none!important}
+body.light .showcase-ambient{background:#f4f6f8!important}
+body.light .showcase-ambient::before,body.light .showcase-ambient::after{background:#cdd3d8!important;opacity:.16!important;animation:none!important}
+body.light::before{background:radial-gradient(circle at 82% 16%,rgba(73,82,91,.08),transparent 34rem),#f4f6f8!important}
+body.light .hero::before{border-color:rgba(43,50,57,.12)!important;box-shadow:0 0 0 70px rgba(43,50,57,.018),0 0 0 140px rgba(43,50,57,.012)!important;animation:none!important}
+body.light .stat-number,body.light .stat:nth-child(n) .stat-number{color:#20252a!important;background:none!important;-webkit-text-fill-color:#20252a!important}
+body.light .btn-primary{color:#fff!important;background:#20252a!important;border:1px solid #20252a!important;box-shadow:0 12px 28px rgba(32,37,42,.18)!important}
+body.light .btn-primary:hover{background:#555e66!important;border-color:#555e66!important}
+body.light .btn-warning,body.light .opportunity-action,body.light .hire-me-fixed{color:#17191b!important;background:#d6a25f!important;border-color:#c68e46!important;box-shadow:0 12px 28px rgba(128,84,31,.16)!important}
+body.light .btn::after{display:none!important;animation:none!important}
+body.light .profile-card::before{background:#8b949c!important;opacity:.18!important;filter:blur(9px)!important;animation:none!important}
+body.light .showcase-ribbon{background:#edf0f2!important;border-color:#d5dade!important;animation:none!important}
+body.light .showcase-ribbon::before{background:linear-gradient(90deg,#edf0f2,transparent)!important}
+body.light .showcase-ribbon::after{background:linear-gradient(-90deg,#edf0f2,transparent)!important}
+body.light .showcase-ribbon span{color:#323a42!important;background:#f9fafb!important;border-color:#cbd2d8!important;box-shadow:none!important}
+body.light .showcase-ribbon span::before{background:#69737c!important;box-shadow:none!important}
+body.light .highlight-icon,body.light .skill-icon,body.light .highlight-card:nth-child(n) .highlight-icon,body.light .skill-card:nth-child(n) .skill-icon{color:#303840!important;background:#e5e9ec!important;border-color:#cbd2d8!important}
+body.light .project-card::before{background:#59626b!important}
+body.light .timeline::before,body.light .education-timeline-v2::before{background:#78828b!important;box-shadow:none!important}
+body.light .timeline-dot{background:#fff!important;border-color:#59626b!important;box-shadow:0 0 0 5px #dfe3e6!important}
+body.light .backtop{background:#4f5860!important;box-shadow:0 12px 26px rgba(38,44,49,.2)!important}
+body.light footer#contact::before,body.light footer::before{background:#69727a!important;box-shadow:none!important}
+body.light :is(#about,#projects){background:#eef1f3!important}
+body.light :is(#about,#projects) .section-video-bg video{opacity:.25!important;filter:grayscale(.2) saturate(.55) contrast(1.02) brightness(1.14)!important}
+body.light :is(#about,#projects) .section-video-shade{background:rgba(244,246,248,.78)!important}
+body.light :is(#about,#projects) :is(.section-header h2,.section-header p){position:relative;z-index:2;text-shadow:0 1px 0 rgba(255,255,255,.8)!important}
+body.light #about .section-header p,body.light #projects .section-header p{color:#303941!important}
+body.light .opportunity-card{background:rgba(255,255,255,.96)!important;border-color:#cbd2d8!important}
+body.light .opportunity-card::before{background:radial-gradient(circle,rgba(91,100,109,.1),transparent 68%)!important}
+body.light .opportunity-kicker{color:#46515a!important}
+body.light .opportunity-status{color:#287449!important}
+body.light .cert-item>i,body.light .cert-icon{color:#695c4e!important;filter:none!important}
+@media(max-width:900px){body.light :is(#about,#projects) .section-video-bg video{opacity:.18!important}body.light :is(#about,#projects) .section-video-shade{background:rgba(244,246,248,.86)!important}}
