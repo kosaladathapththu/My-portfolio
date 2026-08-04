@@ -166,3 +166,14 @@ body.ai-open .contact-rail{opacity:0!important;visibility:hidden!important;point
 .showcase-codefield{transition:opacity .35s ease,visibility .35s ease}
 body.hero-words-hidden .showcase-codefield{opacity:0!important;visibility:hidden!important}
 body.hero-words-hidden .showcase-codeword{animation-play-state:paused!important}
+/* Earlier, tighter scroll reveals with a short capped stagger. */
+.section-transition{--section-x:0!important;--section-y:25px!important;opacity:0!important;transform:translate3d(0,25px,0)!important;filter:blur(3px)!important;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),filter .6s ease!important}
+.section-transition.is-section-visible{opacity:1!important;transform:translate3d(0,0,0)!important;filter:blur(0)!important}
+.section-transition.is-section-visible .section-header{animation:reviewHeaderReveal .6s cubic-bezier(.2,.7,.2,1) backwards!important}
+.section-transition.is-section-visible :is(.opportunity-card,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.form-card,.footer-content){animation:reviewCardReveal .6s var(--academic-delay,0ms) cubic-bezier(.2,.7,.2,1) backwards!important}
+@keyframes reviewHeaderReveal{from{opacity:0;transform:translateY(25px);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes reviewCardReveal{from{opacity:0;transform:translateY(25px);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+/* Collapse the speech bubble while scrolling and after a short idle period. */
+html.assistant-cloud-hidden .ai-cloud,html.site-scrolling .ai-cloud{display:none!important}
+html.assistant-cloud-hidden .ai-launcher,html.site-scrolling .ai-launcher{width:94px!important}
+@media(max-width:900px){html.assistant-cloud-hidden .ai-launcher,html.site-scrolling .ai-launcher{width:76px!important}}

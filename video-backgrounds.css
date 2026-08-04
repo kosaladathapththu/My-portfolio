@@ -56,3 +56,8 @@ body.light #about .section-video-shade,body.light #projects .section-video-shade
   #about .section-video-bg video,#projects .section-video-bg video{opacity:.7!important}
   #about .section-video-shade,#projects .section-video-shade{background:rgba(15,17,13,.36)!important}
 }
+/* Keep Featured Projects tonally consistent with the surrounding dark sections. */
+#projects .section-video-bg video{opacity:.56!important;filter:saturate(.9) contrast(1.08) brightness(.7)!important}
+#projects .section-video-shade{background:linear-gradient(115deg,rgba(10,17,14,.86),rgba(10,17,14,.58) 52%,rgba(10,17,14,.82)),linear-gradient(180deg,rgba(10,17,14,.58),rgba(10,17,14,.9))!important}
+body.light #projects .section-video-bg video{opacity:.4!important;filter:saturate(.82) contrast(1) brightness(.9)!important}
+body.light #projects .section-video-shade{background:rgba(232,238,230,.62)!important}

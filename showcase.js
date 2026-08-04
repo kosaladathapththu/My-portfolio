@@ -70,14 +70,14 @@
   sectionTransitions.forEach((item, index) => {
     item.classList.add("section-transition", "section-from-bottom");
     item.style.setProperty("--section-index", String(index));
-    item.querySelectorAll(".opportunity-card,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.form-card").forEach((card, cardIndex) => card.style.setProperty("--academic-delay", `${80 + cardIndex * 90}ms`));
+    item.querySelectorAll(".opportunity-card,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.form-card").forEach((card, cardIndex) => card.style.setProperty("--academic-delay", `${Math.min(cardIndex, 3) * 80}ms`));
   });
   if ("IntersectionObserver" in window) {
     const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add("is-section-visible");
       sectionObserver.unobserve(entry.target);
-    }), { threshold: [0, .12], rootMargin: "-5% 0px -9% 0px" });
+    }), { threshold: .08, rootMargin: "0px 0px -8% 0px" });
     sectionTransitions.forEach(item => sectionObserver.observe(item));
   } else sectionTransitions.forEach(item => item.classList.add("is-section-visible"));
   const revealItems = [...document.querySelectorAll(".section-header,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.game-shell,.memory-shell,.form-card")].filter(item => !item.closest(".section-transition"));
@@ -106,6 +106,30 @@
   };
   addEventListener("scroll", requestProgressUpdate, { passive: true });
   updateProgress();
+
+  const assistantLauncher = document.querySelector(".ai-launcher");
+  if (assistantLauncher) {
+    let cloudHideTimer;
+    let scrollSettleTimer;
+    const showAssistantCloud = () => {
+      clearTimeout(cloudHideTimer);
+      document.documentElement.classList.remove("assistant-cloud-hidden");
+    };
+    const scheduleAssistantCloudHide = (delay = 4500) => {
+      clearTimeout(cloudHideTimer);
+      cloudHideTimer = setTimeout(() => document.documentElement.classList.add("assistant-cloud-hidden"), delay);
+    };
+    assistantLauncher.addEventListener("pointerenter", showAssistantCloud);
+    assistantLauncher.addEventListener("pointerleave", () => scheduleAssistantCloudHide(1600));
+    assistantLauncher.addEventListener("focusin", showAssistantCloud);
+    assistantLauncher.addEventListener("focusout", () => scheduleAssistantCloudHide(1600));
+    addEventListener("scroll", () => {
+      document.documentElement.classList.add("site-scrolling");
+      clearTimeout(scrollSettleTimer);
+      scrollSettleTimer = setTimeout(() => document.documentElement.classList.remove("site-scrolling"), 180);
+    }, { passive: true });
+    scheduleAssistantCloudHide();
+  }
 
   const contactRail = document.getElementById("contactRail");
   if (contactRail) {
