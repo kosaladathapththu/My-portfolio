@@ -135,3 +135,10 @@ body.light .footer-brand>p,body.light .footer-connect>p,body.light .footer-meta 
 body.light .footer-content .social-link{color:#252a2f!important;background:#fff!important;border-color:#c8ced3!important}
 body.light .footer-content .social-link:hover{color:#fff!important;background:#59626a!important;border-color:#59626a!important;transform:translateY(-3px)!important}
 @media(max-width:760px){footer#contact{padding:3rem 1rem calc(5.5rem + var(--safe-bottom))!important}.footer-content{grid-template-columns:1fr!important;gap:2rem!important}.footer-title{font-size:clamp(2.55rem,12vw,3.8rem)!important}.footer-connect{align-self:auto!important}.footer-meta{flex-direction:column!important;align-items:flex-start!important;gap:.4rem!important;padding-top:1rem!important}.footer-email{font-size:.82rem!important}.memory-head{align-items:flex-start!important}}
+/* Full-width footer surface: no inset or half-width card appearance. */
+footer#contact{width:100%!important;max-width:none!important;margin:0!important;border-radius:0!important}
+.footer-content{width:100%!important;max-width:none!important;margin:0!important}
+body.light footer#contact,body.light .footer-content{background:#fff!important}
+body.light footer#contact{border-top:1px solid #cbd1d6!important}
+footer#contact::before{left:0!important;right:0!important}
+@media(max-width:760px){.footer-content{width:100%!important;max-width:none!important}}
