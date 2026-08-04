@@ -83,3 +83,55 @@ body{-webkit-overflow-scrolling:touch}
 section[id],footer[id]{scroll-margin-top:112px}
 @media(max-width:900px){html{scroll-padding-top:88px}section[id],footer[id]{scroll-margin-top:88px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+/* Light-mode games: visible, tactile, and aligned with the professional palette. */
+body.light #mini-game{background:#f1f3f5!important}
+body.light .game-shell,body.light .memory-shell{color:#171a1d!important;background:#fff!important;border:1px solid #cbd1d6!important;box-shadow:0 18px 45px rgba(26,32,37,.1)!important}
+body.light .game-info h3,body.light .memory-head h3{color:#171a1d!important;background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;-webkit-text-fill-color:#171a1d!important;text-shadow:none!important}
+body.light .game-info p,body.light .memory-head p,body.light .memory-message{color:#4c5660!important}
+body.light .game-kicker{color:#a9621f!important}
+body.light .game-stat,body.light .memory-pill{background:#eef1f3!important;border-color:#cdd3d8!important;box-shadow:none!important}
+body.light .game-stat strong,body.light .memory-pill strong{color:#171a1d!important}
+body.light .game-stat span,body.light .memory-pill span{color:#596570!important}
+body.light .game-start{color:#17191b!important;background:#d6a25f!important;box-shadow:0 10px 24px rgba(128,84,31,.16)!important}
+body.light .game-arena{border-color:#58616a!important;background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),#242a2f!important;background-size:30px 30px!important}
+body.light .game-arena::before{display:none!important;animation:none!important}
+body.light .game-arena::after{color:rgba(214,162,95,.58)!important}
+body.light .game-ready{color:#d8dde1!important}
+body.light .game-ready i{color:#d6a25f!important;animation:none!important;filter:none!important}
+body.light .game-result{background:rgba(29,34,39,.9)!important}
+body.light .game-result-card h4{color:#fff!important}
+body.light .game-result-card p{color:#d4d9dd!important}
+body.light .memory-shell::before{display:none!important;animation:none!important}
+body.light .memory-icon{color:#fff!important;background:#59626a!important;border-color:#59626a!important;box-shadow:0 10px 24px rgba(36,42,47,.18)!important}
+body.light .memory-head{border-color:#d5dade!important}
+body.light .memory-back{background:linear-gradient(145deg,#3e464d,#292f34)!important;border-color:#59636b!important;box-shadow:0 9px 20px rgba(25,30,34,.14)!important}
+body.light .memory-back::before{color:#e4c08f!important;text-shadow:none!important}
+body.light .memory-back::after{background:none!important;border-color:rgba(255,255,255,.13)!important}
+body.light .memory-card:hover .memory-back{filter:brightness(1.08)!important;border-color:#b77a35!important}
+body.light .memory-front{color:#fff!important;background:#353c42!important;border-color:#59636b!important}
+body.light .memory-front span{color:#f2f4f5!important}
+body.light .memory-progress{background:#dfe3e6!important;box-shadow:inset 0 1px 3px rgba(20,25,29,.12)!important}
+body.light .memory-progress span{background:#b87830!important;box-shadow:none!important}
+body.light .memory-reset{color:#20252a!important;background:#e8ecef!important;border-color:#c5ccd1!important;box-shadow:none!important}
+body.light .memory-reset:hover{color:#fff!important;background:#59626a!important;box-shadow:none!important}
+body.light .memory-reset:disabled{color:#7a838b!important;background:#edf0f2!important;border-color:#d5dade!important;opacity:1!important}
+
+/* Compact, balanced footer layout on desktop and mobile. */
+footer#contact{min-height:0!important;height:auto!important;padding:clamp(3.5rem,5vw,5rem) clamp(1.25rem,6vw,6rem) calc(2rem + var(--safe-bottom))!important}
+footer#contact::after{display:none!important}
+.footer-content{width:min(100%,1280px)!important;max-width:1280px!important;display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr)!important;align-items:center!important;column-gap:clamp(3rem,7vw,7rem)!important;row-gap:clamp(2rem,4vw,3rem)!important;margin:0 auto!important;padding:0!important;text-align:left!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important}
+.footer-title{max-width:760px!important;margin:0 0 1rem!important;font-size:clamp(2.8rem,4.8vw,4.9rem)!important;line-height:.98!important}
+.footer-brand>p{max-width:620px!important;margin:0!important}
+.footer-connect{align-self:center!important;min-width:0!important}
+.footer-email{width:100%!important}
+.footer-content .social-links{justify-content:flex-start!important;margin:0!important}
+.footer-meta{grid-column:1/-1!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:1.5rem!important;margin-top:0!important;padding-top:1.2rem!important}
+.footer-meta p{margin:0!important}
+body.light footer#contact{background:#eef1f3!important}
+body.light footer#contact::before{background:#69727a!important}
+body.light .footer-title span{color:#596f5d!important}
+body.light .footer-email{color:#20252a!important;border-color:#c6ccd1!important}
+body.light .footer-brand>p,body.light .footer-connect>p,body.light .footer-meta p{color:#505b64!important}
+body.light .footer-content .social-link{color:#252a2f!important;background:#fff!important;border-color:#c8ced3!important}
+body.light .footer-content .social-link:hover{color:#fff!important;background:#59626a!important;border-color:#59626a!important;transform:translateY(-3px)!important}
+@media(max-width:760px){footer#contact{padding:3rem 1rem calc(5.5rem + var(--safe-bottom))!important}.footer-content{grid-template-columns:1fr!important;gap:2rem!important}.footer-title{font-size:clamp(2.55rem,12vw,3.8rem)!important}.footer-connect{align-self:auto!important}.footer-meta{flex-direction:column!important;align-items:flex-start!important;gap:.4rem!important;padding-top:1rem!important}.footer-email{font-size:.82rem!important}.memory-head{align-items:flex-start!important}}
