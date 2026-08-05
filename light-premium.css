@@ -142,3 +142,4 @@ body.light footer#contact,body.light .footer-content{background:#fff!important}
 body.light footer#contact{border-top:1px solid #cbd1d6!important}
 footer#contact::before{left:0!important;right:0!important}
 @media(max-width:760px){.footer-content{width:100%!important;max-width:none!important}}
+.hero-stats .stat-number{min-width:3ch;font-variant-numeric:tabular-nums}
