@@ -46,7 +46,7 @@
     }
   }
 
-  const tech = ["Full-Stack", "Spring Boot", "React", "Java", "Microservices", "Oracle", "MySQL", "Android", "IoT", "REST APIs", "Arduino", "Cloud"];
+  const tech = ["JavaScript", "PHP", "Python", "Node.js", "GitHub", "Android", "Docker", "Arduino"];
   const ribbon = document.createElement("div");
   ribbon.className = "showcase-ribbon";
   ribbon.setAttribute("aria-label", "Technology experience");
@@ -59,6 +59,16 @@
     track.append(item);
   });
   ribbon.append(track);
+  const secondTech = ["Full-Stack", "Spring Boot", "React", "Java", "Microservices", "Oracle", "MySQL", "IoT", "REST APIs", "Cloud"];
+  const secondTrack = document.createElement("div");
+  secondTrack.className = "showcase-ribbon-track showcase-ribbon-track-reverse";
+  [...secondTech, ...secondTech].forEach((name, index) => {
+    const item = document.createElement("span");
+    item.textContent = name;
+    item.style.setProperty("--dot", ["#5577ff", "#9b6cff", "#ffc857", "#ff6f61", "#2ee7df"][index % 5]);
+    secondTrack.append(item);
+  });
+  ribbon.append(secondTrack);
   document.querySelector(".hero")?.insertAdjacentElement("afterend", ribbon);
 
   document.querySelectorAll("section:not(.hero) .section-container").forEach((section, index) => {

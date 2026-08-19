@@ -11,3 +11,9 @@ body:not(.light) .tech-marquee::before{background:linear-gradient(90deg,#080d16 
 body:not(.light) .tech-marquee::after{background:linear-gradient(270deg,#080d16 12%,rgba(8,13,22,0))!important}
 body:not(.light) .tech-logo,body:not(.light) .tech-logo:nth-child(n) i{color:#f5f7fb!important}
 @media(max-width:640px){.tech-marquee{padding:.9rem 0!important;margin-bottom:2rem!important}.tech-marquee-track{gap:.5rem!important;padding-right:.5rem!important}.tech-logo{min-width:145px!important;height:68px!important;font-size:.9rem!important}.tech-logo i,.tech-logo:nth-child(n) i{font-size:1.75rem!important}}
+
+/* Two-row technology ribbon between Hero and About */
+.showcase-ribbon{display:grid!important;gap:.65rem!important;padding:1rem 0!important}
+.showcase-ribbon-track-reverse{animation-direction:reverse!important;animation-duration:20s!important}
+.showcase-ribbon:hover .showcase-ribbon-track{animation-play-state:paused!important}
+@media(max-width:560px){.showcase-ribbon{gap:.45rem!important;padding:.7rem 0!important}}
