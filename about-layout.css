@@ -1,0 +1,30 @@
+/* About section: editorial, personal, and video-forward */
+#about{min-height:900px;padding-block:clamp(6rem,9vw,9rem)!important}
+#about>.section-container{max-width:1320px!important}
+#about .section-header{grid-template-columns:260px minmax(0,1fr)!important;gap:1rem 4.5rem!important;margin-bottom:4.5rem!important}
+#about .section-label{grid-column:1!important;align-self:start!important;width:max-content!important;margin-top:.65rem!important}
+#about .section-header h2{grid-column:2!important;max-width:880px!important;margin:0!important;font-family:"Iowan Old Style",Baskerville,Georgia,serif!important;font-size:clamp(4rem,7vw,7.5rem)!important;font-weight:500!important;line-height:.88!important;letter-spacing:-.065em!important;color:#121518!important;text-wrap:balance}
+#about .section-header p{grid-column:2!important;max-width:770px!important;margin:1.1rem 0 0!important;padding-left:1.25rem!important;border-left:3px solid #d99a3e!important;color:#2f3740!important;font-size:1.04rem!important;line-height:1.75!important;text-shadow:0 1px rgba(255,255,255,.5)!important}
+body.light #about .section-video-bg video{opacity:.82!important;filter:saturate(.88) contrast(1.12) brightness(.92)!important;object-position:center!important}
+body.light #about .section-video-shade{background:linear-gradient(90deg,rgba(238,240,240,.48),rgba(238,240,240,.22) 48%,rgba(238,240,240,.34))!important}
+#about .opportunity-card{max-width:1110px!important;margin:0 0 0 auto!important;padding:0!important;background:rgba(250,249,245,.9)!important;border:0!important;border-left:6px solid #d99a3e!important;border-radius:3px!important;box-shadow:0 24px 65px rgba(27,31,35,.13)!important;backdrop-filter:blur(10px) saturate(.9)!important;overflow:hidden!important}
+#about .opportunity-card::before{display:none!important}
+#about .opportunity-status{width:100%!important;margin:0!important;padding:1rem 1.6rem!important;background:#171b1f!important;color:#f3eadb!important;font-size:.67rem!important;letter-spacing:.15em!important}
+#about .opportunity-status span{background:#60d394!important;box-shadow:none!important}
+#about .opportunity-layout{grid-template-columns:minmax(0,1fr) 220px!important;align-items:stretch!important;gap:0!important}
+#about .opportunity-copy{max-width:none!important;padding:2rem 2.2rem 2.25rem!important}
+#about .opportunity-kicker{color:#90601e!important;font-size:.66rem!important;letter-spacing:.19em!important}
+#about .opportunity-copy h3{max-width:720px!important;margin:.45rem 0 1rem!important;color:#171b1f!important;font-family:"Iowan Old Style",Baskerville,Georgia,serif!important;font-size:clamp(2rem,3.25vw,3.5rem)!important;font-weight:500!important;line-height:1!important;letter-spacing:-.045em!important}
+#about .opportunity-copy>p:not(.opportunity-kicker){max-width:760px!important;color:#505862!important;font-size:.92rem!important;line-height:1.75!important}
+#about .opportunity-roles{gap:0!important;margin-top:1.3rem!important}
+#about .opportunity-roles span{padding:.15rem .75rem .15rem 0!important;margin-right:.75rem!important;background:transparent!important;border:0!important;border-radius:0!important;color:#303841!important;font-size:.7rem!important;font-weight:750!important;box-shadow:none!important}
+#about .opportunity-roles span:not(:last-child)::after{content:"/";margin-left:.75rem;color:#c28a3b}
+#about .opportunity-action{align-self:stretch!important;min-width:0!important;padding:1.5rem!important;border-radius:0!important;background:#dca552!important;color:#171b1f!important;box-shadow:none!important;font-size:.78rem!important;letter-spacing:.02em!important}
+#about .opportunity-action:hover{transform:none!important;background:#c99240!important;box-shadow:none!important}
+body:not(.light) #about .section-header h2{color:#f4f1e9!important}
+body:not(.light) #about .section-header p{color:#d1d7df!important;text-shadow:none!important}
+body:not(.light) #about .opportunity-card{background:rgba(18,22,24,.88)!important}
+body:not(.light) #about .opportunity-copy h3{color:#f5f1e8!important}
+body:not(.light) #about .opportunity-copy>p:not(.opportunity-kicker){color:#adb7c2!important}
+body:not(.light) #about .opportunity-roles span{color:#dce2e8!important}
+@media(max-width:800px){#about{min-height:0}#about .section-header{grid-template-columns:1fr!important;gap:1rem!important;margin-bottom:2.5rem!important}#about .section-label,#about .section-header h2,#about .section-header p{grid-column:1!important}#about .section-header h2{font-size:clamp(3.5rem,15vw,5.5rem)!important}#about .opportunity-card{margin:0!important}#about .opportunity-layout{grid-template-columns:1fr!important}#about .opportunity-action{min-height:66px!important}body.light #about .section-video-bg video{opacity:.68!important}body.light #about .section-video-shade{background:rgba(238,240,240,.4)!important}}
