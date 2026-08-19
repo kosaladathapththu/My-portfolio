@@ -92,3 +92,21 @@ body.light .about-explainer{border-color:rgba(40,55,77,.16);box-shadow:0 25px 65
 body.light .contact-explainer{border-color:rgba(40,55,77,.16);box-shadow:0 25px 65px rgba(40,53,75,.18)}
 @media(max-width:900px){#contactFormSection .contact-intro{grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.7rem}.contact-explainer{width:100%;max-width:620px;margin:0 auto;border-radius:20px}}
 @media(max-width:560px){.contact-explainer{aspect-ratio:4/3}.contact-explainer figcaption{left:1rem;right:1rem;bottom:.9rem}}
+/* Identity-led full-width hero background */
+.hero{position:relative!important;isolation:isolate!important;background-image:linear-gradient(90deg,rgba(4,8,14,.97) 0%,rgba(4,8,14,.89) 35%,rgba(4,8,14,.45) 62%,rgba(4,8,14,.13) 100%),url("hero-background-v2.png")!important;background-size:cover!important;background-repeat:no-repeat!important;background-position:center center!important}
+.hero::after{content:"";position:absolute;z-index:-1;inset:auto 0 0;height:28%;background:linear-gradient(transparent,rgba(7,11,20,.88));pointer-events:none}
+.hero .hero-container{position:relative;z-index:2;display:block!important}
+.hero .hero-content{max-width:690px}
+.hero .hero-portrait{display:none!important}
+body.light .hero{background-image:linear-gradient(90deg,rgba(8,13,21,.93) 0%,rgba(8,13,21,.82) 39%,rgba(8,13,21,.36) 67%,rgba(8,13,21,.08) 100%),url("hero-background-v2.png")!important}
+@media(max-width:900px){
+  .hero{min-height:100svh!important;background-position:68% center!important;background-image:linear-gradient(90deg,rgba(4,8,14,.96) 0%,rgba(4,8,14,.84) 48%,rgba(4,8,14,.38) 100%),url("hero-background-v2.png")!important}
+  .hero .hero-container{display:flex!important}
+  .hero .hero-content{display:contents!important;max-width:none}
+  .hero .hero-portrait{display:none!important}
+  .hero-content h1{order:1!important}.hero-content>p{order:2!important}.hero-label{order:3!important}.hero-stats{order:4!important}.hero-buttons{order:5!important}
+}
+@media(max-width:560px){
+  .hero{background-position:64% center!important;background-image:linear-gradient(180deg,rgba(4,8,14,.9) 0%,rgba(4,8,14,.76) 42%,rgba(4,8,14,.95) 100%),url("hero-background-v2.png")!important}
+  .hero-content h1,.hero-content>p{max-width:92%!important;text-shadow:0 2px 22px rgba(0,0,0,.58)}
+}
