@@ -1,0 +1,17 @@
+/* Editorial capability index: intentionally avoids repetitive card UI */
+#skills .skills-grid{display:block!important;counter-reset:skill-group;max-width:1280px;margin:0 auto;border-bottom:1px solid rgba(27,35,48,.18)}
+#skills .skill-card{counter-increment:skill-group;display:grid!important;grid-template-columns:72px minmax(240px,.65fr) 1.35fr!important;align-items:start!important;gap:1.5rem!important;min-height:0!important;margin:0!important;padding:1.65rem .25rem!important;background:transparent!important;border:0!important;border-top:1px solid rgba(27,35,48,.18)!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;overflow:visible!important;transform:none!important}
+#skills .skill-card::before{content:counter(skill-group,decimal-leading-zero)!important;position:static!important;display:block!important;width:auto!important;height:auto!important;background:none!important;transform:none!important;color:#8b929c!important;font:700 .72rem/1.7 Manrope,sans-serif!important;letter-spacing:.12em!important}
+#skills .skill-card::after{display:none!important}
+#skills .skill-card:hover{transform:none!important;background:transparent!important;border-color:rgba(27,35,48,.38)!important;box-shadow:none!important}
+#skills .skill-card h3{margin:0!important;padding:0!important;color:#1a2230!important;font-size:1.08rem!important;line-height:1.45!important;letter-spacing:-.025em!important}
+#skills .skill-card h3 i{width:24px;color:#9a6000!important;font-size:1rem!important;text-align:center}
+#skills .skill-card ul{display:flex!important;flex-wrap:wrap!important;gap:.55rem 1.15rem!important;margin:0!important;padding:0!important}
+#skills .skill-card li,#skills .skill-name{position:relative;padding:.1rem 0 .28rem!important;background:transparent!important;border:0!important;border-bottom:1px solid #bcc4cf!important;border-radius:0!important;color:#485466!important;font-size:.88rem!important;font-weight:600!important;line-height:1.5!important;box-shadow:none!important;transform:none!important}
+#skills .skill-card li:hover,#skills .skill-name:hover{background:transparent!important;border-color:#9a6000!important;color:#171d26!important;transform:none!important}
+body:not(.light) #skills .skills-grid{border-color:rgba(255,255,255,.14)}
+body:not(.light) #skills .skill-card{border-color:rgba(255,255,255,.14)!important}
+body:not(.light) #skills .skill-card h3{color:#eef2f8!important}
+body:not(.light) #skills .skill-card li{color:#b8c2d1!important;border-color:#465267!important}
+body:not(.light) #skills .skill-card li:hover{color:#fff!important;border-color:#ffc857!important}
+@media(max-width:760px){#skills .skill-card{grid-template-columns:42px 1fr!important;gap:.65rem .8rem!important;padding:1.25rem 0!important}#skills .skill-card h3{grid-column:2}#skills .skill-card ul{grid-column:2}#skills .skill-card li{font-size:.8rem!important}}
