@@ -17,3 +17,19 @@ body:not(.light) #projectsGrid .project-card{background:rgba(13,20,18,.88)!impor
 body:not(.light) .project-visual img{filter:saturate(.86) brightness(.86) contrast(1.08)}
 @media(max-width:700px){#projectsGrid .project-card>:not(.project-visual){margin-inline:1.25rem!important}.project-visual{aspect-ratio:16/9}#projectsGrid .project-card{padding-bottom:1.35rem!important;border-radius:18px!important}}
 @media(prefers-reduced-motion:reduce){.project-visual img{transition:none!important}#projectsGrid .project-card:hover .project-visual img{transform:none!important}}
+
+/* Clear color-coded project metadata */
+#projectsGrid .project-proof{gap:.5rem!important}
+#projectsGrid .project-proof span{padding:.48rem .7rem!important;border:0!important;border-radius:8px!important;font-size:.7rem!important;font-weight:650!important;box-shadow:none!important}
+#projectsGrid .project-proof span b{margin-right:.3rem!important;color:inherit!important}
+#projectsGrid .project-proof .proof-role{background:#dce9ff!important;color:#174d91!important}
+#projectsGrid .project-proof .proof-result{background:#fff0c9!important;color:#805300!important}
+#projectsGrid .project-proof .proof-status[data-tone='live']{background:#d9f5e4!important;color:#17663b!important}
+#projectsGrid .project-proof .proof-status[data-tone='prototype']{background:#ffead0!important;color:#8a4d08!important}
+#projectsGrid .project-proof .proof-status[data-tone='private']{background:#eee2ff!important;color:#60339a!important}
+#projectsGrid .project-proof .proof-status[data-tone='neutral']{background:#e9edf2!important;color:#46515e!important}
+body:not(.light) #projectsGrid .project-proof .proof-role{background:#183d70!important;color:#d8e8ff!important}
+body:not(.light) #projectsGrid .project-proof .proof-result{background:#62470d!important;color:#ffefbd!important}
+body:not(.light) #projectsGrid .project-proof .proof-status[data-tone='live']{background:#164e32!important;color:#d7f8e4!important}
+body:not(.light) #projectsGrid .project-proof .proof-status[data-tone='prototype']{background:#6f3d0b!important;color:#ffe4bd!important}
+body:not(.light) #projectsGrid .project-proof .proof-status[data-tone='private']{background:#4b2772!important;color:#f0ddff!important}
