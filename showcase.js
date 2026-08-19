@@ -55,6 +55,12 @@
     "Microservices":"fa-solid fa-cubes", "Oracle":"fa-solid fa-database", "MySQL":"fa-solid fa-database",
     "IoT":"fa-solid fa-microchip", "REST APIs":"fa-solid fa-cloud-arrow-up", "Cloud":"fa-solid fa-cloud"
   };
+  const techColors = {
+    "JavaScript":"#f7df1e", "PHP":"#777bb4", "Python":"#3776ab", "Node.js":"#339933",
+    "GitHub":"#181717", "Android":"#3ddc84", "Docker":"#2496ed", "Arduino":"#00979d",
+    "Java":"#e76f00", "React":"#61dafb", "Spring Boot":"#6db33f", "Oracle":"#f80000",
+    "MySQL":"#4479a1", "IoT":"#7c3aed", "REST APIs":"#ff6c37", "Cloud":"#4285f4"
+  };
   const ribbon = document.createElement("div");
   ribbon.className = "showcase-ribbon";
   ribbon.setAttribute("aria-label", "Technology experience");
@@ -63,7 +69,7 @@
   [...tech, ...tech].forEach((name, index) => {
     const item = document.createElement("span");
     item.innerHTML = `<i class="${techIcons[name] || 'fa-solid fa-code'}" aria-hidden="true"></i><b>${name}</b>`;
-    item.style.setProperty("--dot", ["#2ee7df", "#5577ff", "#9b6cff", "#ffc857", "#ff6f61"][index % 5]);
+    item.style.setProperty("--brand-color", techColors[name] || "#111111");
     track.append(item);
   });
   ribbon.append(track);
