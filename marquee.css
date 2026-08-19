@@ -35,3 +35,11 @@ body:not(.light) .showcase-ribbon::after{background:linear-gradient(270deg,#080d
 body:not(.light) .showcase-ribbon-track + .showcase-ribbon-track{border-color:#1d2635!important}
 body:not(.light) .showcase-ribbon span i,body:not(.light) .showcase-ribbon span b{color:#f5f7fb!important}
 @media(max-width:560px){.showcase-ribbon span{min-width:165px!important;height:82px!important;gap:.65rem!important}.showcase-ribbon span i{min-width:36px;font-size:2rem!important}.showcase-ribbon span b{font-size:.9rem!important}}
+
+/* Override legacy light-theme cards: one uninterrupted marquee line */
+body.light .showcase-ribbon{display:block!important;background:#fff!important;border:0!important;padding:0!important}
+body.light .showcase-ribbon::before{background:linear-gradient(90deg,#fff 12%,rgba(255,255,255,0))!important}
+body.light .showcase-ribbon::after{background:linear-gradient(270deg,#fff 12%,rgba(255,255,255,0))!important}
+body.light .showcase-ribbon-track{gap:3rem!important;background:transparent!important}
+body.light .showcase-ribbon span{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+body.light .showcase-ribbon span::before{display:none!important}
