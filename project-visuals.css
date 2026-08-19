@@ -46,3 +46,17 @@ body:not(.light) #projectsGrid .project-proof .proof-status[data-tone='private']
 .more-projects-action{margin-top:.4rem;padding:.8rem 1.1rem;border-radius:999px;background:#fff;color:#151a20;font-weight:800}
 .more-projects-action i{margin-left:.45rem}
 @media(max-width:700px){#projectsGrid .more-projects-card{min-height:390px;padding:1.7rem;border-radius:18px}.more-projects-logo{width:96px;height:96px;font-size:4.5rem}}
+/* Final mobile visibility and hero content order */
+@media(max-width:900px){
+  #projects,#projects .section-container,#projectsGrid{display:block!important;visibility:visible!important;opacity:1!important;transform:none!important;filter:none!important;content-visibility:visible!important}
+  #projectsGrid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;gap:1rem!important}
+  #projectsGrid .project-card,#projectsGrid .more-projects-card{display:flex!important;visibility:visible!important;opacity:1!important;transform:none!important;filter:none!important;animation:none!important;width:100%!important;min-width:0!important}
+  .hero-container{display:flex!important;flex-direction:column!important;gap:1.15rem!important}
+  .hero-content{display:contents!important}
+  .hero-content h1{order:1!important;margin:0 0 .45rem!important}
+  .hero-content>p{order:2!important;margin:0 0 .75rem!important}
+  .hero-portrait{order:3!important;margin:.25rem auto 1rem!important;transform:none!important}
+  .hero-label{order:4!important;justify-self:flex-start!important;margin:0!important}
+  .hero-stats{order:5!important;margin-top:.5rem!important}
+  .hero-buttons{order:6!important}
+}
