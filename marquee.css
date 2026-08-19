@@ -17,3 +17,20 @@ body:not(.light) .tech-logo,body:not(.light) .tech-logo:nth-child(n) i{color:#f5
 .showcase-ribbon-track-reverse{animation-direction:reverse!important;animation-duration:20s!important}
 .showcase-ribbon:hover .showcase-ribbon-track{animation-play-state:paused!important}
 @media(max-width:560px){.showcase-ribbon{gap:.45rem!important;padding:.7rem 0!important}}
+
+/* Large flat logo rows matching the reference */
+.showcase-ribbon{gap:0!important;padding:0!important;background:#fff!important;border:0!important}
+.showcase-ribbon::before{background:linear-gradient(90deg,#fff 12%,rgba(255,255,255,0))!important}
+.showcase-ribbon::after{background:linear-gradient(270deg,#fff 12%,rgba(255,255,255,0))!important}
+.showcase-ribbon-track{gap:clamp(1.5rem,4vw,5rem)!important;padding-right:clamp(1.5rem,4vw,5rem)!important}
+.showcase-ribbon-track + .showcase-ribbon-track{border-top:1px solid #f0f0f0!important}
+.showcase-ribbon span{min-width:220px!important;height:112px!important;padding:0 1rem!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:1rem!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#111!important;letter-spacing:-.025em!important;text-transform:none!important}
+.showcase-ribbon span::before{display:none!important}
+.showcase-ribbon span i{min-width:52px;text-align:center;color:#111!important;font-size:3rem!important}
+.showcase-ribbon span b{color:#111!important;font-size:1.25rem!important;font-weight:850!important;white-space:nowrap}
+body:not(.light) .showcase-ribbon{background:#080d16!important}
+body:not(.light) .showcase-ribbon::before{background:linear-gradient(90deg,#080d16 12%,rgba(8,13,22,0))!important}
+body:not(.light) .showcase-ribbon::after{background:linear-gradient(270deg,#080d16 12%,rgba(8,13,22,0))!important}
+body:not(.light) .showcase-ribbon-track + .showcase-ribbon-track{border-color:#1d2635!important}
+body:not(.light) .showcase-ribbon span i,body:not(.light) .showcase-ribbon span b{color:#f5f7fb!important}
+@media(max-width:560px){.showcase-ribbon span{min-width:165px!important;height:82px!important;gap:.65rem!important}.showcase-ribbon span i{min-width:36px;font-size:2rem!important}.showcase-ribbon span b{font-size:.9rem!important}}

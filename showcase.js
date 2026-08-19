@@ -47,6 +47,14 @@
   }
 
   const tech = ["JavaScript", "PHP", "Python", "Node.js", "GitHub", "Android", "Docker", "Arduino"];
+  const techIcons = {
+    "JavaScript":"fa-brands fa-js", "PHP":"fa-brands fa-php", "Python":"fa-brands fa-python",
+    "Node.js":"fa-brands fa-node-js", "GitHub":"fa-brands fa-github", "Android":"fa-brands fa-android",
+    "Docker":"fa-brands fa-docker", "Arduino":"fa-brands fa-arduino", "React":"fa-brands fa-react",
+    "Java":"fa-brands fa-java", "Full-Stack":"fa-solid fa-code", "Spring Boot":"fa-solid fa-leaf",
+    "Microservices":"fa-solid fa-cubes", "Oracle":"fa-solid fa-database", "MySQL":"fa-solid fa-database",
+    "IoT":"fa-solid fa-microchip", "REST APIs":"fa-solid fa-cloud-arrow-up", "Cloud":"fa-solid fa-cloud"
+  };
   const ribbon = document.createElement("div");
   ribbon.className = "showcase-ribbon";
   ribbon.setAttribute("aria-label", "Technology experience");
@@ -54,7 +62,7 @@
   track.className = "showcase-ribbon-track";
   [...tech, ...tech].forEach((name, index) => {
     const item = document.createElement("span");
-    item.textContent = name;
+    item.innerHTML = `<i class="${techIcons[name] || 'fa-solid fa-code'}" aria-hidden="true"></i><b>${name}</b>`;
     item.style.setProperty("--dot", ["#2ee7df", "#5577ff", "#9b6cff", "#ffc857", "#ff6f61"][index % 5]);
     track.append(item);
   });
@@ -64,7 +72,7 @@
   secondTrack.className = "showcase-ribbon-track showcase-ribbon-track-reverse";
   [...secondTech, ...secondTech].forEach((name, index) => {
     const item = document.createElement("span");
-    item.textContent = name;
+    item.innerHTML = `<i class="${techIcons[name] || 'fa-solid fa-code'}" aria-hidden="true"></i><b>${name}</b>`;
     item.style.setProperty("--dot", ["#5577ff", "#9b6cff", "#ffc857", "#ff6f61", "#2ee7df"][index % 5]);
     secondTrack.append(item);
   });
