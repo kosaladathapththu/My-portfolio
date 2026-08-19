@@ -165,3 +165,37 @@ body.light #skills{background:#eaf0f8!important}body.light #skills::before{opaci
 @keyframes skillRainTrail{0%{opacity:.42;transform:scaleY(1.2)}68%{opacity:.12}100%{opacity:0;transform:scaleY(.2)}}
 @media(max-width:760px){#skills::before{background-size:auto 520px;background-position:center top 6rem;opacity:.18}#skills::after{background:linear-gradient(180deg,rgba(6,13,23,.84),rgba(6,13,23,.96))}#skills .section-header{padding:1rem;border-radius:0 14px 14px 0}#skills .skills-grid .skill-card{min-height:0;backdrop-filter:blur(10px)}body.light #skills::after{background:linear-gradient(180deg,rgba(242,246,252,.84),rgba(242,246,252,.97))}}
 @media(prefers-reduced-motion:reduce){#skills .section-transition.is-section-visible .skill-card,#skills .section-transition.is-section-visible .skill-card::after{animation:none!important}}
+
+/* Stable scrolling: one visible state, no competing reveal transforms */
+html,html.mobile-scrolling,html.site-scrolling{scroll-behavior:auto!important;scroll-snap-type:none!important;overflow-anchor:auto!important}
+body{overscroll-behavior-y:auto!important}
+section[id]{scroll-margin-top:100px!important}
+.section-transition,.section-transition.section-from-top,.section-transition.section-from-bottom,.section-transition.section-from-left,.section-transition.section-from-right,.section-transition.is-section-visible,.showcase-reveal,.showcase-reveal.is-shown,.motion-item,.reveal-ready,.reveal-ready.is-visible{opacity:1!important;visibility:visible!important;transform:none!important;translate:none!important;filter:none!important;animation:none!important;transition:none!important;will-change:auto!important}
+.section-transition :is(.opportunity-card,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.form-card,.footer-content),.section-transition.is-section-visible :is(.opportunity-card,.highlight-card,.skill-card,.project-card,.experience-card,.education-item,.cert-item,.form-card,.footer-content),.section-transition .section-header,.section-transition.is-section-visible .section-header{opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important;animation:none!important;transition:none!important}
+
+/* Full-scale integrated contact portrait */
+#contactFormSection{position:relative!important;isolation:isolate!important;overflow:hidden!important;padding-top:clamp(5.5rem,8vw,8rem)!important}
+#contactFormSection::before{content:"";position:absolute;z-index:0;top:0;right:0;width:56%;height:760px;background-image:linear-gradient(90deg,rgba(245,247,252,0) 0%,rgba(245,247,252,.02) 35%,rgba(245,247,252,.12) 100%),url("me explaining.png");background-repeat:no-repeat;background-position:center 12%;background-size:cover;mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 100%);pointer-events:none}
+#contactFormSection::after{content:"";position:absolute;z-index:0;left:0;right:0;top:560px;height:240px;background:linear-gradient(transparent,#f5f7fc 78%);pointer-events:none}
+#contactFormSection>.section-container{position:relative;z-index:2}
+#contactFormSection .contact-intro{display:block!important;min-height:590px!important;margin:0!important}
+#contactFormSection .contact-intro .section-header{width:min(58%,720px)!important;padding-top:2rem!important}
+#contactFormSection .contact-intro .section-header h2{font-size:clamp(3.7rem,6.3vw,7rem)!important;line-height:.9!important;letter-spacing:-.07em!important}
+#contactFormSection .contact-intro .section-header p{max-width:620px!important;font-size:1.05rem!important;line-height:1.75!important}
+#contactFormSection .form-wrap{position:relative!important;z-index:4!important;width:min(1040px,94%)!important;margin:-105px auto 0!important}
+#contactFormSection .form-card{box-shadow:0 28px 80px rgba(32,46,68,.2)!important;border:1px solid rgba(255,255,255,.86)!important}
+body:not(.light) #contactFormSection::before{background-image:linear-gradient(90deg,rgba(10,16,28,0) 0%,rgba(10,16,28,.05) 40%,rgba(10,16,28,.18) 100%),url("me explaining.png")}
+body:not(.light) #contactFormSection::after{background:linear-gradient(transparent,#0a101c 78%)}
+@media(max-width:900px){
+  section[id]{scroll-margin-top:82px!important}
+  #contactFormSection{padding-top:0!important}
+  #contactFormSection::before{width:100%;height:700px;background-position:center 10%;background-size:cover;mask-image:none;-webkit-mask-image:none}
+  #contactFormSection::after{top:0;height:710px;background:linear-gradient(180deg,rgba(5,9,15,.35) 0%,rgba(5,9,15,.48) 38%,rgba(5,9,15,.96) 88%,#0a101c 100%)}
+  body.light #contactFormSection::after{background:linear-gradient(180deg,rgba(6,11,18,.28) 0%,rgba(6,11,18,.45) 38%,rgba(245,247,252,.9) 88%,#f5f7fc 100%)}
+  #contactFormSection .contact-intro{min-height:700px!important;display:flex!important;align-items:flex-end!important;padding:0 0 7rem!important}
+  #contactFormSection .contact-intro .section-header{width:100%!important;padding:0 1rem!important;position:relative!important;z-index:3!important}
+  #contactFormSection .contact-intro .section-label{background:rgba(10,16,25,.68)!important;color:#ffc15a!important;border-color:rgba(255,193,90,.44)!important}
+  #contactFormSection .contact-intro .section-header h2{font-size:clamp(3.25rem,13vw,5.4rem)!important;color:#fff!important;-webkit-text-fill-color:#fff!important;text-shadow:0 4px 30px rgba(0,0,0,.65)!important}
+  #contactFormSection .contact-intro .section-header p{color:#eef3f8!important;text-shadow:0 2px 18px rgba(0,0,0,.72)!important}
+  #contactFormSection .form-wrap{width:100%!important;margin:-4rem auto 0!important}
+}
