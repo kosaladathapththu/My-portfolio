@@ -1,37 +1,43 @@
 (() => {
   const counters = [...document.querySelectorAll(".hero-stats .stat-number")];
-  if (!counters.length) return;
+  const stats = document.querySelector(".hero-stats");
+  if (!counters.length || !stats) return;
 
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const values = counters.map((counter) => {
-    const label = counter.textContent.trim();
-    const target = Number.parseInt(label, 10) || 0;
-    const suffix = label.replace(/[\d.,\s-]/g, "");
-    counter.setAttribute("aria-label", label);
+    const original = counter.textContent.trim();
+    const target = Number.parseInt(original, 10) || 0;
+    const suffix = original.replace(/[\d.,\s-]/g, "");
+    counter.setAttribute("aria-label", original);
+    counter.dataset.target = String(target);
     return { counter, target, suffix };
   });
 
   if (reducedMotion) return;
+  let hasRun = false;
 
-  values.forEach(({ counter, suffix }) => {
+  const count = ({ counter, target, suffix }, delay) => {
     counter.textContent = `0${suffix}`;
-  });
-
-  const animate = ({ counter, target, suffix }, delay) => {
-    const duration = 1250;
     setTimeout(() => {
-      const start = performance.now();
-      const frame = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
+      const started = performance.now();
+      counter.classList.add("is-counting");
+      const update = (now) => {
+        const progress = Math.min((now - started) / 1800, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
         counter.textContent = `${Math.round(target * eased)}${suffix}`;
-        if (progress < 1) requestAnimationFrame(frame);
+        if (progress < 1) requestAnimationFrame(update);
+        else counter.classList.remove("is-counting");
       };
-      requestAnimationFrame(frame);
+      requestAnimationFrame(update);
     }, delay);
   };
 
-  const run = () => values.forEach((value, index) => animate(value, index * 130));
+  const run = () => {
+    if (hasRun) return;
+    hasRun = true;
+    values.forEach((value, index) => count(value, index * 220));
+  };
+
   if (!("IntersectionObserver" in window)) {
     run();
     return;
@@ -41,7 +47,6 @@
     if (!entry.isIntersecting) return;
     observer.disconnect();
     run();
-  }, { threshold: 0.3 });
-
-  observer.observe(document.querySelector(".hero-stats"));
+  }, { threshold: 0.45 });
+  observer.observe(stats);
 })();

@@ -14,7 +14,8 @@ body:not(.light) .tech-logo,body:not(.light) .tech-logo:nth-child(n) i{color:#f5
 
 /* Two-row technology ribbon between Hero and About */
 .showcase-ribbon{display:grid!important;gap:.65rem!important;padding:1rem 0!important}
-.showcase-ribbon-track-reverse{animation-direction:reverse!important;animation-duration:20s!important}
+.showcase-ribbon .showcase-ribbon-track{animation-direction:normal!important;animation-duration:75s!important}
+.showcase-ribbon-track-reverse{animation-direction:normal!important;animation-duration:75s!important}
 .showcase-ribbon:hover .showcase-ribbon-track{animation-play-state:paused!important}
 @media(max-width:560px){.showcase-ribbon{gap:.45rem!important;padding:.7rem 0!important}}
 
