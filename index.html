@@ -23,7 +23,7 @@
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:92px;overscroll-behavior-y:none}
 body{
   font-family:Inter,-apple-system,system-ui,Segoe UI,Roboto,sans-serif;
   background:var(--dark);color:#fff;line-height:1.6;overflow-x:hidden
@@ -169,7 +169,8 @@ nav.scrolled{
   z-index:999;display:none;
 }
 .nav-overlay.active{display:block}
-body.menu-open{overflow:hidden}
+body.menu-open{overflow:hidden;position:fixed;left:0;right:0;width:100%}
+section[id]{scroll-margin-top:92px}
 
 /* Light theme */
 body.light{background:#f6f7fb;color:#0b1220}
@@ -1371,11 +1372,28 @@ themeToggle.addEventListener("click",()=>{
 const menuToggle=document.getElementById("menuToggle");
 const navLinks=document.getElementById("navLinks");
 const navOverlay=document.getElementById("navOverlay");
+let lockedScrollY=0;
+
+function syncScrollLock(){
+  const shouldLock=navLinks.classList.contains("active")||modal?.classList.contains("active");
+  if(shouldLock&&!document.body.classList.contains("menu-open")){
+    lockedScrollY=window.scrollY;
+    const scrollbarWidth=window.innerWidth-document.documentElement.clientWidth;
+    document.body.style.top=`-${lockedScrollY}px`;
+    document.body.style.paddingRight=scrollbarWidth>0?`${scrollbarWidth}px`:"";
+    document.body.classList.add("menu-open");
+  }else if(!shouldLock&&document.body.classList.contains("menu-open")){
+    document.body.classList.remove("menu-open");
+    document.body.style.top="";
+    document.body.style.paddingRight="";
+    window.scrollTo({top:lockedScrollY,left:0,behavior:"auto"});
+  }
+}
 
 function openMenu(){
   navLinks.classList.add("active");
   navOverlay.classList.add("active");
-  document.body.classList.add("menu-open");
+  syncScrollLock();
   const i=menuToggle.querySelector("i");
   i.classList.remove("fa-bars");
   i.classList.add("fa-xmark");
@@ -1384,7 +1402,7 @@ function openMenu(){
 function closeMenu(){
   navLinks.classList.remove("active");
   navOverlay.classList.remove("active");
-  document.body.classList.remove("menu-open");
+  syncScrollLock();
   const i=menuToggle.querySelector("i");
   i.classList.add("fa-bars");
   i.classList.remove("fa-xmark");
@@ -1393,6 +1411,9 @@ function closeMenu(){
 menuToggle.addEventListener("click",()=>{navLinks.classList.contains("active")?closeMenu():openMenu()});
 navOverlay.addEventListener("click",closeMenu);
 document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",closeMenu));
+window.addEventListener("resize",()=>{
+  if(window.innerWidth>768&&navLinks.classList.contains("active")) closeMenu();
+},{passive:true});
 
 /* Active link (scroll spy) */
 const sections=[...document.querySelectorAll("section[id]")];
@@ -1428,12 +1449,12 @@ function openModal(card){
     modalBadges.appendChild(s);
   });
   modal.classList.add("active");
-  document.body.classList.add("menu-open");
+  syncScrollLock();
   modalClose.focus();
 }
 function closeModal(){
   modal.classList.remove("active");
-  document.body.classList.remove("menu-open");
+  syncScrollLock();
 }
 document.querySelectorAll(".project-card").forEach(card=>{
   card.addEventListener("click",(e)=>{
