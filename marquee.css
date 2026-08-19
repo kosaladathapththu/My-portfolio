@@ -46,3 +46,8 @@ body.light .showcase-ribbon span::before{display:none!important}
 
 /* Recognizable brand colors for the technology logos */
 body.light .showcase-ribbon span i,.showcase-ribbon span i{color:var(--brand-color,#111)!important}
+
+/* Brand marks inside the restored skill boxes */
+#skills .skill-card li{display:inline-flex!important;align-items:center!important;gap:.48rem!important}
+#skills .skill-card li .skill-item-icon{width:1rem!important;color:var(--skill-brand,#9a6000)!important;font-size:.9rem!important;text-align:center!important;flex:0 0 auto!important}
+body:not(.light) #skills .skill-card li .skill-item-icon{filter:saturate(.9) brightness(1.15)}
