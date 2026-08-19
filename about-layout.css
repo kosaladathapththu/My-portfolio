@@ -28,3 +28,17 @@ body:not(.light) #about .opportunity-copy h3{color:#f5f1e8!important}
 body:not(.light) #about .opportunity-copy>p:not(.opportunity-kicker){color:#adb7c2!important}
 body:not(.light) #about .opportunity-roles span{color:#dce2e8!important}
 @media(max-width:800px){#about{min-height:0}#about .section-header{grid-template-columns:1fr!important;gap:1rem!important;margin-bottom:2.5rem!important}#about .section-label,#about .section-header h2,#about .section-header p{grid-column:1!important}#about .section-header h2{font-size:clamp(3.5rem,15vw,5.5rem)!important}#about .opportunity-card{margin:0!important}#about .opportunity-layout{grid-template-columns:1fr!important}#about .opportunity-action{min-height:66px!important}body.light #about .section-video-bg video{opacity:.68!important}body.light #about .section-video-shade{background:rgba(238,240,240,.4)!important}}
+
+/* High-contrast reading layer over the visible video */
+body.light #about .section-header h2{color:#fff8ed!important;text-shadow:0 3px 18px rgba(0,0,0,.75),0 1px 2px rgba(0,0,0,.95)!important}
+body.light #about .section-header p{padding:1rem 1.25rem!important;border-left:4px solid #e2a74d!important;border-radius:0 10px 10px 0!important;background:rgba(9,16,19,.58)!important;color:#f4f7f8!important;text-shadow:0 1px 2px rgba(0,0,0,.8)!important;box-shadow:0 12px 35px rgba(0,0,0,.12)!important;backdrop-filter:blur(9px) saturate(.8)!important}
+
+/* Glass project brief */
+body.light #about .opportunity-card{background:linear-gradient(135deg,rgba(17,24,28,.68),rgba(22,31,34,.4))!important;border:1px solid rgba(255,255,255,.36)!important;border-left:6px solid #e2a74d!important;box-shadow:0 28px 70px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.22)!important;backdrop-filter:blur(22px) saturate(1.15)!important}
+body.light #about .opportunity-status{background:rgba(8,13,16,.64)!important;border-bottom:1px solid rgba(255,255,255,.16)!important}
+body.light #about .opportunity-copy h3{color:#fff8ed!important;text-shadow:0 2px 12px rgba(0,0,0,.45)!important}
+body.light #about .opportunity-copy>p:not(.opportunity-kicker){color:rgba(244,248,249,.86)!important}
+body.light #about .opportunity-kicker{color:#f1bd70!important}
+body.light #about .opportunity-roles span{color:#f4f6f7!important}
+body.light #about .opportunity-action{background:rgba(226,167,77,.88)!important;border-left:1px solid rgba(255,255,255,.24)!important;backdrop-filter:blur(12px)!important}
+@media(max-width:800px){body.light #about .section-header h2{font-size:clamp(3.1rem,14vw,5rem)!important}body.light #about .section-header p{font-size:.92rem!important}body.light #about .opportunity-card{backdrop-filter:blur(16px) saturate(1.1)!important}}
