@@ -260,3 +260,20 @@ body:not(.light) .contact-form-intro{background:linear-gradient(90deg,rgba(17,28
 @media(max-width:900px){#skills::before,body.light #skills::before{background-size:auto 620px!important;background-position:center top 8rem!important;opacity:.34!important}#skills::after,body.light #skills::after{background:linear-gradient(180deg,rgba(7,16,28,.68),rgba(7,16,28,.9) 45%,#07101c 78%)!important}#skills .section-header{display:block!important}#skills .section-header .section-label{display:inline-flex!important;margin-bottom:1rem!important}#skills .section-header h2,body.light #skills .section-header h2{font-size:clamp(2.45rem,9.5vw,4.8rem)!important;white-space:nowrap!important;letter-spacing:-.06em!important}}
 @media(max-width:480px){#skills .section-header h2,body.light #skills .section-header h2{font-size:clamp(2rem,9vw,2.75rem)!important}#skills .skills-grid .skill-card{min-height:0!important}}
 @media(prefers-reduced-motion:reduce){#skills .section-transition.is-section-visible .skill-card,#skills .section-transition.is-section-visible .skill-card::after{animation:none!important}}
+/* Corrected Skills design: light, readable, portrait-led */
+body.light #skills{background:#f3f6fb!important;color:#172033!important}
+body.light #skills::before{background-image:url("explaining-software-v1.png")!important;background-size:min(66vw,980px) auto!important;background-position:right 1rem top 5.5rem!important;opacity:.3!important;filter:saturate(.72) contrast(.96) brightness(1.08)!important}
+body.light #skills::after{background:linear-gradient(90deg,rgba(246,249,253,.99) 0%,rgba(246,249,253,.94) 39%,rgba(246,249,253,.55) 72%,rgba(246,249,253,.78) 100%),linear-gradient(180deg,rgba(243,247,252,.18),rgba(243,247,252,.72) 48%,#f3f6fb 84%)!important}
+#skills .section-header,body.light #skills .section-header{gap:clamp(1.3rem,3vw,3rem)!important;min-height:150px!important;padding:1.1rem 1.35rem!important}
+body.light #skills .section-header{border-left-color:#4778ff!important;background:linear-gradient(90deg,rgba(255,255,255,.94),rgba(255,255,255,.6),transparent)!important;backdrop-filter:blur(5px)!important}
+#skills .section-header h2,body.light #skills .section-header h2{font-size:clamp(3rem,4.8vw,5.3rem)!important;line-height:.94!important;white-space:nowrap!important}
+body.light #skills .section-header h2{color:#172033!important;-webkit-text-fill-color:#172033!important;text-shadow:0 8px 30px rgba(57,74,108,.1)!important}
+body.light #skills .section-header .section-label{background:#fff!important;border-color:#f2c477!important;color:#9a5700!important;box-shadow:0 8px 22px rgba(56,72,104,.08)!important}
+body.light #skills .tech-marquee{background:rgba(255,255,255,.88)!important;border-block:1px solid rgba(42,58,88,.1)!important;box-shadow:0 10px 32px rgba(52,69,102,.07)!important;backdrop-filter:blur(12px)!important}
+body.light #skills .tech-logo{color:#161a21!important;text-shadow:none!important}
+body.light #skills .skills-grid .skill-card{background:rgba(255,255,255,.9)!important;border-color:color-mix(in srgb,var(--card-accent) 24%,rgba(37,52,78,.13))!important;box-shadow:0 20px 48px rgba(49,65,98,.13),inset 0 1px #fff!important;backdrop-filter:blur(14px)!important}
+body.light #skills .skill-card h3{color:#1b2940!important}
+body.light #skills .skill-card li{background:#eef3f9!important;border-color:#d8e0eb!important;color:#35435a!important}
+body.light #skills .skill-card:hover{background:#fff!important;box-shadow:0 28px 58px rgba(49,65,98,.18)!important}
+@media(max-width:900px){body.light #skills::before{background-size:auto 540px!important;background-position:center top 7.5rem!important;opacity:.18!important}body.light #skills::after{background:linear-gradient(180deg,rgba(246,249,253,.76),rgba(246,249,253,.94) 45%,#f3f6fb 78%)!important}#skills .section-header h2,body.light #skills .section-header h2{font-size:clamp(2.4rem,8vw,4.2rem)!important}}
+@media(max-width:480px){#skills .section-header h2,body.light #skills .section-header h2{font-size:clamp(1.9rem,8.6vw,2.55rem)!important}}
