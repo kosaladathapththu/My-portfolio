@@ -13,7 +13,7 @@ body:not(.light) .tech-logo,body:not(.light) .tech-logo:nth-child(n) i{color:#f5
 @media(max-width:640px){.tech-marquee{padding:.9rem 0!important;margin-bottom:2rem!important}.tech-marquee-track{gap:.5rem!important;padding-right:.5rem!important}.tech-logo{min-width:145px!important;height:68px!important;font-size:.9rem!important}.tech-logo i,.tech-logo:nth-child(n) i{font-size:1.75rem!important}}
 
 /* Two-row technology ribbon between Hero and About */
-.showcase-ribbon{display:grid!important;gap:.65rem!important;padding:1rem 0!important}
+.showcase-ribbon{display:block!important;padding:0!important}
 .showcase-ribbon .showcase-ribbon-track{animation-direction:normal!important;animation-duration:75s!important}
 .showcase-ribbon-track-reverse{animation-direction:normal!important;animation-duration:75s!important}
 .showcase-ribbon:hover .showcase-ribbon-track{animation-play-state:paused!important}

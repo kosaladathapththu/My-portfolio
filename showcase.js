@@ -46,7 +46,7 @@
     }
   }
 
-  const tech = ["JavaScript", "PHP", "Python", "Node.js", "GitHub", "Android", "Docker", "Arduino"];
+  const tech = ["JavaScript", "PHP", "Python", "Node.js", "GitHub", "Android", "Docker", "Arduino", "Java", "React", "Spring Boot", "Oracle", "MySQL", "IoT", "REST APIs", "Cloud"];
   const techIcons = {
     "JavaScript":"fa-brands fa-js", "PHP":"fa-brands fa-php", "Python":"fa-brands fa-python",
     "Node.js":"fa-brands fa-node-js", "GitHub":"fa-brands fa-github", "Android":"fa-brands fa-android",
@@ -67,16 +67,6 @@
     track.append(item);
   });
   ribbon.append(track);
-  const secondTech = ["Full-Stack", "Spring Boot", "React", "Java", "Microservices", "Oracle", "MySQL", "IoT", "REST APIs", "Cloud"];
-  const secondTrack = document.createElement("div");
-  secondTrack.className = "showcase-ribbon-track showcase-ribbon-track-reverse";
-  [...secondTech, ...secondTech].forEach((name, index) => {
-    const item = document.createElement("span");
-    item.innerHTML = `<i class="${techIcons[name] || 'fa-solid fa-code'}" aria-hidden="true"></i><b>${name}</b>`;
-    item.style.setProperty("--dot", ["#5577ff", "#9b6cff", "#ffc857", "#ff6f61", "#2ee7df"][index % 5]);
-    secondTrack.append(item);
-  });
-  ribbon.append(secondTrack);
   document.querySelector(".hero")?.insertAdjacentElement("afterend", ribbon);
 
   document.querySelectorAll("section:not(.hero) .section-container").forEach((section, index) => {
