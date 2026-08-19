@@ -374,6 +374,23 @@ section{padding:5.5rem clamp(1rem,3vw,2rem)}
 }
 .skill-card li:hover{background:rgba(124,58,237,.2);border-color:var(--primary);transform:translateY(-2px)}
 
+/* Seamless technology logo marquee */
+.tech-marquee{position:relative;margin:0 auto 2.25rem;overflow:hidden;padding:1rem 0;isolation:isolate}
+.tech-marquee::before,.tech-marquee::after{content:"";position:absolute;z-index:2;top:0;bottom:0;width:min(12vw,150px);pointer-events:none}
+.tech-marquee::before{left:0;background:linear-gradient(90deg,#0a101c,transparent)}
+.tech-marquee::after{right:0;background:linear-gradient(270deg,#0a101c,transparent)}
+.tech-marquee-row{display:flex;width:max-content;animation:techMarquee 34s linear infinite}
+.tech-marquee-row + .tech-marquee-row{margin-top:.9rem;animation-direction:reverse;animation-duration:39s}
+.tech-marquee-track{display:flex;align-items:center;gap:.9rem;padding-right:.9rem}
+.tech-logo{min-width:170px;height:82px;padding:0 1.4rem;display:flex;align-items:center;justify-content:center;gap:.8rem;white-space:nowrap;border-radius:18px;color:#dce5f2;background:rgba(255,255,255,.045);border:1px solid var(--line);font-size:1.02rem;font-weight:800;letter-spacing:-.02em}
+.tech-logo i{font-size:2rem;color:var(--gold)}
+.tech-logo:nth-child(3n) i{color:#6f98ff}
+.tech-logo:nth-child(3n + 2) i{color:#eef3fa}
+.tech-marquee:hover .tech-marquee-row{animation-play-state:paused}
+@keyframes techMarquee{to{transform:translateX(-50%)}}
+@media(max-width:640px){.tech-marquee{margin-inline:-1.1rem}.tech-marquee::before,.tech-marquee::after{width:45px}.tech-logo{min-width:140px;height:68px;padding:0 1rem;font-size:.9rem}.tech-logo i{font-size:1.65rem}}
+@media(prefers-reduced-motion:reduce){.tech-marquee{overflow-x:auto;scrollbar-width:thin}.tech-marquee-row{animation:none}.tech-marquee-row + .tech-marquee-row{display:none}}
+
 /* Projects toolbar */
 .projects-toolbar{
   max-width:1200px;margin:0 auto 1.25rem;
@@ -884,6 +901,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
       <div class="section-label"><i class="fas fa-code"></i> Technical Skills</div>
       <h2>Tech Stack & Expertise</h2>
     </div>
+    <div class="tech-marquee" aria-label="Technologies I work with"><div class="tech-marquee-row"><div class="tech-marquee-track"><span class="tech-logo"><i class="fa-brands fa-java"></i> Java</span><span class="tech-logo"><i class="fa-brands fa-react"></i> React</span><span class="tech-logo"><i class="fa-brands fa-js"></i> JavaScript</span><span class="tech-logo"><i class="fa-brands fa-php"></i> PHP</span><span class="tech-logo"><i class="fa-brands fa-python"></i> Python</span><span class="tech-logo"><i class="fa-brands fa-node-js"></i> Node.js</span><span class="tech-logo"><i class="fa-brands fa-github"></i> GitHub</span><span class="tech-logo"><i class="fa-brands fa-android"></i> Android</span><span class="tech-logo"><i class="fa-brands fa-docker"></i> Docker</span><span class="tech-logo"><i class="fa-brands fa-arduino"></i> Arduino</span></div><div class="tech-marquee-track" aria-hidden="true"><span class="tech-logo"><i class="fa-brands fa-java"></i> Java</span><span class="tech-logo"><i class="fa-brands fa-react"></i> React</span><span class="tech-logo"><i class="fa-brands fa-js"></i> JavaScript</span><span class="tech-logo"><i class="fa-brands fa-php"></i> PHP</span><span class="tech-logo"><i class="fa-brands fa-python"></i> Python</span><span class="tech-logo"><i class="fa-brands fa-node-js"></i> Node.js</span><span class="tech-logo"><i class="fa-brands fa-github"></i> GitHub</span><span class="tech-logo"><i class="fa-brands fa-android"></i> Android</span><span class="tech-logo"><i class="fa-brands fa-docker"></i> Docker</span><span class="tech-logo"><i class="fa-brands fa-arduino"></i> Arduino</span></div></div></div>
     <div class="skills-grid">
       <div class="skill-card">
         <h3><i class="fas fa-code"></i> Programming Languages</h3>
