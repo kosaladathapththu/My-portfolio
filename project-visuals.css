@@ -76,3 +76,19 @@ body:not(.light) #projectsGrid .project-proof .proof-status[data-tone='private']
 body.light .about-explainer{border-color:rgba(40,55,77,.16);box-shadow:0 25px 65px rgba(40,53,75,.18)}
 @media(max-width:900px){#about .about-story{grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.6rem}.about-explainer{width:100%;max-width:620px;margin:0 auto;border-radius:20px}}
 @media(max-width:560px){.about-explainer{aspect-ratio:4/3}.about-explainer figcaption{left:1rem;right:1rem;bottom:.9rem}}
+/* Contact-section explaining portrait */
+#contactFormSection .contact-intro{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.72fr);gap:clamp(2rem,5vw,5rem);align-items:center;margin-bottom:2.5rem}
+#contactFormSection .contact-intro .section-header{display:block!important;margin:0!important;text-align:left!important}
+#contactFormSection .contact-intro .section-header h2,#contactFormSection .contact-intro .section-header p,#contactFormSection .contact-intro .section-label{grid-column:auto!important;grid-row:auto!important}
+#contactFormSection .contact-intro .section-header h2{margin-top:1.2rem!important}
+#contactFormSection .contact-intro .section-header p{max-width:650px!important}
+.contact-explainer{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;border-radius:26px;border:1px solid rgba(255,255,255,.16);background:#101722;box-shadow:0 28px 70px rgba(0,0,0,.3)}
+.contact-explainer::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(5,9,15,.88));pointer-events:none}
+.contact-explainer img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 28%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.contact-explainer:hover img{transform:scale(1.035)}
+.contact-explainer figcaption{position:absolute;z-index:2;left:1.35rem;right:1.35rem;bottom:1.2rem;display:flex;flex-direction:column;gap:.25rem;color:#fff}
+.contact-explainer figcaption span{color:#ffc15a;font-size:.68rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.contact-explainer figcaption strong{font-size:1rem;letter-spacing:-.02em}
+body.light .contact-explainer{border-color:rgba(40,55,77,.16);box-shadow:0 25px 65px rgba(40,53,75,.18)}
+@media(max-width:900px){#contactFormSection .contact-intro{grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.7rem}.contact-explainer{width:100%;max-width:620px;margin:0 auto;border-radius:20px}}
+@media(max-width:560px){.contact-explainer{aspect-ratio:4/3}.contact-explainer figcaption{left:1rem;right:1rem;bottom:.9rem}}
