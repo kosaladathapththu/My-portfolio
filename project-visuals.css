@@ -110,3 +110,26 @@ body.light .hero{background-image:linear-gradient(90deg,rgba(8,13,21,.93) 0%,rgb
   .hero{background-position:64% center!important;background-image:linear-gradient(180deg,rgba(4,8,14,.9) 0%,rgba(4,8,14,.76) 42%,rgba(4,8,14,.95) 100%),url("hero-background-v2.png")!important}
   .hero-content h1,.hero-content>p{max-width:92%!important;text-shadow:0 2px 22px rgba(0,0,0,.58)}
 }
+/* Hero content palette matched to photographic background */
+.hero .hero-label,.hero body.light .hero-label{background:rgba(9,15,24,.68)!important;border:1px solid rgba(255,193,90,.52)!important;color:#ffd078!important;box-shadow:0 10px 28px rgba(0,0,0,.2)!important;backdrop-filter:blur(10px)}
+.hero .hero-label i{color:#ffc15a!important}
+.hero .hero-content h1,body.light .hero .hero-content h1{color:#f8fbff!important;-webkit-text-fill-color:#f8fbff!important;text-shadow:0 4px 30px rgba(0,0,0,.58)!important}
+.hero .hero-content h1 span,body.light .hero .hero-content h1 span{color:#ffc15a!important;-webkit-text-fill-color:#ffc15a!important;background:none!important;text-shadow:0 4px 26px rgba(0,0,0,.48)!important}
+.hero .hero-content>p,body.light .hero .hero-content>p{color:#d8e1ec!important;text-shadow:0 2px 20px rgba(0,0,0,.68)!important;font-weight:520!important}
+.hero .hero-stats{border-color:rgba(255,255,255,.22)!important}
+.hero .stat{border-color:rgba(255,255,255,.22)!important}
+.hero .stat-number,body.light .hero .stat-number{color:#fff!important;-webkit-text-fill-color:#fff!important;text-shadow:0 3px 18px rgba(0,0,0,.55)!important}
+.hero .stat-label,body.light .hero .stat-label{color:#c8d3e1!important}
+.hero .btn-primary{background:#ffc15a!important;border-color:#ffc15a!important;color:#101722!important;box-shadow:0 12px 30px rgba(255,174,60,.22)!important}
+.hero .btn-primary:hover{background:#ffd27d!important;border-color:#ffd27d!important}
+.hero .btn-secondary{background:rgba(12,19,30,.68)!important;border:1px solid rgba(255,255,255,.32)!important;color:#fff!important;backdrop-filter:blur(10px)!important}
+.hero .btn-secondary:hover{background:rgba(255,255,255,.14)!important}
+.hero .btn-warning{background:#4978ff!important;border-color:#4978ff!important;color:#fff!important;box-shadow:0 12px 30px rgba(73,120,255,.22)!important}
+
+/* Keep the contact portrait face and caption clearly visible */
+.contact-explainer{aspect-ratio:16/11!important;background:#111923!important}
+.contact-explainer::after{inset:58% 0 0!important;background:linear-gradient(transparent,rgba(4,8,14,.94))!important}
+.contact-explainer img{object-position:center 12%!important;filter:brightness(1.04) contrast(1.02)!important}
+.contact-explainer figcaption span{color:#ffc15a!important;text-shadow:0 2px 12px rgba(0,0,0,.75)!important}
+.contact-explainer figcaption strong{color:#fff!important;text-shadow:0 2px 14px rgba(0,0,0,.82)!important}
+@media(max-width:560px){.contact-explainer{aspect-ratio:4/3!important}.contact-explainer img{object-position:center 10%!important}}
