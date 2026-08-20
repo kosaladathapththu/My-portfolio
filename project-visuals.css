@@ -366,3 +366,7 @@ body:not(.light) #skills .skill-card li{background:rgba(19,34,53,.62)!important;
 /* Right-aligned full portrait */
 #skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:right top!important}
 @media(max-width:700px){#skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:center top!important}}
+
+/* Anchor portrait behind the right-side skill columns */
+#skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:right bottom!important}
+@media(max-width:700px){#skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:center bottom!important}}
