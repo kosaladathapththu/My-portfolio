@@ -384,3 +384,8 @@ body:not(.light) #skills .tech-marquee{background:linear-gradient(110deg,rgba(10
 body:not(.light) #skills .skills-grid .skill-card{background:linear-gradient(145deg,rgba(11,22,37,.4),rgba(7,15,27,.19))!important;border-color:rgba(255,255,255,.23)!important;box-shadow:0 20px 46px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.12)!important}
 #skills .skill-card li,body.light #skills .skill-card li{background:rgba(248,251,255,.68)!important;backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important}
 body:not(.light) #skills .skill-card li{background:rgba(18,33,52,.65)!important}
+
+/* Dark visual rail for the exposed left side of the contained portrait */
+#skills,body.light #skills,body:not(.light) #skills{background:radial-gradient(circle at 13% 34%,rgba(65,180,190,.16),transparent 24rem),radial-gradient(circle at 25% 82%,rgba(211,145,67,.12),transparent 22rem),linear-gradient(135deg,#07101d 0%,#0b1726 38%,#101a26 100%)!important}
+#skills::after,body.light #skills::after{background:linear-gradient(90deg,rgba(5,12,22,.92) 0%,rgba(7,16,28,.76) 17%,rgba(8,17,29,.28) 31%,transparent 46%),linear-gradient(180deg,rgba(6,13,23,.05) 0%,rgba(6,13,23,.03) 52%,rgba(6,13,23,.34) 82%,rgba(6,13,23,.58) 100%),repeating-linear-gradient(90deg,transparent 0 79px,rgba(104,228,220,.025) 80px)!important}
+body:not(.light) #skills::after{background:linear-gradient(90deg,rgba(3,8,15,.96) 0%,rgba(5,12,22,.82) 18%,rgba(6,14,24,.32) 33%,transparent 48%),linear-gradient(180deg,rgba(4,9,16,.06),rgba(4,9,16,.38) 82%,rgba(4,9,16,.68) 100%),repeating-linear-gradient(90deg,transparent 0 79px,rgba(104,228,220,.025) 80px)!important}
