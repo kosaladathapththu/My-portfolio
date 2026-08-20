@@ -528,3 +528,28 @@ nav#navbar.scrolled,body.light nav#navbar.scrolled,body:not(.light) nav#navbar.s
 #navbar .nav-links a:hover,#navbar .nav-links a.active,body.light #navbar .nav-links a:hover,body.light #navbar .nav-links a.active{color:#fff!important;background:transparent!important}
 #navbar .theme-toggle,body.light #navbar .theme-toggle,body:not(.light) #navbar .theme-toggle{color:#fff!important;background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.22)!important;box-shadow:inset 0 1px rgba(255,255,255,.12)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 #navbar .theme-toggle i,body.light #navbar .theme-toggle i,body:not(.light) #navbar .theme-toggle i{color:#fff!important;text-shadow:0 2px 8px rgba(0,0,0,.65)!important}
+
+/* Page-wide color-aware button hover system */
+:where(button:not(:disabled),.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action){--button-glow:#68e4dc;transition:transform .22s ease,filter .22s ease,box-shadow .22s ease,border-color .22s ease!important;will-change:transform,filter}
+:where(button:not(:disabled),.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action):hover{transform:translateY(-3px) scale(1.025)!important;filter:brightness(1.18) saturate(1.28) drop-shadow(0 0 10px var(--button-glow))!important}
+:where(button:not(:disabled),.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action):active{transform:translateY(-1px) scale(.985)!important;filter:brightness(1.08) saturate(1.14)!important}
+:where(button,.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action):focus-visible{outline:2px solid var(--button-glow)!important;outline-offset:3px!important;filter:brightness(1.14) saturate(1.2) drop-shadow(0 0 9px var(--button-glow))!important}
+.btn-primary,.ai-send,.form-card button[type="submit"]{--button-glow:#68e4dc}
+.btn-secondary,.nav-quick-cv,.certifications-toggle{--button-glow:#6f9cff}
+.btn-warning,.hire-me-fixed,.opportunity-action{--button-glow:#ffc15a}
+.theme-toggle{--button-glow:#ee9a63}
+.menu-toggle,.modal-close,.ai-close{--button-glow:#ff7168}
+.ai-launcher{--button-glow:#a98cff}
+.backtop{--button-glow:#82d6ff}
+.chip{--button-glow:#8d9cff}.chip.active{--button-glow:#68e4dc}
+.social-link.linkedin,.rail-link.linkedin{--button-glow:#0a66c2}
+.social-link.github,.rail-link.github{--button-glow:#aab4c3}
+.social-link.twitter{--button-glow:#4aa8ff}
+.social-link.whatsapp,.rail-link.whatsapp{--button-glow:#25d366}
+.social-link.telegram,.rail-link.telegram{--button-glow:#229ed9}
+.rail-link.email{--button-glow:#ff5f78}
+.rail-link.cv{--button-glow:#ffc15a}
+.rail-link.phone{--button-glow:#35d07f}
+.copy-btn{--button-glow:#68e4dc}
+.memory-btn,.game-btn{--button-glow:#f18cff}
+@media(prefers-reduced-motion:reduce){:where(button:not(:disabled),.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action){transition:none!important}:where(button:not(:disabled),.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action):hover{transform:none!important}}
