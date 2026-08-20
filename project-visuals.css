@@ -401,3 +401,16 @@ body.light #skills .tech-logo{color:#f5f8fc!important}
 body.light #skills .skills-grid .skill-card{background:linear-gradient(145deg,rgba(11,22,37,.42),rgba(7,15,27,.2))!important;border-color:rgba(255,255,255,.22)!important;box-shadow:0 20px 46px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.11)!important;backdrop-filter:blur(11px) saturate(1.2)!important;-webkit-backdrop-filter:blur(11px) saturate(1.2)!important}
 body.light #skills .skill-card h3{color:#f5f8fc!important}
 body.light #skills .skill-card li{color:#dce5f2!important;background:rgba(18,33,52,.67)!important;border-color:rgba(255,255,255,.14)!important;backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important}
+
+/* Pixel-match the light-theme Skills scene to the dark-theme scene */
+body.light #skills .section-label{color:#75e4df!important;background:rgba(37,180,176,.1)!important;border:1px solid rgba(104,228,220,.34)!important;box-shadow:none!important}
+body.light #skills .section-label i{color:#ee9a63!important}
+body.light #skills .tech-marquee::before{background:linear-gradient(90deg,#080d16 12%,rgba(8,13,22,0))!important}
+body.light #skills .tech-marquee::after{background:linear-gradient(270deg,#080d16 12%,rgba(8,13,22,0))!important}
+body.light #skills .tech-logo,body.light #skills .tech-logo:nth-child(n) i{color:#f5f7fb!important;text-shadow:none!important}
+body.light #skills .skills-grid .skill-card{color:#f5f8fc!important;background:linear-gradient(145deg,rgba(11,22,37,.42),rgba(7,15,27,.2))!important;border-color:rgba(255,255,255,.22)!important;box-shadow:0 20px 46px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.11)!important}
+body.light #skills .skill-card h3{color:#f5f8fc!important}
+body.light #skills .skill-card h3 i{color:#ee9a63!important;filter:none!important}
+body.light #skills .skill-card li{color:#d8cec0!important;background:rgba(229,207,173,.055)!important;border-color:rgba(229,207,173,.12)!important}
+body.light #skills .skill-card:hover{border-color:rgba(217,120,71,.36)!important;box-shadow:0 24px 58px rgba(0,0,0,.25)!important}
+body.light #skills .skill-card h3::after{background:var(--card-accent)!important}
