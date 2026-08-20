@@ -439,3 +439,6 @@ body.light #contactFormSection .contact-intro .section-header{background:linear-
 body:not(.light) #contactFormSection .form-wrap{border-color:rgba(255,255,255,.18)!important;background:linear-gradient(145deg,rgba(13,24,39,.48),rgba(8,16,28,.2))!important;box-shadow:0 28px 70px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.1)!important}
 body:not(.light) #contactFormSection .contact-form-intro{border-left-color:#ffc15a!important}
 @media(max-width:820px){#contactFormSection{padding-top:0!important}#contactFormSection .form-wrap{margin:-1.5rem auto 0!important}#contactFormSection .contact-form-intro{padding:1.25rem 1.25rem .9rem!important}#contactFormSection .form-card{padding:1rem 1.25rem 1.4rem!important}}
+
+/* Remove the left accent line from the unified contact box */
+#contactFormSection .contact-form-intro,body.light #contactFormSection .contact-form-intro,body:not(.light) #contactFormSection .contact-form-intro{border-left:0!important}
