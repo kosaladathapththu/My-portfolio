@@ -362,3 +362,7 @@ body:not(.light) #skills .skills-grid .skill-card{background:rgba(9,17,29,.52)!i
 #skills .skill-card li,body.light #skills .skill-card li{background:rgba(245,249,253,.62)!important;border-color:rgba(71,91,122,.16)!important}
 body:not(.light) #skills .skill-card li{background:rgba(19,34,53,.62)!important;border-color:rgba(255,255,255,.14)!important}
 @media(max-width:900px){#skills::before,body.light #skills::before,body:not(.light) #skills::before{background-size:contain!important;background-position:center top!important}}
+
+/* Right-aligned full portrait */
+#skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:right top!important}
+@media(max-width:700px){#skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:center top!important}}
