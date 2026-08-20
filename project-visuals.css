@@ -370,3 +370,7 @@ body:not(.light) #skills .skill-card li{background:rgba(19,34,53,.62)!important;
 /* Anchor portrait behind the right-side skill columns */
 #skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:right bottom!important}
 @media(max-width:700px){#skills::before,body.light #skills::before,body:not(.light) #skills::before{background-position:center bottom!important}}
+
+/* Allow the portrait layer to span both skill-card rows */
+#skills::before,body.light #skills::before,body:not(.light) #skills::before{top:0!important;right:0!important;bottom:0!important;left:0!important;width:100%!important;height:100%!important;background-position:right bottom!important}
+@media(max-width:700px){#skills::before,body.light #skills::before,body:not(.light) #skills::before{height:100%!important;background-position:center bottom!important}}
