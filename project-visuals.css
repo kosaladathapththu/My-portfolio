@@ -553,3 +553,15 @@ nav#navbar.scrolled,body.light nav#navbar.scrolled,body:not(.light) nav#navbar.s
 .copy-btn{--button-glow:#68e4dc}
 .memory-btn,.game-btn{--button-glow:#f18cff}
 @media(prefers-reduced-motion:reduce){:where(button:not(:disabled),.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action){transition:none!important}:where(button:not(:disabled),.btn,.chip,.nav-quick,.social-link,.rail-link,.hire-me-fixed,.ai-launcher,.backtop,.certifications-toggle,.project-link,.opportunity-action):hover{transform:none!important}}
+
+/* Compact hero so the technology marquee is visible in the first viewport */
+.hero,body.light .hero,body:not(.light) .hero{min-height:calc(100svh - 112px)!important;padding:7.25rem 2rem 2rem!important;align-items:center!important}
+.hero .hero-container{align-items:center!important;gap:clamp(2rem,5vw,5rem)!important}
+.hero .hero-content h1{margin:1rem 0 1.15rem!important;font-size:clamp(3.8rem,6.8vw,6.8rem)!important;line-height:.84!important}
+.hero .hero-content p{margin-bottom:0!important;font-size:clamp(.96rem,1.2vw,1.08rem)!important;line-height:1.65!important;max-width:680px!important}
+.hero .hero-stats{margin-top:1.3rem!important;margin-bottom:0!important;padding-top:1rem!important}
+.hero .stat-number{font-size:clamp(1.65rem,2.4vw,2.15rem)!important}
+.hero .hero-buttons{display:none!important}
+.showcase-ribbon{min-height:112px!important}
+@media(max-width:900px){.hero,body.light .hero,body:not(.light) .hero{min-height:auto!important;padding:6.5rem 1rem 2.5rem!important}.hero .hero-content h1{font-size:clamp(3.15rem,13.5vw,5.25rem)!important}.showcase-ribbon{min-height:82px!important}}
+@media(max-width:560px){.hero .hero-stats{margin-top:1rem!important;padding-top:.85rem!important}.hero .stat-number{font-size:1.55rem!important}}
