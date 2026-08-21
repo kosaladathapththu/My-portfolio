@@ -647,3 +647,23 @@ footer#contact .footer-meta{grid-area:meta!important;display:flex!important;alig
 footer#contact .footer-meta p,body.light footer#contact .footer-meta p,body:not(.light) footer#contact .footer-meta p{margin:0!important;color:#7f8994!important;font-size:.67rem!important;line-height:1.5!important;letter-spacing:.025em!important}
 @media(max-width:900px){footer#contact,body.light footer#contact,body:not(.light) footer#contact{padding:4rem 1.25rem 6.5rem!important}footer#contact .footer-content{grid-template-columns:1fr!important;grid-template-areas:"brand" "connect" "meta"!important;gap:2.8rem!important}footer#contact .footer-title{font-size:clamp(3.4rem,13vw,5.8rem)!important}footer#contact .footer-connect{padding:2rem 0 0!important;border-left:0!important;border-top:1px solid rgba(255,255,255,.13)!important}footer#contact .footer-meta{align-items:flex-start!important;flex-direction:column!important;margin-top:.5rem!important;padding:1.25rem 5rem 0 0!important}}
 @media(max-width:560px){footer#contact .footer-title{font-size:clamp(3rem,15vw,4.6rem)!important}footer#contact .footer-email{font-size:.82rem!important}footer#contact .footer-meta{padding-right:3.5rem!important}footer#contact::after{font-size:7rem!important}}
+
+/* Footer palette: warm sage and sand instead of dark navy */
+footer#contact,body.light footer#contact,body:not(.light) footer#contact{background:radial-gradient(circle at 84% 16%,rgba(255,255,255,.58),transparent 27rem),radial-gradient(circle at 12% 88%,rgba(207,165,105,.22),transparent 25rem),linear-gradient(135deg,#dce7df 0%,#edf0e5 48%,#e8d9c5 100%)!important;border-top-color:rgba(53,78,68,.2)!important;color:#17231f!important}
+footer#contact::before{background:linear-gradient(90deg,#329d91,rgba(50,157,145,.2) 35%,rgba(196,137,61,.24) 68%,#c4893d)!important;box-shadow:0 0 16px rgba(50,157,145,.18)!important}
+footer#contact::after{color:rgba(37,65,55,.045)!important}
+footer#contact .footer-content,body.light footer#contact .footer-content,body:not(.light) footer#contact .footer-content{color:#17231f!important}
+footer#contact .footer-eyebrow{color:#a45f26!important}
+footer#contact .footer-title,body.light footer#contact .footer-title,body:not(.light) footer#contact .footer-title{color:#17231f!important}
+footer#contact .footer-title span,body.light footer#contact .footer-title span,body:not(.light) footer#contact .footer-title span{color:#547565!important;-webkit-text-fill-color:#547565!important}
+footer#contact .footer-brand>p,body.light footer#contact .footer-brand>p,body:not(.light) footer#contact .footer-brand>p{color:#53635d!important}
+footer#contact .footer-connect{border-left-color:rgba(45,72,62,.2)!important}
+footer#contact .footer-email,body.light footer#contact .footer-email,body:not(.light) footer#contact .footer-email{color:#17231f!important;border-bottom-color:rgba(45,72,62,.2)!important}
+footer#contact .footer-email i{color:#238c82!important}
+footer#contact .footer-connect>p,body.light footer#contact .footer-connect>p,body:not(.light) footer#contact .footer-connect>p{color:#53635d!important}
+footer#contact .footer-connect>p i{color:#547565!important}
+footer#contact .social-link,body.light footer#contact .social-link,body:not(.light) footer#contact .social-link{border-color:rgba(45,72,62,.22)!important;background:rgba(255,255,255,.3)!important;color:#20322b!important}
+footer#contact .social-link:hover,body.light footer#contact .social-link:hover,body:not(.light) footer#contact .social-link:hover{background:#2d9186!important;border-color:#2d9186!important;color:#fff!important;box-shadow:0 10px 24px rgba(45,145,134,.24)!important}
+footer#contact .footer-meta{border-top-color:rgba(45,72,62,.19)!important}
+footer#contact .footer-meta p,body.light footer#contact .footer-meta p,body:not(.light) footer#contact .footer-meta p{color:#66756f!important}
+@media(max-width:900px){footer#contact .footer-connect{border-top-color:rgba(45,72,62,.2)!important}}
