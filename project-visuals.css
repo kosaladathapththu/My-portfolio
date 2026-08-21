@@ -594,3 +594,9 @@ body:not(.light) #highlights .highlights-grid{border-color:rgba(255,255,255,.12)
 .showcase-ribbon span,body.light .showcase-ribbon span,body:not(.light) .showcase-ribbon span{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;color:#fff!important;text-shadow:0 2px 10px rgba(0,0,0,.82)!important}
 .showcase-ribbon span b,body.light .showcase-ribbon span b,body:not(.light) .showcase-ribbon span b{color:#fff!important;text-shadow:0 2px 10px rgba(0,0,0,.86)!important}
 .showcase-ribbon span i,body.light .showcase-ribbon span i,body:not(.light) .showcase-ribbon span i{color:var(--brand-color,#fff)!important;filter:brightness(1.18) saturate(1.2) drop-shadow(0 5px 10px rgba(0,0,0,.28))!important}
+
+/* Correct transparent marquee: overlap the hero instead of exposing the page background */
+.showcase-ribbon,body.light .showcase-ribbon,body:not(.light) .showcase-ribbon{position:relative!important;z-index:4!important;margin-top:-112px!important;background:linear-gradient(90deg,rgba(4,10,18,.22),rgba(7,14,24,.1),rgba(4,10,18,.2))!important;border-color:rgba(255,255,255,.24)!important;box-shadow:inset 0 1px rgba(255,255,255,.12),inset 0 -1px rgba(255,255,255,.07),0 14px 34px rgba(0,0,0,.13)!important;backdrop-filter:blur(5px) saturate(1.12)!important;-webkit-backdrop-filter:blur(5px) saturate(1.12)!important}
+.showcase-ribbon::before,body.light .showcase-ribbon::before,body:not(.light) .showcase-ribbon::before{background:linear-gradient(90deg,rgba(3,8,15,.5),transparent)!important}
+.showcase-ribbon::after,body.light .showcase-ribbon::after,body:not(.light) .showcase-ribbon::after{background:linear-gradient(270deg,rgba(3,8,15,.5),transparent)!important}
+@media(max-width:900px){.showcase-ribbon,body.light .showcase-ribbon,body:not(.light) .showcase-ribbon{margin-top:-82px!important}}
