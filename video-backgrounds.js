@@ -6,16 +6,23 @@
   let scrollEndTimer;
 
   const playWhenAllowed = (video) => {
-    if (document.hidden || mobileScrolling || visible.get(video) === false) return;
+    if (document.hidden || mobileScrolling || visible.get(video) === false)
+      return;
     video.play().catch(() => {});
   };
-  const observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      visible.set(entry.target, entry.isIntersecting);
-      if (entry.isIntersecting) playWhenAllowed(entry.target);
-      else entry.target.pause();
-    });
-  }, { rootMargin: "160px 0px", threshold: 0.01 }) : null;
+  const observer =
+    "IntersectionObserver" in window
+      ? new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              visible.set(entry.target, entry.isIntersecting);
+              if (entry.isIntersecting) playWhenAllowed(entry.target);
+              else entry.target.pause();
+            });
+          },
+          { rootMargin: "160px 0px", threshold: 0.01 },
+        )
+      : null;
 
   const activate = (video) => {
     if (!(video instanceof HTMLVideoElement) || videos.has(video)) return;
@@ -30,33 +37,47 @@
     else {
       visible.set(video, true);
       if (video.readyState >= 2) playWhenAllowed(video);
-      else video.addEventListener("canplay", () => playWhenAllowed(video), { once: true });
+      else
+        video.addEventListener("canplay", () => playWhenAllowed(video), {
+          once: true,
+        });
     }
   };
-  const scan = (root = document) => root.querySelectorAll?.(".section-video-bg video").forEach(activate);
+  const scan = (root = document) =>
+    root.querySelectorAll?.(".section-video-bg video").forEach(activate);
   const resumeVisible = () => videos.forEach(playWhenAllowed);
 
-  if (mobile.matches) addEventListener("scroll", () => {
-    if (!mobileScrolling) {
-      mobileScrolling = true;
-      videos.forEach((video) => video.pause());
-    }
-    clearTimeout(scrollEndTimer);
-    scrollEndTimer = setTimeout(() => {
-      mobileScrolling = false;
-      resumeVisible();
-    }, 160);
-  }, { passive: true });
+  if (mobile.matches)
+    addEventListener(
+      "scroll",
+      () => {
+        if (!mobileScrolling) {
+          mobileScrolling = true;
+          videos.forEach((video) => video.pause());
+        }
+        clearTimeout(scrollEndTimer);
+        scrollEndTimer = setTimeout(() => {
+          mobileScrolling = false;
+          resumeVisible();
+        }, 160);
+      },
+      { passive: true },
+    );
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) videos.forEach((video) => video.pause());
     else resumeVisible();
   });
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => scan());
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", () => scan());
   else scan();
-  new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
-    if (node.nodeType !== 1) return;
-    if (node.matches?.(".section-video-bg video")) activate(node);
-    scan(node);
-  }))).observe(document.documentElement, { childList: true, subtree: true });
+  new MutationObserver((records) =>
+    records.forEach((record) =>
+      record.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+        if (node.matches?.(".section-video-bg video")) activate(node);
+        scan(node);
+      }),
+    ),
+  ).observe(document.documentElement, { childList: true, subtree: true });
 })();

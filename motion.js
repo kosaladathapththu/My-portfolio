@@ -99,19 +99,30 @@
       </span>
       <span class="ai-cloud">Ask anything from Kosala</span>`;
     const form = document.querySelector(".ai-form");
-    form?.addEventListener("submit", () => launcher.classList.add("is-thinking"));
+    form?.addEventListener("submit", () =>
+      launcher.classList.add("is-thinking"),
+    );
     const messages = document.querySelector(".ai-messages");
     if (messages) {
       new MutationObserver(() => {
         const last = messages.lastElementChild;
-        if (last && last.textContent !== "Thinking...") launcher.classList.remove("is-thinking");
-      }).observe(messages, { childList: true, subtree: true, characterData: true });
+        if (last && last.textContent !== "Thinking...")
+          launcher.classList.remove("is-thinking");
+      }).observe(messages, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
     }
   }
 
   const suggestions = document.createElement("div");
   suggestions.className = "ai-suggestions";
-  ["What can Kosala build?", "View project experience", "Start a software project"].forEach((label) => {
+  [
+    "What can Kosala build?",
+    "View project experience",
+    "Start a software project",
+  ].forEach((label) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "ai-suggestion";
@@ -119,7 +130,10 @@
     button.addEventListener("click", () => {
       const input = document.querySelector(".ai-input");
       const form = document.querySelector(".ai-form");
-      if (input && form) { input.value = label; form.requestSubmit(); }
+      if (input && form) {
+        input.value = label;
+        form.requestSubmit();
+      }
     });
     suggestions.appendChild(button);
   });
@@ -135,17 +149,22 @@
     { selector: ".experience-card", type: "up", stagger: 0 },
     { selector: ".education-item", type: "up", stagger: 100 },
     { selector: ".cert-item", type: "up", stagger: 85 },
-    { selector: ".form-card", type: "scale", stagger: 0 }
+    { selector: ".form-card", type: "scale", stagger: 0 },
   ];
   const targets = [];
   revealGroups.forEach(({ selector, type, stagger }) => {
     document.querySelectorAll(selector).forEach((element, index) => {
       if (element.closest(".section-transition")) return;
       element.classList.add("motion-item");
-      if (type === "left" || (type === "alternate" && index % 2 === 0)) element.classList.add("motion-left");
-      if (type === "right" || (type === "alternate" && index % 2 === 1)) element.classList.add("motion-right");
+      if (type === "left" || (type === "alternate" && index % 2 === 0))
+        element.classList.add("motion-left");
+      if (type === "right" || (type === "alternate" && index % 2 === 1))
+        element.classList.add("motion-right");
       if (type === "scale") element.classList.add("motion-scale");
-      element.style.setProperty("--motion-delay", `${Math.min(index, 5) * stagger}ms`);
+      element.style.setProperty(
+        "--motion-delay",
+        `${Math.min(index, 5) * stagger}ms`,
+      );
       targets.push(element);
     });
   });
@@ -154,26 +173,39 @@
     educationTimeline.classList.add("motion-line");
     targets.push(educationTimeline);
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("motion-in");
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("motion-in");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+  );
   targets.forEach((element) => observer.observe(element));
 
   if (window.matchMedia("(pointer:fine)").matches) {
-    document.querySelectorAll(".project-card, .skill-card, .highlight-card, .cert-item").forEach((card) => {
-      card.addEventListener("pointermove", (event) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty("--tilt-x", `${((event.clientX - rect.left) / rect.width - .5) * 2.2}deg`);
-        card.style.setProperty("--tilt-y", `${-((event.clientY - rect.top) / rect.height - .5) * 2.2}deg`);
+    document
+      .querySelectorAll(
+        ".project-card, .skill-card, .highlight-card, .cert-item",
+      )
+      .forEach((card) => {
+        card.addEventListener("pointermove", (event) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty(
+            "--tilt-x",
+            `${((event.clientX - rect.left) / rect.width - 0.5) * 2.2}deg`,
+          );
+          card.style.setProperty(
+            "--tilt-y",
+            `${-((event.clientY - rect.top) / rect.height - 0.5) * 2.2}deg`,
+          );
+        });
+        card.addEventListener("pointerleave", () => {
+          card.style.removeProperty("--tilt-x");
+          card.style.removeProperty("--tilt-y");
+        });
       });
-      card.addEventListener("pointerleave", () => {
-        card.style.removeProperty("--tilt-x");
-        card.style.removeProperty("--tilt-y");
-      });
-    });
   }
 })();

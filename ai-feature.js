@@ -1,20 +1,203 @@
 (() => {
-const KEY='nova-chat-sessions-v2',greeting='Hi! Ask about Kosala\'s services, projects, skills, or how to start a project.';
-const launcher=document.createElement('button');launcher.className='ai-launcher';launcher.setAttribute('aria-label','Open a new chat');launcher.innerHTML='<i class=fas fa-message></i><span>Ask about Kosala</span>';
-const panel=document.createElement('section');panel.className='ai-panel';panel.innerHTML=`<div class='ai-head'><button class='ai-history-toggle' type='button'><i class='fas fa-clock-rotate-left'></i></button><div><strong>Nova AI assistant</strong><span>New conversations, saved locally</span></div><div class='ai-head-actions'><button class='ai-new' type='button' title='New chat'><i class='fas fa-pen-to-square'></i></button><button class='ai-clear' type='button' title='Delete all chats'><i class='fas fa-trash-can'></i></button><button class='ai-close' type='button'><i class='fas fa-xmark'></i></button></div></div><div class='ai-body'><aside class='ai-sidebar'><div class='ai-sidebar-head'><div><span>YOUR CHATS</span><strong>Conversation history</strong></div><button class='ai-sidebar-close' type='button'><i class='fas fa-xmark'></i></button></div><button class='ai-new-wide' type='button'><i class='fas fa-plus'></i> New chat</button><div class='ai-chat-list'></div><p class='ai-history-note'><i class='fas fa-lock'></i> Saved only on this device</p></aside><button class='ai-sidebar-backdrop' type='button'></button><div class='ai-chat-main'><div class='ai-messages' aria-live='polite'></div><form class='ai-form'><input class='ai-input' maxlength='1200' placeholder='Ask me anything...' required><button class='ai-send'><i class='fas fa-arrow-up'></i></button></form></div></div>`;document.body.append(launcher,panel);
-const $=s=>panel.querySelector(s),messages=$('.ai-messages'),form=$('.ai-form'),input=$('.ai-input'),send=$('.ai-send'),list=$('.ai-chat-list');let sessions=[],active=null,history=[];
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(sessions.slice(0,30)))}catch{}};
-const title=()=>{const m=history.find(x=>x.role==='user');return m?(m.content.length>34?m.content.slice(0,34)+'…':m.content):'New conversation'};
-const addMessage=(text,type)=>{const el=document.createElement('div');el.className=`ai-msg ${type}`;el.textContent=text;messages.append(el);messages.scrollTop=messages.scrollHeight;return el};
-const drawMessages=()=>{messages.innerHTML='';addMessage(greeting,'bot');history.forEach(m=>addMessage(m.content,m.role==='user'?'user':'bot'))};
-const drawList=()=>{list.innerHTML=sessions.length?'':'<div class=ai-empty-history><i class=fas fa-comments></i><span>No previous chats yet</span><small>Your conversations will appear here.</small></div>';sessions.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='ai-chat-item'+(s.id===active?' active':'');b.dataset.id=s.id;b.innerHTML=`<i class='fas fa-message'></i><span><strong></strong><small>${new Date(s.updated).toLocaleDateString()}</small></span><b class='ai-chat-delete' data-delete='${s.id}'><i class='fas fa-xmark'></i></b>`;b.querySelector('strong').textContent=s.title;list.append(b)})};
-const fresh=()=>{active=null;history=[];drawMessages();drawList();panel.classList.remove('history-open');input.value='';input.focus()};
-const remember=(role,content)=>{if(!content)return;history.push({role,content:String(content).slice(0,1200)});history=history.slice(-20);let s=sessions.find(x=>x.id===active);if(!s){s={id:Date.now()+'-'+Math.random().toString(36).slice(2,7),messages:[]};active=s.id;sessions.unshift(s)}s.messages=history.slice();s.title=title();s.updated=Date.now();sessions.sort((a,b)=>b.updated-a.updated);save();drawList()};
-try{const data=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(data))sessions=data.slice(0,30);if(!sessions.length){const old=JSON.parse(localStorage.getItem('nova-chat-history-v1')||'[]');if(Array.isArray(old)&&old.length){const first=old.find(x=>x.role==='user');sessions=[{id:'migrated-'+Date.now(),title:first?first.content.slice(0,34):'Previous conversation',updated:Date.now()-1,messages:old.slice(-20)}];save()}}}catch{}fresh();
-window.novaChat={remember,addMessage,messages,getHistory:()=>history.slice(-8)};
-const toggle=open=>{if(open&&!panel.classList.contains('open'))fresh();panel.classList.toggle('open',open);document.body.classList.toggle('ai-open',open);launcher.setAttribute('aria-expanded',String(open));if(open)input.focus()};
-launcher.onclick=()=>toggle(!panel.classList.contains('open'));$('.ai-close').onclick=()=>toggle(false);panel.querySelectorAll('.ai-new,.ai-new-wide').forEach(b=>b.onclick=fresh);$('.ai-history-toggle').onclick=()=>panel.classList.toggle('history-open');$('.ai-sidebar-close').onclick=$('.ai-sidebar-backdrop').onclick=()=>panel.classList.remove('history-open');
-list.onclick=e=>{const del=e.target.closest('[data-delete]');if(del){e.stopPropagation();sessions=sessions.filter(s=>s.id!==del.dataset.delete);if(active===del.dataset.delete)fresh();save();drawList();return}const item=e.target.closest('.ai-chat-item');if(!item)return;const s=sessions.find(x=>x.id===item.dataset.id);if(s){active=s.id;history=s.messages.slice();drawMessages();drawList();panel.classList.remove('history-open')}};
-$('.ai-clear').onclick=()=>{sessions=[];try{localStorage.removeItem(KEY)}catch{}fresh()};document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(panel.classList.contains('history-open'))panel.classList.remove('history-open');else toggle(false)}});
-form.addEventListener('submit',async e=>{e.preventDefault();const text=input.value.trim();if(!text)return;const requestHistory=history.slice(-8);addMessage(text,'user');remember('user',text);input.value='';send.disabled=true;const waiting=addMessage('Thinking...','bot');try{const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,history:requestHistory})});const data=await response.json(),answer=response.ok?data.answer:(data.error||'Assistant unavailable.');waiting.textContent=answer;if(response.ok)remember('assistant',answer)}catch{waiting.textContent='The assistant is temporarily unavailable. Please try again.'}finally{send.disabled=false;input.focus()}});
+  const KEY = "nova-chat-sessions-v2",
+    greeting =
+      "Hi! Ask about Kosala's services, projects, skills, or how to start a project.";
+  const launcher = document.createElement("button");
+  launcher.className = "ai-launcher";
+  launcher.setAttribute("aria-label", "Open a new chat");
+  launcher.innerHTML =
+    "<i class=fas fa-message></i><span>Ask about Kosala</span>";
+  const panel = document.createElement("section");
+  panel.className = "ai-panel";
+  panel.innerHTML = `<div class='ai-head'><button class='ai-history-toggle' type='button'><i class='fas fa-clock-rotate-left'></i></button><div><strong>Nova AI assistant</strong><span>New conversations, saved locally</span></div><div class='ai-head-actions'><button class='ai-new' type='button' title='New chat'><i class='fas fa-pen-to-square'></i></button><button class='ai-clear' type='button' title='Delete all chats'><i class='fas fa-trash-can'></i></button><button class='ai-close' type='button'><i class='fas fa-xmark'></i></button></div></div><div class='ai-body'><aside class='ai-sidebar'><div class='ai-sidebar-head'><div><span>YOUR CHATS</span><strong>Conversation history</strong></div><button class='ai-sidebar-close' type='button'><i class='fas fa-xmark'></i></button></div><button class='ai-new-wide' type='button'><i class='fas fa-plus'></i> New chat</button><div class='ai-chat-list'></div><p class='ai-history-note'><i class='fas fa-lock'></i> Saved only on this device</p></aside><button class='ai-sidebar-backdrop' type='button'></button><div class='ai-chat-main'><div class='ai-messages' aria-live='polite'></div><form class='ai-form'><input class='ai-input' maxlength='1200' placeholder='Ask me anything...' required><button class='ai-send'><i class='fas fa-arrow-up'></i></button></form></div></div>`;
+  document.body.append(launcher, panel);
+  const $ = (s) => panel.querySelector(s),
+    messages = $(".ai-messages"),
+    form = $(".ai-form"),
+    input = $(".ai-input"),
+    send = $(".ai-send"),
+    list = $(".ai-chat-list");
+  let sessions = [],
+    active = null,
+    history = [];
+  const save = () => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(sessions.slice(0, 30)));
+    } catch {}
+  };
+  const title = () => {
+    const m = history.find((x) => x.role === "user");
+    return m
+      ? m.content.length > 34
+        ? m.content.slice(0, 34) + "…"
+        : m.content
+      : "New conversation";
+  };
+  const addMessage = (text, type) => {
+    const el = document.createElement("div");
+    el.className = `ai-msg ${type}`;
+    el.textContent = text;
+    messages.append(el);
+    messages.scrollTop = messages.scrollHeight;
+    return el;
+  };
+  const drawMessages = () => {
+    messages.innerHTML = "";
+    addMessage(greeting, "bot");
+    history.forEach((m) =>
+      addMessage(m.content, m.role === "user" ? "user" : "bot"),
+    );
+  };
+  const drawList = () => {
+    list.innerHTML = sessions.length
+      ? ""
+      : "<div class=ai-empty-history><i class=fas fa-comments></i><span>No previous chats yet</span><small>Your conversations will appear here.</small></div>";
+    sessions.forEach((s) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "ai-chat-item" + (s.id === active ? " active" : "");
+      b.dataset.id = s.id;
+      b.innerHTML = `<i class='fas fa-message'></i><span><strong></strong><small>${new Date(s.updated).toLocaleDateString()}</small></span><b class='ai-chat-delete' data-delete='${s.id}'><i class='fas fa-xmark'></i></b>`;
+      b.querySelector("strong").textContent = s.title;
+      list.append(b);
+    });
+  };
+  const fresh = () => {
+    active = null;
+    history = [];
+    drawMessages();
+    drawList();
+    panel.classList.remove("history-open");
+    input.value = "";
+    input.focus();
+  };
+  const remember = (role, content) => {
+    if (!content) return;
+    history.push({ role, content: String(content).slice(0, 1200) });
+    history = history.slice(-20);
+    let s = sessions.find((x) => x.id === active);
+    if (!s) {
+      s = {
+        id: Date.now() + "-" + Math.random().toString(36).slice(2, 7),
+        messages: [],
+      };
+      active = s.id;
+      sessions.unshift(s);
+    }
+    s.messages = history.slice();
+    s.title = title();
+    s.updated = Date.now();
+    sessions.sort((a, b) => b.updated - a.updated);
+    save();
+    drawList();
+  };
+  try {
+    const data = JSON.parse(localStorage.getItem(KEY) || "[]");
+    if (Array.isArray(data)) sessions = data.slice(0, 30);
+    if (!sessions.length) {
+      const old = JSON.parse(
+        localStorage.getItem("nova-chat-history-v1") || "[]",
+      );
+      if (Array.isArray(old) && old.length) {
+        const first = old.find((x) => x.role === "user");
+        sessions = [
+          {
+            id: "migrated-" + Date.now(),
+            title: first ? first.content.slice(0, 34) : "Previous conversation",
+            updated: Date.now() - 1,
+            messages: old.slice(-20),
+          },
+        ];
+        save();
+      }
+    }
+  } catch {}
+  fresh();
+  window.novaChat = {
+    remember,
+    addMessage,
+    messages,
+    getHistory: () => history.slice(-8),
+  };
+  const toggle = (open) => {
+    if (open && !panel.classList.contains("open")) fresh();
+    panel.classList.toggle("open", open);
+    document.body.classList.toggle("ai-open", open);
+    launcher.setAttribute("aria-expanded", String(open));
+    if (open) input.focus();
+  };
+  launcher.onclick = () => toggle(!panel.classList.contains("open"));
+  $(".ai-close").onclick = () => toggle(false);
+  panel
+    .querySelectorAll(".ai-new,.ai-new-wide")
+    .forEach((b) => (b.onclick = fresh));
+  $(".ai-history-toggle").onclick = () =>
+    panel.classList.toggle("history-open");
+  $(".ai-sidebar-close").onclick = $(".ai-sidebar-backdrop").onclick = () =>
+    panel.classList.remove("history-open");
+  list.onclick = (e) => {
+    const del = e.target.closest("[data-delete]");
+    if (del) {
+      e.stopPropagation();
+      sessions = sessions.filter((s) => s.id !== del.dataset.delete);
+      if (active === del.dataset.delete) fresh();
+      save();
+      drawList();
+      return;
+    }
+    const item = e.target.closest(".ai-chat-item");
+    if (!item) return;
+    const s = sessions.find((x) => x.id === item.dataset.id);
+    if (s) {
+      active = s.id;
+      history = s.messages.slice();
+      drawMessages();
+      drawList();
+      panel.classList.remove("history-open");
+    }
+  };
+  $(".ai-clear").onclick = () => {
+    sessions = [];
+    try {
+      localStorage.removeItem(KEY);
+    } catch {}
+    fresh();
+  };
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (panel.classList.contains("history-open"))
+        panel.classList.remove("history-open");
+      else toggle(false);
+    }
+  });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    const requestHistory = history.slice(-8);
+    addMessage(text, "user");
+    remember("user", text);
+    input.value = "";
+    send.disabled = true;
+    const waiting = addMessage("Thinking...", "bot");
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text, history: requestHistory }),
+      });
+      const data = await response.json(),
+        answer = response.ok
+          ? data.answer
+          : data.error || "Assistant unavailable.";
+      waiting.textContent = answer;
+      if (response.ok) remember("assistant", answer);
+    } catch {
+      waiting.textContent =
+        "The assistant is temporarily unavailable. Please try again.";
+    } finally {
+      send.disabled = false;
+      input.focus();
+    }
+  });
 })();

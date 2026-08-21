@@ -26,35 +26,49 @@
     messages.scrollTop = messages.scrollHeight;
   };
 
-  form.addEventListener("submit", async (event) => {
-    const text = input.value.trim();
-    if (!/(generate|create|make).*(wallpaper|image|picture)|wallpaper/i.test(text)) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    if (!text) return;
-    addMessage(text, "user");
-    window.novaChat?.remember("user", text);
-    input.value = "";
-    send.disabled = true;
-    const waiting = addMessage("Creating your wallpaper with Replicate...", "bot");
-    try {
-      const response = await fetch("/api/generate-image", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ style: "futuristic" }),
-      });
-      const data = await response.json();
-      const statusText = response.ok ? "Done - here is your generated wallpaper." : (data.error || "Image generation failed.");
-      waiting.textContent = statusText;
-      if (response.ok) window.novaChat?.remember("assistant", statusText);
-      if (response.ok && data.image) showImage(data.image);
-    } catch {
-      waiting.textContent = "The image generator is temporarily unavailable.";
-    } finally {
-      send.disabled = false;
-      input.focus();
-    }
-  }, true);
+  form.addEventListener(
+    "submit",
+    async (event) => {
+      const text = input.value.trim();
+      if (
+        !/(generate|create|make).*(wallpaper|image|picture)|wallpaper/i.test(
+          text,
+        )
+      )
+        return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (!text) return;
+      addMessage(text, "user");
+      window.novaChat?.remember("user", text);
+      input.value = "";
+      send.disabled = true;
+      const waiting = addMessage(
+        "Creating your wallpaper with Replicate...",
+        "bot",
+      );
+      try {
+        const response = await fetch("/api/generate-image", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ style: "futuristic" }),
+        });
+        const data = await response.json();
+        const statusText = response.ok
+          ? "Done - here is your generated wallpaper."
+          : data.error || "Image generation failed.";
+        waiting.textContent = statusText;
+        if (response.ok) window.novaChat?.remember("assistant", statusText);
+        if (response.ok && data.image) showImage(data.image);
+      } catch {
+        waiting.textContent = "The image generator is temporarily unavailable.";
+      } finally {
+        send.disabled = false;
+        input.focus();
+      }
+    },
+    true,
+  );
 
   const suggestions = document.querySelector(".ai-suggestions");
   if (suggestions && !suggestions.querySelector("[data-image-prompt]")) {
@@ -62,7 +76,8 @@
     button.type = "button";
     button.className = "ai-suggestion";
     button.dataset.imagePrompt = "true";
-    button.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Generate wallpaper';
+    button.innerHTML =
+      '<i class="fas fa-wand-magic-sparkles"></i> Generate wallpaper';
     button.addEventListener("click", () => {
       input.value = "Generate a futuristic wallpaper";
       form.requestSubmit();

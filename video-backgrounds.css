@@ -1,63 +1,271 @@
 /* Ambient section video system */
-#about,#projects{position:relative;isolation:isolate;overflow:hidden}
-.section-video-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.section-video-bg video{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.2;filter:saturate(.72) contrast(1.08) brightness(.7);transform:scale(1.025)}
-.section-video-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,19,16,.94) 0%,rgba(18,19,16,.72) 46%,rgba(18,19,16,.86) 100%),linear-gradient(180deg,rgba(18,19,16,.68),rgba(18,19,16,.9))}
-#about>.section-container,#projects>.section-container{position:relative;z-index:2}
-#projects .section-video-bg video{opacity:.24;filter:saturate(.82) contrast(1.12) brightness(.62)}
-#projects .section-video-shade{background:linear-gradient(115deg,rgba(12,20,16,.94),rgba(12,20,16,.68) 52%,rgba(12,20,16,.9)),linear-gradient(180deg,rgba(12,20,16,.56),rgba(12,20,16,.92))}
-body.light .section-video-bg video{opacity:.14;filter:saturate(.65) contrast(.95) brightness(1.15)}
-body.light .section-video-shade{background:linear-gradient(90deg,rgba(247,243,236,.92),rgba(247,243,236,.72) 52%,rgba(247,243,236,.9)),linear-gradient(180deg,rgba(247,243,236,.6),rgba(247,243,236,.9))}
-body.light #projects .section-video-shade{background:linear-gradient(110deg,rgba(241,247,240,.94),rgba(241,247,240,.72),rgba(241,247,240,.91))}
-@media(max-width:700px){.section-video-bg video{opacity:.14;object-position:center}.section-video-shade{background:linear-gradient(180deg,rgba(18,19,16,.84),rgba(18,19,16,.94))}body.light .section-video-shade{background:linear-gradient(180deg,rgba(247,243,236,.84),rgba(247,243,236,.95))}}
-@media(prefers-reduced-motion:reduce){.section-video-bg{display:none}}
+#about,
+#projects {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.section-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.section-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.2;
+  filter: saturate(0.72) contrast(1.08) brightness(0.7);
+  transform: scale(1.025);
+}
+.section-video-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 19, 16, 0.94) 0%,
+      rgba(18, 19, 16, 0.72) 46%,
+      rgba(18, 19, 16, 0.86) 100%
+    ),
+    linear-gradient(180deg, rgba(18, 19, 16, 0.68), rgba(18, 19, 16, 0.9));
+}
+#about > .section-container,
+#projects > .section-container {
+  position: relative;
+  z-index: 2;
+}
+#projects .section-video-bg video {
+  opacity: 0.24;
+  filter: saturate(0.82) contrast(1.12) brightness(0.62);
+}
+#projects .section-video-shade {
+  background:
+    linear-gradient(
+      115deg,
+      rgba(12, 20, 16, 0.94),
+      rgba(12, 20, 16, 0.68) 52%,
+      rgba(12, 20, 16, 0.9)
+    ),
+    linear-gradient(180deg, rgba(12, 20, 16, 0.56), rgba(12, 20, 16, 0.92));
+}
+body.light .section-video-bg video {
+  opacity: 0.14;
+  filter: saturate(0.65) contrast(0.95) brightness(1.15);
+}
+body.light .section-video-shade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(247, 243, 236, 0.92),
+      rgba(247, 243, 236, 0.72) 52%,
+      rgba(247, 243, 236, 0.9)
+    ),
+    linear-gradient(180deg, rgba(247, 243, 236, 0.6), rgba(247, 243, 236, 0.9));
+}
+body.light #projects .section-video-shade {
+  background: linear-gradient(
+    110deg,
+    rgba(241, 247, 240, 0.94),
+    rgba(241, 247, 240, 0.72),
+    rgba(241, 247, 240, 0.91)
+  );
+}
+@media (max-width: 700px) {
+  .section-video-bg video {
+    opacity: 0.14;
+    object-position: center;
+  }
+  .section-video-shade {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 19, 16, 0.84),
+      rgba(18, 19, 16, 0.94)
+    );
+  }
+  body.light .section-video-shade {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 243, 236, 0.84),
+      rgba(247, 243, 236, 0.95)
+    );
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-video-bg {
+    display: none;
+  }
+}
 /* Visibility correction: keep motion obvious without reducing readability. */
-#about::before,#projects::before{display:none!important}
-.section-video-bg{z-index:1!important}
-.section-video-bg video{opacity:.48!important;filter:saturate(.9) contrast(1.1) brightness(.82)!important}
-.section-video-shade{background:linear-gradient(90deg,rgba(18,19,16,.76) 0%,rgba(18,19,16,.38) 48%,rgba(18,19,16,.68) 100%),linear-gradient(180deg,rgba(18,19,16,.34),rgba(18,19,16,.7))!important}
-#projects .section-video-bg video{opacity:.55!important;filter:saturate(1) contrast(1.12) brightness(.78)!important}
-#projects .section-video-shade{background:linear-gradient(115deg,rgba(10,17,14,.66),rgba(10,17,14,.3) 52%,rgba(10,17,14,.62)),linear-gradient(180deg,rgba(10,17,14,.26),rgba(10,17,14,.7))!important}
-body:not(.light) #projects :is(.projects-toolbar,.project-card){background:linear-gradient(145deg,rgba(24,35,29,.78),rgba(13,22,17,.82))!important;backdrop-filter:blur(7px) saturate(1.05)!important}
-body:not(.light) #about .opportunity-card{background:linear-gradient(135deg,rgba(30,32,27,.82),rgba(20,21,18,.86))!important;backdrop-filter:blur(6px)!important}
-body.light .section-video-bg video{opacity:.34!important;filter:saturate(.82) contrast(1.02) brightness(1.08)!important}
-body.light .section-video-shade{background:linear-gradient(90deg,rgba(247,243,236,.78),rgba(247,243,236,.48),rgba(247,243,236,.72))!important}
-body.light #projects :is(.projects-toolbar,.project-card){background:rgba(255,255,255,.8)!important;backdrop-filter:blur(7px)!important}
-@media(max-width:700px){.section-video-bg video{opacity:.34!important}.section-video-shade{background:linear-gradient(180deg,rgba(18,19,16,.6),rgba(18,19,16,.8))!important}#projects .section-video-bg video{opacity:.4!important}body.light .section-video-shade{background:linear-gradient(180deg,rgba(247,243,236,.68),rgba(247,243,236,.86))!important}}
+#about::before,
+#projects::before {
+  display: none !important;
+}
+.section-video-bg {
+  z-index: 1 !important;
+}
+.section-video-bg video {
+  opacity: 0.48 !important;
+  filter: saturate(0.9) contrast(1.1) brightness(0.82) !important;
+}
+.section-video-shade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 19, 16, 0.76) 0%,
+      rgba(18, 19, 16, 0.38) 48%,
+      rgba(18, 19, 16, 0.68) 100%
+    ),
+    linear-gradient(180deg, rgba(18, 19, 16, 0.34), rgba(18, 19, 16, 0.7)) !important;
+}
+#projects .section-video-bg video {
+  opacity: 0.55 !important;
+  filter: saturate(1) contrast(1.12) brightness(0.78) !important;
+}
+#projects .section-video-shade {
+  background:
+    linear-gradient(
+      115deg,
+      rgba(10, 17, 14, 0.66),
+      rgba(10, 17, 14, 0.3) 52%,
+      rgba(10, 17, 14, 0.62)
+    ),
+    linear-gradient(180deg, rgba(10, 17, 14, 0.26), rgba(10, 17, 14, 0.7)) !important;
+}
+body:not(.light) #projects :is(.projects-toolbar, .project-card) {
+  background: linear-gradient(
+    145deg,
+    rgba(24, 35, 29, 0.78),
+    rgba(13, 22, 17, 0.82)
+  ) !important;
+  backdrop-filter: blur(7px) saturate(1.05) !important;
+}
+body:not(.light) #about .opportunity-card {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 32, 27, 0.82),
+    rgba(20, 21, 18, 0.86)
+  ) !important;
+  backdrop-filter: blur(6px) !important;
+}
+body.light .section-video-bg video {
+  opacity: 0.34 !important;
+  filter: saturate(0.82) contrast(1.02) brightness(1.08) !important;
+}
+body.light .section-video-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(247, 243, 236, 0.78),
+    rgba(247, 243, 236, 0.48),
+    rgba(247, 243, 236, 0.72)
+  ) !important;
+}
+body.light #projects :is(.projects-toolbar, .project-card) {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(7px) !important;
+}
+@media (max-width: 700px) {
+  .section-video-bg video {
+    opacity: 0.34 !important;
+  }
+  .section-video-shade {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 19, 16, 0.6),
+      rgba(18, 19, 16, 0.8)
+    ) !important;
+  }
+  #projects .section-video-bg video {
+    opacity: 0.4 !important;
+  }
+  body.light .section-video-shade {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 243, 236, 0.68),
+      rgba(247, 243, 236, 0.86)
+    ) !important;
+  }
+}
 /* Definitive ambient video visibility + playback-safe presentation */
-@media (prefers-reduced-motion: reduce){
-  .section-video-bg{display:block!important}
+@media (prefers-reduced-motion: reduce) {
+  .section-video-bg {
+    display: block !important;
+  }
 }
-#about .section-video-bg,#projects .section-video-bg{
-  display:block!important;
-  visibility:visible!important;
-  opacity:1!important;
-  z-index:1!important;
-  background:#11150f;
+#about .section-video-bg,
+#projects .section-video-bg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 1 !important;
+  background: #11150f;
 }
-#about .section-video-bg video,#projects .section-video-bg video{
-  display:block!important;
-  visibility:visible!important;
-  width:100%!important;
-  height:100%!important;
-  opacity:.82!important;
-  filter:saturate(1.12) contrast(1.08) brightness(.96)!important;
-  object-fit:cover!important;
-  transform:scale(1.03)!important;
-  mix-blend-mode:normal!important;
+#about .section-video-bg video,
+#projects .section-video-bg video {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.82 !important;
+  filter: saturate(1.12) contrast(1.08) brightness(0.96) !important;
+  object-fit: cover !important;
+  transform: scale(1.03) !important;
+  mix-blend-mode: normal !important;
 }
-#about .section-video-shade,#projects .section-video-shade{
-  background:linear-gradient(90deg,rgba(15,17,13,.54),rgba(15,17,13,.16) 52%,rgba(15,17,13,.42))!important;
+#about .section-video-shade,
+#projects .section-video-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 17, 13, 0.54),
+    rgba(15, 17, 13, 0.16) 52%,
+    rgba(15, 17, 13, 0.42)
+  ) !important;
 }
-#about>.section-container,#projects>.section-container{z-index:2!important}
-body.light #about .section-video-bg video,body.light #projects .section-video-bg video{opacity:.58!important;filter:saturate(1.02) contrast(1.02) brightness(1.08)!important}
-body.light #about .section-video-shade,body.light #projects .section-video-shade{background:rgba(247,243,236,.34)!important}
-@media(max-width:700px){
-  #about .section-video-bg video,#projects .section-video-bg video{opacity:.7!important}
-  #about .section-video-shade,#projects .section-video-shade{background:rgba(15,17,13,.36)!important}
+#about > .section-container,
+#projects > .section-container {
+  z-index: 2 !important;
+}
+body.light #about .section-video-bg video,
+body.light #projects .section-video-bg video {
+  opacity: 0.58 !important;
+  filter: saturate(1.02) contrast(1.02) brightness(1.08) !important;
+}
+body.light #about .section-video-shade,
+body.light #projects .section-video-shade {
+  background: rgba(247, 243, 236, 0.34) !important;
+}
+@media (max-width: 700px) {
+  #about .section-video-bg video,
+  #projects .section-video-bg video {
+    opacity: 0.7 !important;
+  }
+  #about .section-video-shade,
+  #projects .section-video-shade {
+    background: rgba(15, 17, 13, 0.36) !important;
+  }
 }
 /* Keep Featured Projects tonally consistent with the surrounding dark sections. */
-#projects .section-video-bg video{opacity:.64!important;filter:saturate(.94) contrast(1.08) brightness(.78)!important}
-#projects .section-video-shade{background:linear-gradient(115deg,rgba(10,17,14,.8),rgba(10,17,14,.46) 52%,rgba(10,17,14,.76)),linear-gradient(180deg,rgba(10,17,14,.5),rgba(10,17,14,.84))!important}
-body.light #projects .section-video-bg video{opacity:.45!important;filter:saturate(.86) contrast(1.02) brightness(.94)!important}
-body.light #projects .section-video-shade{background:rgba(232,238,230,.54)!important}
+#projects .section-video-bg video {
+  opacity: 0.64 !important;
+  filter: saturate(0.94) contrast(1.08) brightness(0.78) !important;
+}
+#projects .section-video-shade {
+  background:
+    linear-gradient(
+      115deg,
+      rgba(10, 17, 14, 0.8),
+      rgba(10, 17, 14, 0.46) 52%,
+      rgba(10, 17, 14, 0.76)
+    ),
+    linear-gradient(180deg, rgba(10, 17, 14, 0.5), rgba(10, 17, 14, 0.84)) !important;
+}
+body.light #projects .section-video-bg video {
+  opacity: 0.45 !important;
+  filter: saturate(0.86) contrast(1.02) brightness(0.94) !important;
+}
+body.light #projects .section-video-shade {
+  background: rgba(232, 238, 230, 0.54) !important;
+}

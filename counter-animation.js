@@ -43,10 +43,13 @@
     return;
   }
 
-  const observer = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting) return;
-    observer.disconnect();
-    run();
-  }, { threshold: 0.45 });
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      run();
+    },
+    { threshold: 0.45 },
+  );
   observer.observe(stats);
 })();

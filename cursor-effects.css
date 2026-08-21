@@ -1,9 +1,67 @@
 /* Native cursor stays unchanged; this layer only paints a visible movement glow/trail. */
-.cursor-canvas,.cursor-aura{position:fixed;inset:0;z-index:6999;pointer-events:none}
-.cursor-canvas{width:100vw;height:100vh}
-.cursor-aura{inset:auto;left:0;top:0;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;opacity:0;transform:translate3d(-100px,-100px,0);background:radial-gradient(circle,rgba(255,190,120,.72) 0,rgba(239,132,72,.3) 34%,rgba(239,132,72,.1) 55%,transparent 75%);box-shadow:0 0 26px rgba(239,132,72,.34);transition:opacity .12s ease,background .15s ease;will-change:transform,opacity}
-html.cursor-active .cursor-aura{opacity:1}
-html.cursor-interactive .cursor-aura{background:radial-gradient(circle,rgba(195,236,181,.78) 0,rgba(144,190,137,.32) 36%,rgba(144,190,137,.1) 58%,transparent 76%);box-shadow:0 0 28px rgba(144,190,137,.4)}
-html.cursor-pressed .cursor-aura{width:34px;height:34px;margin:-17px 0 0 -17px}
-body.light .cursor-aura{background:radial-gradient(circle,rgba(230,119,55,.62) 0,rgba(205,89,37,.24) 40%,transparent 74%)}
-@media(max-width:900px),(pointer:coarse){.cursor-canvas,.cursor-aura{display:none!important}}
+.cursor-canvas,
+.cursor-aura {
+  position: fixed;
+  inset: 0;
+  z-index: 6999;
+  pointer-events: none;
+}
+.cursor-canvas {
+  width: 100vw;
+  height: 100vh;
+}
+.cursor-aura {
+  inset: auto;
+  left: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  margin: -21px 0 0 -21px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  background: radial-gradient(
+    circle,
+    rgba(255, 190, 120, 0.72) 0,
+    rgba(239, 132, 72, 0.3) 34%,
+    rgba(239, 132, 72, 0.1) 55%,
+    transparent 75%
+  );
+  box-shadow: 0 0 26px rgba(239, 132, 72, 0.34);
+  transition:
+    opacity 0.12s ease,
+    background 0.15s ease;
+  will-change: transform, opacity;
+}
+html.cursor-active .cursor-aura {
+  opacity: 1;
+}
+html.cursor-interactive .cursor-aura {
+  background: radial-gradient(
+    circle,
+    rgba(195, 236, 181, 0.78) 0,
+    rgba(144, 190, 137, 0.32) 36%,
+    rgba(144, 190, 137, 0.1) 58%,
+    transparent 76%
+  );
+  box-shadow: 0 0 28px rgba(144, 190, 137, 0.4);
+}
+html.cursor-pressed .cursor-aura {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+}
+body.light .cursor-aura {
+  background: radial-gradient(
+    circle,
+    rgba(230, 119, 55, 0.62) 0,
+    rgba(205, 89, 37, 0.24) 40%,
+    transparent 74%
+  );
+}
+@media (max-width: 900px), (pointer: coarse) {
+  .cursor-canvas,
+  .cursor-aura {
+    display: none !important;
+  }
+}

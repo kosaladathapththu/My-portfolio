@@ -3,10 +3,15 @@
   if (!mobile.matches) return;
   let scrollEndTimer;
   let scrolling = false;
-  const pauseAnimatedMedia = () => document.querySelectorAll(".ai-bot__image").forEach((media) => media.pause?.());
+  const pauseAnimatedMedia = () =>
+    document
+      .querySelectorAll(".ai-bot__image")
+      .forEach((media) => media.pause?.());
   const resumeAnimatedMedia = () => {
     if (document.hidden) return;
-    document.querySelectorAll(".ai-bot__image").forEach((media) => media.play?.().catch(() => {}));
+    document
+      .querySelectorAll(".ai-bot__image")
+      .forEach((media) => media.play?.().catch(() => {}));
   };
   const beginScroll = () => {
     if (!scrolling) {

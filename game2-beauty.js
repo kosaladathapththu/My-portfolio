@@ -11,7 +11,7 @@
 
   let celebrated = false;
   const celebrate = () => {
-    const colors = ["#5b7cff","#22d3ee","#42e8a4","#ffb84d","#f472b6"];
+    const colors = ["#5b7cff", "#22d3ee", "#42e8a4", "#ffb84d", "#f472b6"];
     for (let index = 0; index < 42; index++) {
       const piece = document.createElement("i");
       piece.className = "memory-confetti";
@@ -28,10 +28,18 @@
   const update = () => {
     const matched = board.querySelectorAll(".memory-card.matched").length;
     const total = board.querySelectorAll(".memory-card").length || 12;
-    bar.style.width = `${matched / total * 100}%`;
-    if (matched === total && !celebrated) { celebrated = true; celebrate(); }
+    bar.style.width = `${(matched / total) * 100}%`;
+    if (matched === total && !celebrated) {
+      celebrated = true;
+      celebrate();
+    }
     if (matched === 0) celebrated = false;
   };
-  new MutationObserver(update).observe(board, { subtree:true, attributes:true, attributeFilter:["class"], childList:true });
+  new MutationObserver(update).observe(board, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class"],
+    childList: true,
+  });
   update();
 })();
