@@ -752,7 +752,7 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
 <link rel="stylesheet" href="light-premium.css?v=6"/>
 <link rel='stylesheet' href='marquee.css?v=5'/>
 <link rel='stylesheet' href='about-layout.css?v=3'/>
-<link rel='stylesheet' href='project-visuals.css?v=45'/>
+<link rel='stylesheet' href='project-visuals.css?v=46'/>
 </head>
 
 <body>
@@ -1346,7 +1346,14 @@ footer{background:#05070c!important;border-top:1px solid var(--line)!important}.
 <script>
 /* Navbar scroll */
 const navbar=document.getElementById("navbar");
-window.addEventListener("scroll",()=>{window.scrollY>40?navbar.classList.add("scrolled"):navbar.classList.remove("scrolled")});
+const heroSection=document.getElementById("home");
+const syncNavbarSurface=()=>{
+  const heroBottom=heroSection.offsetTop+heroSection.offsetHeight-navbar.offsetHeight;
+  navbar.classList.toggle("scrolled",window.scrollY>=heroBottom);
+};
+window.addEventListener("scroll",syncNavbarSurface,{passive:true});
+window.addEventListener("resize",syncNavbarSurface);
+syncNavbarSurface();
 
 /* Year */
 document.getElementById("year").textContent=(new Date).getFullYear();
