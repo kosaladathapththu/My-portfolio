@@ -614,3 +614,8 @@ body:not(.light) #highlights .highlights-grid{border-color:rgba(255,255,255,.12)
 .hero .hero-stats .stat-label{margin:0!important;color:rgba(240,244,249,.68)!important;font-size:.58rem!important;font-weight:800!important;line-height:1!important;letter-spacing:.1em!important;white-space:nowrap!important}
 .hero .hero-content{padding-bottom:5.5rem!important}
 @media(max-width:700px){.hero .hero-content{padding-bottom:4.5rem!important}.hero .hero-stats{display:flex!important;width:100%!important;justify-content:flex-start!important;overflow-x:auto!important}.hero .hero-stats .stat{padding-inline:.75rem!important}.hero .hero-stats .stat:first-child{padding-left:0!important}.hero .hero-stats .stat-number{font-size:1.35rem!important}.hero .hero-stats .stat-label{font-size:.52rem!important}}
+
+/* Navbar: absolute visual transparency in every state */
+nav#navbar,nav#navbar.scrolled,body.light nav#navbar,body.light nav#navbar.scrolled,body:not(.light) nav#navbar,body:not(.light) nav#navbar.scrolled{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom-color:rgba(255,255,255,.2)!important}
+nav#navbar::after{display:none!important;background:transparent!important}
+#navbar .theme-toggle,body.light #navbar .theme-toggle,body:not(.light) #navbar .theme-toggle{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
